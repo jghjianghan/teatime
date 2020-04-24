@@ -1,0 +1,17 @@
+/* judul */
+#laporan-manajerial{
+    text-align: center;
+}
+
+/* Main form */
+ul{
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+#checkbox-laporan{
+    size: 15;
+}
