@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2020 at 12:01 PM
+-- Generation Time: Apr 25, 2020 at 01:19 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -74,13 +74,13 @@ CREATE TABLE `manager` (
 
 CREATE TABLE `pesanan` (
   `id` int(11) NOT NULL,
-  `banyakGula` varchar(10) NOT NULL,
-  `banyakEs` varchar(10) NOT NULL,
-  `ukuran` varchar(10) NOT NULL,
+  `banyakGula` varchar(15) NOT NULL,
+  `banyakEs` varchar(15) NOT NULL,
+  `ukuran` varchar(15) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
-  `idTeh` int(11) DEFAULT NULL,
-  `kode` int(11) DEFAULT NULL
+  `harga` decimal(6,2) NOT NULL,
+  `fkTeh` int(11) DEFAULT NULL,
+  `fkKode` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -117,8 +117,9 @@ CREATE TABLE `topping` (
 --
 
 CREATE TABLE `topping_pesanan` (
-  `idT` int(11) DEFAULT NULL,
-  `idP` int(11) DEFAULT NULL
+  `fkTopping` int(11) DEFAULT NULL,
+  `fkPesanan` int(11) DEFAULT NULL,
+  `jumlahTopping` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -130,7 +131,7 @@ CREATE TABLE `topping_pesanan` (
 CREATE TABLE `transaksi` (
   `kode` int(11) NOT NULL,
   `waktu` datetime NOT NULL,
-  `totalHarga` int(11) NOT NULL,
+  `totalHarga` decimal(7,2) DEFAULT NULL,
   `namaPemesan` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -162,8 +163,8 @@ ALTER TABLE `manager`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idTeh` (`idTeh`),
-  ADD KEY `kode` (`kode`);
+  ADD KEY `fkTeh` (`fkTeh`),
+  ADD KEY `fkKode` (`fkKode`);
 
 --
 -- Indexes for table `teh`
@@ -181,8 +182,8 @@ ALTER TABLE `topping`
 -- Indexes for table `topping_pesanan`
 --
 ALTER TABLE `topping_pesanan`
-  ADD KEY `idT` (`idT`),
-  ADD KEY `idP` (`idP`);
+  ADD KEY `fkTopping` (`fkTopping`),
+  ADD KEY `fkPesanan` (`fkPesanan`);
 
 --
 -- Indexes for table `transaksi`
@@ -192,6 +193,34 @@ ALTER TABLE `transaksi`
   ADD KEY `email` (`email`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `teh`
+--
+ALTER TABLE `teh`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `topping`
+--
+ALTER TABLE `topping`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `kode` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -199,15 +228,15 @@ ALTER TABLE `transaksi`
 -- Constraints for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`idTeh`) REFERENCES `teh` (`id`),
-  ADD CONSTRAINT `pesanan_ibfk_2` FOREIGN KEY (`kode`) REFERENCES `transaksi` (`kode`);
+  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`fkTeh`) REFERENCES `teh` (`id`),
+  ADD CONSTRAINT `pesanan_ibfk_2` FOREIGN KEY (`fkKode`) REFERENCES `transaksi` (`kode`);
 
 --
 -- Constraints for table `topping_pesanan`
 --
 ALTER TABLE `topping_pesanan`
-  ADD CONSTRAINT `topping_pesanan_ibfk_1` FOREIGN KEY (`idT`) REFERENCES `topping` (`id`),
-  ADD CONSTRAINT `topping_pesanan_ibfk_2` FOREIGN KEY (`idP`) REFERENCES `pesanan` (`id`);
+  ADD CONSTRAINT `topping_pesanan_ibfk_1` FOREIGN KEY (`fkTopping`) REFERENCES `topping` (`id`),
+  ADD CONSTRAINT `topping_pesanan_ibfk_2` FOREIGN KEY (`fkPesanan`) REFERENCES `pesanan` (`id`);
 
 --
 -- Constraints for table `transaksi`
