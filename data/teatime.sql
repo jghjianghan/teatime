@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 06:16 AM
+-- Generation Time: Apr 25, 2020 at 10:00 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -86,8 +86,8 @@ CREATE TABLE `pesanan` (
   `ukuran` varchar(15) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `harga` decimal(10,2) NOT NULL,
-  `fkTeh` int(11) DEFAULT NULL,
-  `fkKode` int(11) DEFAULT NULL
+  `fkTeh` int(11) NOT NULL,
+  `fkKode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -138,8 +138,8 @@ INSERT INTO `topping` (`id`, `nama`, `harga`, `gambar`) VALUES
 --
 
 CREATE TABLE `topping_pesanan` (
-  `fkTopping` int(11) DEFAULT NULL,
-  `fkPesanan` int(11) DEFAULT NULL,
+  `fkTopping` int(11) NOT NULL,
+  `fkPesanan` int(11) NOT NULL,
   `jumlahTopping` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -152,9 +152,9 @@ CREATE TABLE `topping_pesanan` (
 CREATE TABLE `transaksi` (
   `kode` int(11) NOT NULL,
   `waktu` datetime NOT NULL,
-  `totalHarga` decimal(15,2) DEFAULT NULL,
+  `totalHarga` decimal(15,2) NOT NULL,
   `namaPemesan` varchar(50) NOT NULL,
-  `email` varchar(50) DEFAULT NULL
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

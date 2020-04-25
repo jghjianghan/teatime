@@ -4,4 +4,5 @@
     Harga Large : <input type="number" value="<?php echo $hargaLarge; ?>" required><br>
     <input type="hidden" name="idTeh" value = <?php echo $idTeh; ?>>
     <input type="submit" value="Update">
+    <?php echo "$idTeh";?>
 </form>
