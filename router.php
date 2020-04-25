@@ -27,6 +27,11 @@
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewTopping();
 				break;
+			case $baseURL.'/kasir':
+				require_once "controller/kasirController.php";
+				$usCtrl = new KasirController();
+				echo $usCtrl->viewTPS();
+				break;
 			default:
 				echo '404 Not Found';
 				break;

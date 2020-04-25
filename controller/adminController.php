@@ -15,7 +15,11 @@
 
         public function viewUser(){
             $result = $this->getAllUser();
-            return View::createView('userData.php',["result"=>$result]);
+            return View::createView('userData.php',[
+                "result"=>$result,
+                "uplevel"=>1,
+                "styleSrcList"=>['mainStyle.css']
+                ]);
         }
         private function getAllUser(){
             $query="

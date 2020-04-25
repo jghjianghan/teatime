@@ -1,0 +1,64 @@
+@font-face{
+  font-family: teatimeFont;
+  src: url("../../asset/font/annifont.ttf");
+}
+@font-face {
+  font-family: muli;
+  src: url("../../asset/font/muli/muli.ttf");
+}
+@font-face {
+  font-family: muli;
+  src: url("../../asset/font/muli/muli-bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: muli;
+  src: url("../../asset/font/muli/muli-bolditalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: muli;
+  src: url("../../asset/font/muli/muli-italic.ttf");
+  font-style: italic;
+}
+html {
+  font-family: muli;
+}
+#header-bar {
+  display: flex;
+  background-color: #FFE4C4;
+  /* color: white; */
+  height: 45px;
+  padding: 5px 10px;
+  align-items: center;
+}
+#header-bar h2 {
+  margin: 0;
+}
+#header-bar>div{
+  flex: 1;
+}
+#full-logo {
+  display: flex;
+}
+#page-title{
+  text-align: center;
+}
+#account-info{
+  text-align: right;
+}
+#companyName {
+  font-family: teatimeFont;
+  font-size: 2em;
+  margin: 0;
+}
+body {
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  color: rgb(133, 133, 133);
+  font-size: 0.8em;
+}
