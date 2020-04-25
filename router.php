@@ -9,6 +9,24 @@
 				//require_once "controller/bukuController.php";
 				//echo $bkCtrl->viewBuku();
 				break;
+			case $baseURL.'/admin':
+				include 'view/admin.php';
+				break;
+			case $baseURL.'/admin/user':
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewUser();
+				break;
+			case $baseURL.'/admin/tea':
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewTea();
+				break;
+			case $baseURL.'/admin/topping':
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewTopping();
+				break;
 			default:
 				echo '404 Not Found';
 				break;
@@ -20,6 +38,12 @@
 				//$bkCtrl = new BukuController();
 				//$bkCtrl->addBook();
 				//header('Location: ../index');
+				break;
+			case $baseURL.'/admin/tea/update':
+				require_once "controller/adminController.php";
+				// $usCtrl = new AdminController();
+				// echo $usCtrl->updateTea();
+				include "view/updateTea.php";
 				break;
 			default:
 				echo '404 Not Found';
