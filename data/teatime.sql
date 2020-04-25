@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 01:19 AM
+-- Generation Time: Apr 25, 2020 at 06:16 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `tanggalLahir` date NOT NULL,
   `alamat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`email`, `password`, `nama`, `tanggalLahir`, `alamat`) VALUES
+('admingadung@teatime.com', 'admingadung', 'Admin Gadung', '1990-04-21', 'Jl. Ciumbuleuit No. 95');
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,7 @@ CREATE TABLE `pesanan` (
   `banyakEs` varchar(15) NOT NULL,
   `ukuran` varchar(15) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `harga` decimal(6,2) NOT NULL,
+  `harga` decimal(10,2) NOT NULL,
   `fkTeh` int(11) DEFAULT NULL,
   `fkKode` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,10 +99,17 @@ CREATE TABLE `pesanan` (
 CREATE TABLE `teh` (
   `id` int(11) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `hargaRegular` decimal(5,2) NOT NULL,
-  `hargaLarge` decimal(5,2) NOT NULL,
+  `hargaRegular` decimal(7,2) NOT NULL,
+  `hargaLarge` decimal(7,2) NOT NULL,
   `gambar` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teh`
+--
+
+INSERT INTO `teh` (`id`, `nama`, `hargaRegular`, `hargaLarge`, `gambar`) VALUES
+(1, 'Original', '17000.00', '17000.00', 'ori.png');
 
 -- --------------------------------------------------------
 
@@ -106,9 +120,16 @@ CREATE TABLE `teh` (
 CREATE TABLE `topping` (
   `id` int(11) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `harga` decimal(5,2) NOT NULL,
+  `harga` decimal(7,2) NOT NULL,
   `gambar` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `topping`
+--
+
+INSERT INTO `topping` (`id`, `nama`, `harga`, `gambar`) VALUES
+(1, 'Pearl', '3000.00', 'pearl.png');
 
 -- --------------------------------------------------------
 
@@ -131,7 +152,7 @@ CREATE TABLE `topping_pesanan` (
 CREATE TABLE `transaksi` (
   `kode` int(11) NOT NULL,
   `waktu` datetime NOT NULL,
-  `totalHarga` decimal(7,2) DEFAULT NULL,
+  `totalHarga` decimal(15,2) DEFAULT NULL,
   `namaPemesan` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -206,13 +227,13 @@ ALTER TABLE `pesanan`
 -- AUTO_INCREMENT for table `teh`
 --
 ALTER TABLE `teh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `topping`
 --
 ALTER TABLE `topping`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
