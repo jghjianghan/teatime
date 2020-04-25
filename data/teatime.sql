@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 10:00 AM
+-- Generation Time: Apr 25, 2020 at 11:05 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -87,7 +87,7 @@ CREATE TABLE `pesanan` (
   `jumlah` int(11) NOT NULL,
   `harga` decimal(10,2) NOT NULL,
   `fkTeh` int(11) NOT NULL,
-  `fkKode` int(11) NOT NULL
+  `fkKode` char(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -150,7 +150,7 @@ CREATE TABLE `topping_pesanan` (
 --
 
 CREATE TABLE `transaksi` (
-  `kode` int(11) NOT NULL,
+  `kode` char(12) NOT NULL,
   `waktu` datetime NOT NULL,
   `totalHarga` decimal(15,2) NOT NULL,
   `namaPemesan` varchar(50) NOT NULL,
@@ -234,12 +234,6 @@ ALTER TABLE `teh`
 --
 ALTER TABLE `topping`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `kode` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
