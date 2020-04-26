@@ -102,7 +102,8 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Tea Data",
-                "styleSrcList"=>['mainStyle.css']
+                "styleSrcList"=>['mainStyle.css'],
+                "scriptSrcList"=> ["script.js"]
                 ]);
         }
 
@@ -149,7 +150,8 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Topping Data",
-                "styleSrcList"=>['mainStyle.css']
+                "styleSrcList"=>['mainStyle.css'],
+                "scriptSrcList"=> ["script.js"]
                 ]);
         }
         private function getAllTopping(){
