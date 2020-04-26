@@ -1,5 +1,5 @@
 <h1 id="laporan-manajerial">Laporan Manajerial</h1>
-<form id="form-laporan" method="post">
+<form id="form-laporan" method="post" action="manajer/manajer">
     <fieldset id="main-laporan">
         <legend>Pilih jenis laporan</legend>
         <ul>

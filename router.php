@@ -118,6 +118,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/admin/admin':
 			header('Location: ../admin');
 			break;
+		case $baseURL . '/manajer/manajer':
+			switch($_POST['select-laporan']){
+				case "detail-trans-harian":
+					header('Location: ../manajer/detail-trans-harian');
+				break;
+				case "trans-rentang":
+					header('Location: ../manajer/trans-rentang');
+				break;
+				case "uang-masuk":
+					header('Location: ../manajer/uang-masuk');;
+				break;
+				case "performa-kasir":
+					header('Location: ../manajer/performa-kasir');;
+				break;
+				case "jam-ramai":
+					header('Location: ../manajer/jam-ramai');;
+				break;
+			}
 		default:
 			echo '404 Not Found';
 			break;
