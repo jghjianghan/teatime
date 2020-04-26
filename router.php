@@ -10,7 +10,9 @@
 				//echo $bkCtrl->viewBuku();
 				break;
 			case $baseURL.'/admin':
-				include 'view/admin.php';
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->view();
 				break;
 			case $baseURL.'/admin/user':
 				require_once "controller/adminController.php";
@@ -50,9 +52,12 @@
 				// echo $usCtrl->updateTea();
 				include "view/updateTea.php";
 				break;
+			case $baseURL.'/admin/admin':
+				header('Location: ../admin');
+				break;
 			default:
 				echo '404 Not Found';
-				break;
+			break;
 		}
 	}
 ?>

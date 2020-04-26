@@ -13,13 +13,19 @@
             $this->db = new MySQLDB("localhost","root","", "teatime");
         }
 
+        public function view(){
+            return View::createView('admin.php',[
+                "styleSrcList"=>["mainStyle.css"]
+            ]);
+        }
+
         public function viewUser(){
             $result = $this->getAllUser();
             return View::createView('userData.php',[
                 "result"=>$result,
                 "uplevel"=>1,
                 "styleSrcList"=>['mainStyle.css']
-                ]);
+            ]);
         }
         private function getAllUser(){
             $query="
@@ -58,7 +64,11 @@
 
         public function viewTea(){
             $result = $this->getAllTea();
-            return View::createView('teaData.php',["result"=>$result]);
+            return View::createView('teaData.php',[
+                "result"=>$result,
+                "uplevel"=>1,
+                "styleSrcList"=>['mainStyle.css']
+                ]);
         }
         private function getAllTea(){
             $query="
@@ -77,7 +87,11 @@
 
         public function viewTopping(){
             $result = $this->getAllTopping();
-            return View::createView('toppingData.php',["result"=>$result]);
+            return View::createView('toppingData.php',[
+                "result"=>$result,
+                "uplevel"=>1,
+                "styleSrcList"=>['mainStyle.css']
+                ]);
         }
         private function getAllTopping(){
             $query="

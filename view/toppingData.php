@@ -1,22 +1,23 @@
 <div id="topping-data">
     <p>Data Topping</p>
     <a><button>Add Topping</button></a>
-    <table>
+    <table class="adminData">
         <tr>
-            <th>No</th>
-            <th>Foto</th>
-            <th>Harga</th>
-            <th>Aksi</th>
+            <th class='adminData'>No</th>
+            <th class='adminData'>Foto</th>
+            <th class='adminData'>Nama</th>
+            <th class='adminData'>Harga</th>
+            <th class='adminData'>Aksi</th>
         </tr>
         <?php
             $no=1;
             foreach($result as $key => $value){
-                echo "<tr>";
-                echo "<td>".$no++."</td>";
-                echo "<td>".$value->getGambar()."</td>";
-                echo "<td>".$value->getNama()."</td>";
-                echo "<td>".$value->getHarga()."</td>";
-                echo "<td>
+                echo "<tr class='adminData'>";
+                echo "<td class='adminData'>".$no++."</td>";
+                echo "<td class='adminData'>".$value->getGambar()."</td>";
+                echo "<td class='adminData'>".$value->getNama()."</td>";
+                echo "<td class='adminData'>".$value->getHarga()."</td>";
+                echo "<td class='adminData'>
                     <form method='POST' action='edit'>
                         <input type='hidden' name='idTopping' value = ".$value->getId().">
                         <input type='submit' value='Edit'>
@@ -32,4 +33,9 @@
 
         ?>
     </table>
+</div>
+<div class="home-button">
+    <form method="POST" action="admin">
+        <input type="submit" value="Home">
+    </form>
 </div>
