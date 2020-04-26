@@ -62,3 +62,31 @@ footer {
   color: rgb(133, 133, 133);
   font-size: 0.8em;
 }
+td>form{
+  display: inline;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+.adminData{
+      border: 2px solid gray;
+}
+#user-data{
+  text-align: center;
+}
+#tea-data{
+  text-align: center;
+}
+#topping-data{
+  text-align: center;
+}
+#menu-admin{
+  text-align: center;
+}
+.home-button{
+  text-align: right;
+}
+.admin-button>a:hover{
+  background-color: #FFE4C4;
+}
