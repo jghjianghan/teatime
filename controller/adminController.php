@@ -28,7 +28,7 @@
                 "title"=>"User Data",
                 "uplevel"=>1,
                 "styleSrcList"=>['admin.css'],
-                "scriptSrcList"=> ["script.js"]
+                "scriptSrcList"=> ["userManager.js"]
                 ]);
         }
         private function getAllUser(){
@@ -103,7 +103,7 @@
                 "uplevel"=>1,
                 "title"=>"Tea Data",
                 "styleSrcList"=>['admin.css'],
-                "scriptSrcList"=> ["script.js"]
+                "scriptSrcList"=> ["teaManager.js"]
                 ]);
         }
 
@@ -151,7 +151,7 @@
                 "uplevel"=>1,
                 "title"=>"Topping Data",
                 "styleSrcList"=>['admin.css'],
-                "scriptSrcList"=> ["script.js"]
+                "scriptSrcList"=> ["toppingManager.js"]
                 ]);
         }
         private function getAllTopping(){
