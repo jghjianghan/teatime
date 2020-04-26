@@ -3,12 +3,14 @@
         protected $kode;
         protected $waktu;
         protected $totalHarga;
+        protected $pesanan = [];
         protected $namaPemesan;
         protected $email;
 
-        public function __construct($kode,$waktu,$totalHarga,$namaPemesan,$email){
+        public function __construct($kode,$waktu,$pesanan,$totalHarga,$namaPemesan,$email){
             $this->kode = $kode;
             $this->waktu = $waktu;
+            $this->pesanan = $pesanan;
             $this->totalHarga = $totalHarga;
             $this->namaPemesan = $namaPemesan;
             $this->email = $email;
@@ -24,6 +26,8 @@
             return $this->harga;
         }public function getEmail(){
             return $this->email;
+        }public function getPesanan(){
+            return $this->pesanan;
         }
     }
 ?>
