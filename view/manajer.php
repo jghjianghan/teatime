@@ -1,10 +1,10 @@
 <h1 id="laporan-manajerial">Laporan Manajerial</h1>
-<form id="form-laporan">
+<form id="form-laporan" method="post">
     <fieldset id="main-laporan">
         <legend>Pilih jenis laporan</legend>
         <ul>
             <li>
-                <select name="select-laporan" id="test">
+                <select name="select-laporan">
                     <option value="detail-trans-harian">Detail transaksi harian</option>
                     <option value="trans-rentang">Transaksi rentang </option>
                     <option value="uang-masuk">Uang yang masuk</option>
