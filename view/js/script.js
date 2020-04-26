@@ -7,6 +7,8 @@ class pop{
         for (let x of btns){
             x.addEventListener('click', this.closeModal);
         }
+        btns = document.getElementById('addTea');
+        btns.addEventListener('click',this.showAddTea);
     }
 
     showAddUser(){

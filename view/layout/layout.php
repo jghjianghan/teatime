@@ -20,7 +20,7 @@
 	}
 	if (isset($scriptSrcList)) {
 		foreach ($scriptSrcList as $key => $value) {
-			$scriptLink = "<script src='".$upPrefix."view/js/$value' defer></script>";
+			echo "<script src='".$upPrefix."view/js/$value' defer></script>";
 		}
 	}
 	?>

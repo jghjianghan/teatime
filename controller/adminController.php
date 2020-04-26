@@ -15,7 +15,7 @@
         //main-menu admin
         public function view(){
             return View::createView('admin.php',[
-                "styleSrcList"=>["mainStyle.css"],
+                "styleSrcList"=>["admin.css"],
                 "title"=>"Admin",
             ]);
         }
@@ -27,7 +27,7 @@
                 "result"=>$result,
                 "title"=>"User Data",
                 "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css'],
+                "styleSrcList"=>['admin.css'],
                 "scriptSrcList"=> ["script.js"]
                 ]);
         }
@@ -102,7 +102,7 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Tea Data",
-                "styleSrcList"=>['mainStyle.css'],
+                "styleSrcList"=>['admin.css'],
                 "scriptSrcList"=> ["script.js"]
                 ]);
         }
@@ -150,7 +150,7 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Topping Data",
-                "styleSrcList"=>['mainStyle.css'],
+                "styleSrcList"=>['admin.css'],
                 "scriptSrcList"=> ["script.js"]
                 ]);
         }
