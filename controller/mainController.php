@@ -2,16 +2,16 @@
     require_once "controller/services/mysqlDB.php";
     require_once "controller/services/view.php";
 
-    class KasirController{
+    class MainController{
         protected $db;
 
         public function __construct()
         {
             $this->db = new MySQLDB("localhost","root","", "teatime");
         }
-        public function viewTPS()
+        public function viewHomw()
         {
-            return View::createView('transactionRecord.php',[]);
+            return 'uwu';
         }
     }
 ?>

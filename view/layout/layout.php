@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title><?php echo $title; ?></title>
+	<title><?php echo $title; ?> - Teatime</title>
 	<?php
 	$upPrefix = "";
 	if (isset($uplevel)){
@@ -10,6 +10,9 @@
 			$upPrefix .= '../';
 		}
 	}
+	?>
+	<link rel='stylesheet' type='text/css' href='<?php echo $upPrefix; ?>view/css/mainStyle.css'>
+	<?php
 	if (isset($styleSrcList)) {
 		foreach ($styleSrcList as $key => $value) {
 			echo "<link rel='stylesheet' type='text/css' href='".$upPrefix."view/css/$value'>";
@@ -30,7 +33,7 @@
 			<p id='companyName'>Teatime</p>
 		</div>
 		<div id='page-title'>
-			<h2>Transaction Record</h2>
+			<h2><?php echo $title; ?></h2>
 		</div>
 		<div id='account-info'>
 			<?php

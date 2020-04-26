@@ -17,8 +17,8 @@
             $result = $this->getAllUser();
             return View::createView('userData.php',[
                 "result"=>$result,
-                "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
+                "title"=>"User Data",
+                "uplevel"=>1
                 ]);
         }
         private function getAllUser(){
