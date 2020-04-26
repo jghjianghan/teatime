@@ -28,7 +28,7 @@
                 "title"=>"User Data",
                 "uplevel"=>1,
                 "styleSrcList"=>['mainStyle.css'],
-                "scriptSrcList"=> "script.js"
+                "scriptSrcList"=> ["script.js"]
                 ]);
         }
         private function getAllUser(){
