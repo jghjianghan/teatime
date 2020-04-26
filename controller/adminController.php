@@ -12,85 +12,23 @@
         {
             $this->db = new MySQLDB("localhost","root","", "teatime");
         }
-
+        //main-menu admin
         public function view(){
             return View::createView('admin.php',[
-                "styleSrcList"=>["mainStyle.css"]
+                "styleSrcList"=>["admin.css"],
+                "title"=>"Admin",
             ]);
         }
 
-        public function viewAddUser(){
-            return View::createView('addUser.php',[
-                "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
-
-        public function viewAddTea(){
-            return View::createView('addTea.php',[
-                "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
-
-        public function viewAddTopping(){
-            return View::createView('addTopping.php',[
-                "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
-
-        public function addUser(){
-            if(isset($_POST['posisi']) 
-                && isset($_POST['email'])
-                && isset($_POST['nama'])
-                && isset($_POST['ttl'])
-                && isset($_POST['alamat'])
-                && $_POST['email']!==""
-                && $_POST['nama']!==""
-                && $_POST['alamat']!==""
-                ){
-                    $posisi = $this->db->escapeString($_POST['posisi']);
-                    $email = $this->db->escapeString($_POST['email']);
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $ttl = $this->db->escapeString($_POST['ttl']);
-                    $alamat = $this->db->escapeString($_POST['alamat']);
-                    $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
-                        VALUES('".$email."','katasandi','".$nama."','".$ttl."','".$alamat."')
-                    ");
-                }
-        }
-
-        public function addTea(){
-            if(isset($_POST['nama'])
-                && isset($_POST['reg'])
-                && isset($_POST['large'])
-                && isset($_POST['foto'])){
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $reg = $this->db->escapeString($_POST['reg']);
-                    $large = $this->db->escapeString($_POST['large']);
-                    $foto = $this->db->escapeString($_POST['foto']);
-                    $this->db->executeNonSelectQuery("INSERT INTO teh(nama, hargaRegular,hargaLarge,gambar) VALUES('".$nama."','".$reg."','".$large."','".$foto."')");
-                }
-        }
-
-        public function addTopping(){
-            if(isset($_POST['nama'])
-                && isset($_POST['harga'])
-                && isset($_POST['foto'])){
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $harga = $this->db->escapeString($_POST['harga']);
-                    $foto = $this->db->escapeString($_POST['foto']);
-                    $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
-                }
-        }
-
+        //user
         public function viewUser(){
             $result = $this->getAllUser();
             return View::createView('userData.php',[
                 "result"=>$result,
                 "title"=>"User Data",
-                "uplevel"=>1
+                "uplevel"=>1,
+                "styleSrcList"=>['admin.css'],
+                "scriptSrcList"=> ["userManager.js"]
                 ]);
         }
         private function getAllUser(){
@@ -128,14 +66,47 @@
             return $result;
         }
 
+        // public function viewAddUser(){
+        //     return View::createView('addUser.php',[
+        //         "uplevel"=>1,
+        //         "title"=>"Add User",
+        //         "styleSrcList"=>['mainStyle.css']
+        //     ]);
+        // }
+
+        public function addUser(){
+            if(isset($_POST['posisi']) 
+                && isset($_POST['email'])
+                && isset($_POST['nama'])
+                && isset($_POST['ttl'])
+                && isset($_POST['alamat'])
+                && $_POST['email']!==""
+                && $_POST['nama']!==""
+                && $_POST['alamat']!==""
+                ){
+                    $posisi = $this->db->escapeString($_POST['posisi']);
+                    $email = $this->db->escapeString($_POST['email']);
+                    $nama = $this->db->escapeString($_POST['nama']);
+                    $ttl = $this->db->escapeString($_POST['ttl']);
+                    $alamat = $this->db->escapeString($_POST['alamat']);
+                    $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
+                        VALUES('".$email."','katasandi','".$nama."','".$ttl."','".$alamat."')
+                    ");
+                }
+        }
+
+        //tea
         public function viewTea(){
             $result = $this->getAllTea();
             return View::createView('teaData.php',[
                 "result"=>$result,
                 "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
+                "title"=>"Tea Data",
+                "styleSrcList"=>['admin.css'],
+                "scriptSrcList"=> ["teaManager.js"]
                 ]);
         }
+
         private function getAllTea(){
             $query="
                 SELECT id, gambar, nama, hargaRegular, hargaLarge
@@ -151,12 +122,36 @@
             return $result;
         }
 
+        public function viewAddTea(){
+            return View::createView('addTea.php',[
+                "uplevel"=>1,
+                "title"=>"Add Tea",
+                "styleSrcList"=>['mainStyle.css']
+            ]);
+        }
+
+        public function addTea(){
+            if(isset($_POST['nama'])
+                && isset($_POST['reg'])
+                && isset($_POST['large'])
+                && isset($_POST['foto'])){
+                    $nama = $this->db->escapeString($_POST['nama']);
+                    $reg = $this->db->escapeString($_POST['reg']);
+                    $large = $this->db->escapeString($_POST['large']);
+                    $foto = $this->db->escapeString($_POST['foto']);
+                    $this->db->executeNonSelectQuery("INSERT INTO teh(nama, hargaRegular,hargaLarge,gambar) VALUES('".$nama."','".$reg."','".$large."','".$foto."')");
+                }
+        }
+
+        //topping
         public function viewTopping(){
             $result = $this->getAllTopping();
             return View::createView('toppingData.php',[
                 "result"=>$result,
                 "uplevel"=>1,
-                "styleSrcList"=>['mainStyle.css']
+                "title"=>"Topping Data",
+                "styleSrcList"=>['admin.css'],
+                "scriptSrcList"=> ["toppingManager.js"]
                 ]);
         }
         private function getAllTopping(){
@@ -173,6 +168,26 @@
             }
             return $result;
         }
+                
+        public function viewAddTopping(){
+            return View::createView('addTopping.php',[
+                "uplevel"=>1,
+                "title"=>"Add Topping",
+                "styleSrcList"=>['mainStyle.css']
+            ]);
+        }
+        
+        public function addTopping(){
+            if(isset($_POST['nama'])
+                && isset($_POST['harga'])
+                && isset($_POST['foto'])){
+                    $nama = $this->db->escapeString($_POST['nama']);
+                    $harga = $this->db->escapeString($_POST['harga']);
+                    $foto = $this->db->escapeString($_POST['foto']);
+                    $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
+                }
+        }
+
         public function getTeaById($id){
             $id = $this->db->escapeString($id);
 

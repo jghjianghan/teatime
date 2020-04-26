@@ -19,31 +19,31 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewUser();
 			break;
-		case $baseURL . '/admin/add-user':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewAddUser();
-			break;
+		// case $baseURL . '/admin/add-user':
+		// 	require_once "controller/adminController.php";
+		// 	$usCtrl = new AdminController();
+		// 	echo $usCtrl->viewAddUser();
+		// 	break;
 		case $baseURL . '/admin/tea':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewTea();
 			break;
-		case $baseURL . '/admin/add-tea':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewAddTea();
-			break;
+		// case $baseURL . '/admin/add-tea':
+		// 	require_once "controller/adminController.php";
+		// 	$usCtrl = new AdminController();
+		// 	echo $usCtrl->viewAddTea();
+		// 	break;
 		case $baseURL . '/admin/topping':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewTopping();
 			break;
-		case $baseURL . '/admin/add-topping':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewAddTopping();
-			break;
+		// case $baseURL . '/admin/add-topping':
+		// 	require_once "controller/adminController.php";
+		// 	$usCtrl = new AdminController();
+		// 	echo $usCtrl->viewAddTopping();
+		// 	break;
 		case $baseURL . '/kasir':
 			require_once "controller/kasirController.php";
 			$usCtrl = new KasirController();

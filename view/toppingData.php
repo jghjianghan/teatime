@@ -1,6 +1,6 @@
 <div id="topping-data">
     <p>Data Topping</p>
-    <a href="add-topping"><button>Add Topping</button></a>
+    <button id="addTopping">Add Topping</button>
     <table class="adminData">
         <tr>
             <th class='adminData'>No</th>
@@ -34,8 +34,40 @@
         ?>
     </table>
 </div>
+
 <div class="home-button">
     <form method="POST" action="admin">
         <input type="submit" value="Home">
     </form>
+</div>
+
+<div class="modal" id="modal-addTopping">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Add Topping</h2>
+        <form method="post" action="topping/add">
+            <table>
+                <tr>
+                    <td><label for="nama">Nama</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="nama" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td><label for="harga">Harga</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="harga" name="harga" required></td>
+                </tr>
+                <tr>
+                    <td><label for="foto">Foto</label></td>
+                    <td>:</td>
+                    <td><input type="file" id="foto" name="foto"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Tambah"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </div>
