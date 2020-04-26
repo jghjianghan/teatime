@@ -66,13 +66,13 @@
             return $result;
         }
 
-        public function viewAddUser(){
-            return View::createView('addUser.php',[
-                "uplevel"=>1,
-                "title"=>"Add User",
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
+        // public function viewAddUser(){
+        //     return View::createView('addUser.php',[
+        //         "uplevel"=>1,
+        //         "title"=>"Add User",
+        //         "styleSrcList"=>['mainStyle.css']
+        //     ]);
+        // }
 
         public function addUser(){
             if(isset($_POST['posisi']) 
