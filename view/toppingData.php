@@ -1,6 +1,6 @@
 <div id="topping-data">
     <p>Data Topping</p>
-    <a><button>Add Topping</button></a>
+    <a href="add-topping"><button>Add Topping</button></a>
     <table class="adminData">
         <tr>
             <th class='adminData'>No</th>

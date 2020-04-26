@@ -1,6 +1,6 @@
 <div id="user-data">
     <p>Data User</p>
-    <a><button>Add User</button></a>
+    <a href="add-user"><button>Add User</button></a>
     <table class="adminData">
         <tr class="adminData">
             <th class="adminData">No</th>
