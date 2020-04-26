@@ -20,7 +20,7 @@
                 echo "<td class='adminData'>
                     <form method='POST' action='edit'>
                         <input type='hidden' name='idTopping' value = ".$value->getId().">
-                        <input type='submit' value='Edit'>
+                        <input type='submit' value='Update'>
                     </form>
                     <form method='POST' action='index/delete'>
                         <input type='hidden' name='idTopping' value = ".$value->getId().">

@@ -87,3 +87,6 @@ table{
 .home-button{
   text-align: right;
 }
+.admin-button>a:hover{
+  background-color: #FFE4C4;
+}
