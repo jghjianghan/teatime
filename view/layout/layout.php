@@ -3,14 +3,6 @@
 
 <head>
 	<title><?php echo $title; ?> - Teatime</title>
-	<?php
-	$upPrefix = "";
-	if (isset($uplevel)){
-		for ($i = 0; $i<$uplevel; $i++){
-			$upPrefix .= '../';
-		}
-	}
-	?>
 	<link rel='stylesheet' type='text/css' href='<?php echo $upPrefix; ?>view/css/mainStyle.css'>
 	<?php
 	if (isset($styleSrcList)) {
