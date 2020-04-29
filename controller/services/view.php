@@ -6,6 +6,13 @@ class View{
 			$$key = $value;
 		}
 
+		$upPrefix = "";
+		if (isset($uplevel)){
+			for ($i = 0; $i<$uplevel; $i++){
+				$upPrefix .= '../';
+			}
+		}
+
 		ob_start();
 		include 'view/'.$view;
 		$content = ob_get_contents();
