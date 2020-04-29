@@ -2,16 +2,17 @@ class tanggal {
     constructor() {
         this.page = document.getElementsByName('select-laporan');
         this.page = this.page[0];
-        this.page.addEventListener('change', this.showTanggal);
+        this.hiddenInput = document.querySelector('#tanggalKedua')
 
         this.showTanggal = this.showTanggal.bind(this);
+        this.page.addEventListener('change', this.showTanggal);
     }
 
     showTanggal() {
         if (this.page.value == 'detail-trans-harian') {
-            this.page.classList.remove("date");
+            this.hiddenInput.classList.add("hide");
         } else {
-            this.page.classList.add("date");
+            this.hiddenInput.classList.remove("hide");
         }
     }
 

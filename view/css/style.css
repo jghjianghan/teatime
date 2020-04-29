@@ -19,6 +19,6 @@ li {
     size: 15;
 }
 
-.date {
-    visibility: visible;
+.hide {
+    display: none;
 }

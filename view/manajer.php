@@ -14,7 +14,7 @@
             </li><br>
             <li>
                 Pilih tanggal:
-                <input type="date" name="tanggal1"> <a class="date" style="visibility:hidden;">- <input type="date" name="tanggal2"></a>
+                <input type="date" name="tanggal1"> <span class="hide" id='tanggalKedua'>- <input type="date" name="tanggal2"></span>
             </li><br>
             <li>
                 <input type="submit" id="submit" value="Lihat Laporan">
