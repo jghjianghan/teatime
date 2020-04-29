@@ -19,31 +19,31 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewUser();
 			break;
-		// case $baseURL . '/admin/add-user':
-		// 	require_once "controller/adminController.php";
-		// 	$usCtrl = new AdminController();
-		// 	echo $usCtrl->viewAddUser();
-		// 	break;
+			// case $baseURL . '/admin/add-user':
+			// 	require_once "controller/adminController.php";
+			// 	$usCtrl = new AdminController();
+			// 	echo $usCtrl->viewAddUser();
+			// 	break;
 		case $baseURL . '/admin/tea':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewTea();
 			break;
-		// case $baseURL . '/admin/add-tea':
-		// 	require_once "controller/adminController.php";
-		// 	$usCtrl = new AdminController();
-		// 	echo $usCtrl->viewAddTea();
-		// 	break;
+			// case $baseURL . '/admin/add-tea':
+			// 	require_once "controller/adminController.php";
+			// 	$usCtrl = new AdminController();
+			// 	echo $usCtrl->viewAddTea();
+			// 	break;
 		case $baseURL . '/admin/topping':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->viewTopping();
 			break;
-		// case $baseURL . '/admin/add-topping':
-		// 	require_once "controller/adminController.php";
-		// 	$usCtrl = new AdminController();
-		// 	echo $usCtrl->viewAddTopping();
-		// 	break;
+			// case $baseURL . '/admin/add-topping':
+			// 	require_once "controller/adminController.php";
+			// 	$usCtrl = new AdminController();
+			// 	echo $usCtrl->viewAddTopping();
+			// 	break;
 		case $baseURL . '/kasir':
 			require_once "controller/kasirController.php";
 			$usCtrl = new KasirController();
@@ -54,31 +54,31 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl = new manajerController();
 			echo $usCtrl->view();
 			break;
-		case $baseURL . '/manajer/detail-trans-harian':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->viewHarian();
-			break;
-		case $baseURL . '/manajer/trans-rentang':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->viewRentang();
-			break;
-		case $baseURL . '/manajer/uang-masuk':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->viewKeuangan();
-			break;
-		case $baseURL . '/manajer/performa-kasir':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->viewKasir();
-			break;
-		case $baseURL . '/manajer/jam-ramai':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->viewJamRamai();
-			break;
+			// case $baseURL . '/manajer/detail-trans-harian':
+			// 	require_once "controller/manajerController.php";
+			// 	$usCtrl = new manajerController();
+			// 	echo $usCtrl->viewHarian();
+			// 	break;
+			// case $baseURL . '/manajer/trans-rentang':
+			// 	require_once "controller/manajerController.php";
+			// 	$usCtrl = new manajerController();
+			// 	echo $usCtrl->viewRentang();
+			// 	break;
+			// case $baseURL . '/manajer/uang-masuk':
+			// 	require_once "controller/manajerController.php";
+			// 	$usCtrl = new manajerController();
+			// 	echo $usCtrl->viewKeuangan();
+			// 	break;
+			// case $baseURL . '/manajer/performa-kasir':
+			// 	require_once "controller/manajerController.php";
+			// 	$usCtrl = new manajerController();
+			// 	echo $usCtrl->viewKasir();
+			// 	break;
+			// case $baseURL . '/manajer/jam-ramai':
+			// 	require_once "controller/manajerController.php";
+			// 	$usCtrl = new manajerController();
+			// 	echo $usCtrl->viewJamRamai();
+			// 	break;
 		default:
 			echo '404 Not Found';
 			break;
@@ -119,22 +119,35 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			header('Location: ../admin');
 			break;
 		case $baseURL . '/manajer/manajer':
-			switch($_POST['select-laporan']){
+			switch ($_POST['select-laporan']) {
 				case "detail-trans-harian":
-					header('Location: ../manajer/detail-trans-harian');
-				break;
+					require_once "controller/manajerController.php";
+					$usCtrl = new manajerController();
+					echo $usCtrl->viewHarian();
+					break;
 				case "trans-rentang":
-					header('Location: ../manajer/trans-rentang');
-				break;
+					require_once "controller/manajerController.php";
+					$usCtrl = new manajerController();
+					echo $usCtrl->viewRentang();
+					break;
 				case "uang-masuk":
-					header('Location: ../manajer/uang-masuk');;
-				break;
+					require_once "controller/manajerController.php";
+					$usCtrl = new manajerController();
+					echo $usCtrl->viewKeuangan();
+					break;
 				case "performa-kasir":
-					header('Location: ../manajer/performa-kasir');;
-				break;
+					require_once "controller/manajerController.php";
+					$usCtrl = new manajerController();
+					echo $usCtrl->viewKasir();
+					break;
 				case "jam-ramai":
-					header('Location: ../manajer/jam-ramai');;
-				break;
+					require_once "controller/manajerController.php";
+					$usCtrl = new manajerController();
+					echo $usCtrl->viewJamRamai();
+					break;
+				default:
+					echo '404 Not Found';
+					break;
 			}
 		default:
 			echo '404 Not Found';
