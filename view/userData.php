@@ -24,15 +24,15 @@
                 echo "<td class='adminData'>
                     <form method='POST' action='edit'>
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Edit'>
+                        <input type='button' value='Edit'>
                     </form>    
                     <form method='POST' action='reset'>
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Reset'>
+                        <input type='button' value='Reset'>
                     </form>
                     <form method='POST' action='index/delete'>
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Delete'>
+                        <input type='button' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -90,9 +90,18 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" value="Tambahkan"></td>
+                    <td><button id="tambahkan">Tambahkan</button></td>
                 </tr>
             </table>
         </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-pass">
+    <div>
+        <h2>Success!</h2>
+        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
+        Berikan passwordnya pada user<br>
+        <button id="ok-btn">Ok</button>
     </div>
 </div>
