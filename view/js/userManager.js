@@ -21,7 +21,7 @@ class pop{
     }
      
     showResult(text){
-        res = document.getElementById("modal-pass");
+        let res = document.getElementById("modal-pass");
         res.textContent = text;
         res.style.display = 'block';
     }
