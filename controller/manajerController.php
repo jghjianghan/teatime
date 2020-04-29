@@ -21,33 +21,33 @@
         }
 
         public function viewHarian(){
-            $result = $this->getLaporanHarian();
+            // $result = $this->getLaporanHarian();
             return View::createView('laporanharian.php',[
-                "result"=>$result,
+                // "result"=>$result,
                 "uplevel"=>1,
                 "styleSrcList"=>['style2.css'],
                 "title"=>"Daily Report"
             ]);
         }
-        private function getLaporanHarian(){
-            $query="
-                SELECT transaksi.kode, transaksi.waktu, transaksi.namaPemesan, transaksi.totalHarga, kasir.nama
-                FROM transaksi INNER JOIN kasir
-                ON transaksi.email = kasir.email
-                INNER JOIN pesanan
-                ON transaksi.kode = pesanan.fkKode
-                WHERE transaksi.waktu = ".$_POST['tanggal']."
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
+        // private function getLaporanHarian(){
+        //     $query="
+        //         SELECT transaksi.kode, transaksi.waktu, transaksi.namaPemesan, transaksi.totalHarga, kasir.nama
+        //         FROM transaksi INNER JOIN kasir
+        //         ON transaksi.email = kasir.email
+        //         INNER JOIN pesanan
+        //         ON transaksi.kode = pesanan.fkKode
+        //         WHERE transaksi.waktu = ".$_POST['tanggal']."
+        //     ";
+        //     $query_result = $this->db->executeSelectQuery($query);
 
-            $result = [];
+        //     $result = [];
             
-            foreach($query_result as $key => $value){
-                $result [] = new Transaksi($value['kode'],$value['waktu'],$value['namaPemesan'],$value['totalHarga'],$value['kasir.nama']);
-            }
+        //     foreach($query_result as $key => $value){
+        //         $result [] = new Transaksi($value['kode'],$value['waktu'],$value['namaPemesan'],$value['totalHarga'],$value['kasir.nama']);
+        //     }
 
-            return $result;
-        }
+        //     return $result;
+        // }
 
         public function viewJamRamai(){
             // $result = $this->getJamRamai();
