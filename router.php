@@ -94,8 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/admin/user/add':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
-			$usCtrl->addUser();
-			header('Location: ../user');
+			echo $usCtrl->addUser();
 			break;
 		case $baseURL . '/admin/tea/add':
 			require_once "controller/adminController.php";
