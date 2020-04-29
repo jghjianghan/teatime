@@ -8,10 +8,6 @@ class pop{
             x.addEventListener('click', this.closeModal);
         }
         
-        btns = document.getElementById('tambahkan');
-        for(let x of btns){
-            x.addEventListener('click', this.showPassUser);
-        }
         let formadd = document.getElementById('add_User');
         formadd.addEventListener('submit',this.onSubmit);
     }
@@ -19,20 +15,36 @@ class pop{
     showAddUser(){
         document.getElementById('modal-addUser').style.display = 'block';
     }
+    
+    onSuccess(response){
+        return response.text();
+    }
+     
+    showResult(text){
+        res = document.getElementById("modal-pass");
+        res.textContent = text;
+        res.style.display = 'block';
+    }
 
     onSubmit(event){
         event.preventDefault();
         let formElements = event.currentTarget.elements;
-    }
-
-    showPassUser(event){
-        let x = document.getElementById('modal-pass')
-        x.style.display = 'block';
-        let node = event.target.parentNode.parentNode.previousSibling.previousSibling;
-        let nama = node.textContent;
-        let pass = node.previousSibling.textContent;
-        x.querySelector('#namaUser').textContent = nama;
-        x.querySelector('#pass').textContent = pass;
+        let name = formElements['name'].value;
+        let input ={
+            "posisi": formElements['posisi'].value,
+            "email": formElements['email'].value,
+            "nama": formElements['nama'].value,
+            "ttl": formElements['ttl'].value,
+            "alamat": formElements['alamat'].value
+        };
+        let init = {
+            method:'post',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(input)
+        };
+        fetch('user/add',init).then(this.onSuccess).then(this.showResult);
     }
 
     closeModal(event){
