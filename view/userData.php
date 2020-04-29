@@ -53,7 +53,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Add User</h2>
-        <form method="post" action="user/add">
+        <form id="add_User" method="post" action="user/add">
             <table>
                 <tr>
                     <td>Posisi</td>

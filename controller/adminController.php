@@ -84,13 +84,15 @@
                 && $_POST['nama']!==""
                 && $_POST['alamat']!==""
                 ){
+                    $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                    $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
                     $posisi = $this->db->escapeString($_POST['posisi']);
                     $email = $this->db->escapeString($_POST['email']);
                     $nama = $this->db->escapeString($_POST['nama']);
                     $ttl = $this->db->escapeString($_POST['ttl']);
                     $alamat = $this->db->escapeString($_POST['alamat']);
                     $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
-                        VALUES('".$email."','katasandi','".$nama."','".$ttl."','".$alamat."')
+                        VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
                     ");
                 }
         }

@@ -12,11 +12,17 @@ class pop{
         for(let x of btns){
             x.addEventListener('click', this.showPassUser);
         }
-        
+        let formadd = document.getElementById('add_User');
+        formadd.addEventListener('submit',this.onSubmit);
     }
 
     showAddUser(){
         document.getElementById('modal-addUser').style.display = 'block';
+    }
+
+    onSubmit(event){
+        event.preventDefault();
+        let formElements = event.currentTarget.elements;
     }
 
     showPassUser(event){
@@ -27,7 +33,6 @@ class pop{
         let pass = node.previousSibling.textContent;
         x.querySelector('#namaUser').textContent = nama;
         x.querySelector('#pass').textContent = pass;
-
     }
 
     closeModal(event){
