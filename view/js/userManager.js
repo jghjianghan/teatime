@@ -8,22 +8,17 @@ class pop{
             x.addEventListener('click', this.closeModal);
         }
         
+        btns = document.getElementsByClassName('close-ok');
+        for (let x of btns){
+            x.addEventListener('click', this.refresh);
+        }
+
         let formadd = document.getElementById('add_User');
         formadd.addEventListener('submit',this.onSubmit);
     }
 
     showAddUser(){
         document.getElementById('modal-addUser').style.display = 'block';
-    }
-    
-    onSuccess(response){
-        return response.text();
-    }
-     
-    showResult(text){
-        let res = document.getElementById("modal-pass");
-        res.textContent = text;
-        res.style.display = 'block';
     }
 
     onSubmit(event){
@@ -43,11 +38,27 @@ class pop{
             },
             body: JSON.stringify(input)
         };
-        fetch('user/add',init).then(this.onSuccess).then(this.showResult);
+        fetch('user/add',init).then(response => response.json()).then(function(json){
+            let res = document.getElementById("modal-pass");
+            if (json.status==='success'){
+                res.querySelector('#response-message').textContent = 'Success!';
+                res.querySelector('#namaUser').textContent = json.name;
+                res.querySelector('#pass').textContent = json.password;
+            } else {
+                res.querySelector('#response-message').textContent = 'An Error Has Occured!';
+
+            }
+            res.style.display = 'block';
+            console.log(json);
+        });
     }
 
     closeModal(event){
         event.target.parentNode.parentNode.style.display = 'none';
+    }
+
+    refresh(){
+        location.reload();
     }
 }
 new pop();

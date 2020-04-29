@@ -95,9 +95,10 @@
                     $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
                         VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
                     ");
-                    return $rnd_pass;
+                    $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                    return json_encode($response);
                 }else{
-                    return "error";
+                    return json_encode(array("status"=>"error"));
                 }
         }
 
