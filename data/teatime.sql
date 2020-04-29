@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 11:05 AM
+-- Generation Time: Apr 29, 2020 at 09:22 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -33,15 +33,9 @@ CREATE TABLE `admin` (
   `password` varchar(20) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `tanggalLahir` date NOT NULL,
-  `alamat` varchar(100) NOT NULL
+  `alamat` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`email`, `password`, `nama`, `tanggalLahir`, `alamat`) VALUES
-('admingadung@teatime.com', 'admingadung', 'Admin Gadung', '1990-04-21', 'Jl. Ciumbuleuit No. 95');
 
 -- --------------------------------------------------------
 
@@ -55,7 +49,8 @@ CREATE TABLE `kasir` (
   `nama` varchar(50) NOT NULL,
   `tanggalLahir` date NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `isFirstTime` tinyint(1) NOT NULL DEFAULT 1
+  `isFirstTime` tinyint(1) NOT NULL DEFAULT 1,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,7 +65,8 @@ CREATE TABLE `manager` (
   `nama` varchar(50) NOT NULL,
   `tanggalLahir` date NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `isFirstTime` tinyint(1) NOT NULL DEFAULT 1
+  `isFirstTime` tinyint(1) NOT NULL DEFAULT 1,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -109,7 +105,8 @@ CREATE TABLE `teh` (
 --
 
 INSERT INTO `teh` (`id`, `nama`, `hargaRegular`, `hargaLarge`, `gambar`) VALUES
-(1, 'Original', '17000.00', '17000.00', 'ori.png');
+(1, 'Original', '17000.00', '17000.00', 'ori.png'),
+(2, 'Thaitea', '18000.00', '22000.00', 'thaitea.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,7 +151,7 @@ CREATE TABLE `transaksi` (
   `waktu` datetime NOT NULL,
   `totalHarga` decimal(15,2) NOT NULL,
   `namaPemesan` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `IdKasir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -165,19 +162,19 @@ CREATE TABLE `transaksi` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kasir`
 --
 ALTER TABLE `kasir`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `manager`
 --
 ALTER TABLE `manager`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pesanan`
@@ -211,11 +208,29 @@ ALTER TABLE `topping_pesanan`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`kode`),
-  ADD KEY `email` (`email`);
+  ADD KEY `IdKasir` (`IdKasir`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kasir`
+--
+ALTER TABLE `kasir`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
@@ -227,7 +242,7 @@ ALTER TABLE `pesanan`
 -- AUTO_INCREMENT for table `teh`
 --
 ALTER TABLE `teh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `topping`
@@ -257,7 +272,7 @@ ALTER TABLE `topping_pesanan`
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`email`) REFERENCES `kasir` (`email`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`IdKasir`) REFERENCES `kasir` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
