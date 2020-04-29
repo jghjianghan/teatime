@@ -75,25 +75,29 @@
         // }
 
         public function addUser(){
-            if(isset($_POST['posisi']) 
-                && isset($_POST['email'])
-                && isset($_POST['nama'])
-                && isset($_POST['ttl'])
-                && isset($_POST['alamat'])
-                && $_POST['email']!==""
-                && $_POST['nama']!==""
-                && $_POST['alamat']!==""
+            $post = json_decode(file_get_contents('php://input',true));
+            if(isset($post['posisi']) 
+                && isset($post['email'])
+                && isset($post['nama'])
+                && isset($post['ttl'])
+                && isset($post['alamat'])
+                && $post['email']!==""
+                && $post['nama']!==""
+                && $post['alamat']!==""
                 ){
                     $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
                     $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
-                    $posisi = $this->db->escapeString($_POST['posisi']);
-                    $email = $this->db->escapeString($_POST['email']);
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $ttl = $this->db->escapeString($_POST['ttl']);
-                    $alamat = $this->db->escapeString($_POST['alamat']);
+                    $posisi = $this->db->escapeString($post['posisi']);
+                    $email = $this->db->escapeString($post['email']);
+                    $nama = $this->db->escapeString($post['nama']);
+                    $ttl = $this->db->escapeString($post['ttl']);
+                    $alamat = $this->db->escapeString($post['alamat']);
                     $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
                         VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
                     ");
+                    return $rnd_pass;
+                }else{
+                    return "error";
                 }
         }
 
