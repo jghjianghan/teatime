@@ -29,7 +29,6 @@ class pop{
     onSubmit(event){
         event.preventDefault();
         let formElements = event.currentTarget.elements;
-        let name = formElements['name'].value;
         let input ={
             "posisi": formElements['posisi'].value,
             "email": formElements['email'].value,
