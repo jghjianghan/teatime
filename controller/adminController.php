@@ -75,7 +75,7 @@
         // }
 
         public function addUser(){
-            $post = json_decode(file_get_contents('php://input',true));
+            $post = json_decode(file_get_contents('php://input'), true);
             if(isset($post['posisi']) 
                 && isset($post['email'])
                 && isset($post['nama'])
