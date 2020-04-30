@@ -22,17 +22,15 @@
                 echo "<td class='adminData'>".$value->getTtl()."</td>";
                 echo "<td class='adminData'>".$value->getAlamat()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='edit'>
+                    <form method='POST' action=''>
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='button' value='Edit'>
-                    </form>    
-                    <form method='POST' action='reset'>
+                        <input type='button' class='editBtn' value='Edit'>
+                    
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='button' value='Reset'>
-                    </form>
-                    <form method='POST' action='index/delete'>
+                        <input type='button' class='resetBtn' value='Reset'>
+                    
                         <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='button' value='Delete'>
+                        <input type='button' class='deleteBtn' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -103,5 +101,53 @@
         Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
         Berikan passwordnya pada user<br>
         <button id="ok-btn" class="close-ok">Ok</button>
+    </div>
+</div>
+
+<div class="modal" id="modal-edit">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Add User</h2>
+        <form id="add_User" method="post" action="">
+            <table>
+                <tr>
+                    <td>Posisi</td>
+                    <td>:</td>
+                    <td>
+                        <input type="radio" id="admin" name="posisi" value="admin">
+                        <label for="admin">Admin</label>
+                        <input type="radio" id="manager" name="posisi" value="manager">
+                        <label for="manager">Manager</label>
+                        <input type="radio" id="kasir" name="posisi" value="kasir">
+                        <label for="kasir">Kasir</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="nama">Nama Lengkap</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="nama" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Lahir</td>
+                    <td>:</td>
+                    <td><input type="date" id="ttl" name="ttl" required></td>
+                </tr>
+                <tr>
+                    <td><label for="alamat">Alamat</label></td>
+                    <td>:</td>
+                    <td><textarea id="alamat" rows="4" cols="35" name="alamat" required></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><button id="edit">Ubah</button></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
