@@ -15,6 +15,11 @@ class pop{
 
         let formadd = document.getElementById('add_User');
         formadd.addEventListener('submit',this.onSubmit);
+
+        btns = document.getElementsByClassName('editBtn');
+        for(let x of btns){
+            x.addEventListener('click',);
+        }
     }
 
     showAddUser(){
