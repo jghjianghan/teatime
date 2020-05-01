@@ -59,24 +59,34 @@ class pop{
     }
 
     showResPass(event){
-        let form = event.target.parentNode;
-        form.setAttribute("action", "user/reset");
-        form.submit();
+        let formElements = event.target.parentNode.elements;
+        let input ={
+            "idUser": formElements['idUser'].value,
+            "posisi": formElements['posisi'].value,
+            "nama": formElements['nama'].value
+        };
+        let init = {
+            method:'post',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(input)
+        };
         // let resetModal = document.getElementById('modal-res');
         // resetModal.style.display = 'block';
-        // fetch('user/reset',init).then(response => response.json()).then(function(json){
-        //     let res = document.getElementById("modal-res");
-        //     if (json.status==='success'){
-        //         res.querySelector('#response-message').textContent = 'Success!';
-        //         res.querySelector('#namaUser-res').textContent = json.name;
-        //         res.querySelector('#res-pass').textContent = json.password;
-        //     } else {
-        //         res.querySelector('#response-message').textContent = 'An Error Has Occured!';
+        fetch('user/reset',init).then(response => response.json()).then(function(json){
+            let res = document.getElementById("modal-res");
+            if (json.status==='success'){
+                res.querySelector('#response-message').textContent = 'Success!';
+                res.querySelector('#namaUser-res').textContent = json.name;
+                res.querySelector('#res-pass').textContent = json.password;
+            } else {
+                res.querySelector('#response-message').textContent = 'An Error Has Occured!';
 
-        //     }
-        //     res.style.display = 'block';
-        //     console.log(json);
-        // });
+            }
+            res.style.display = 'block';
+            console.log(json);
+        });
     }
 
     onSubmit(event){

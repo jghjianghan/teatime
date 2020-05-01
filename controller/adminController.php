@@ -103,16 +103,18 @@
         }
 
         public function resetPass(){
-            if (isset($_POST['idUser']) 
-                && isset($_POST['posisi'])
-                &&isset($_POST['nama'])
-                && $_POST['idUser'] !=="" 
-                && $_POST['posisi']!==""
-                && $_POST['nama']!==""
+            $post = json_decode(file_get_contents('php://input'), true);
+            // return $post;
+            if (isset($post['idUser']) 
+                && isset($post['posisi'])
+                &&isset($post['nama'])
+                && $post['idUser'] !=="" 
+                && $post['posisi']!==""
+                && $post['nama']!==""
             ){
-                $id = $this->db->escapeString($_POST['idUser']);
-                $posisi = $this->db->escapeString($_POST['posisi']);
-                $nama = $this->db->escapeString($_POST['nama']);
+                $id = $this->db->escapeString($post['idUser']);
+                $posisi = $this->db->escapeString($post['posisi']);
+                $nama = $this->db->escapeString($post['nama']);
                 $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
                 $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
                 $this->db->executeNonSelectQuery("UPDATE $posisi SET password = '$rnd_pass' WHERE id = $id");
