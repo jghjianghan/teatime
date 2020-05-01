@@ -36,8 +36,14 @@ class pop{
         document.getElementById('modal-addUser').style.display = 'block';
     }
 
-    showDelUser(){
-        document.getElementById('modal-del').style.display = 'block';
+    showDelUser(event){
+        console.log('hello');
+        let delModal = document.getElementById('modal-del');
+        delModal.style.display = 'block';
+        let formElements = delModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['idUser'].value = sourceElements['idUser'].value;
+        formElements['posisi'].value = sourceElements['posisi'].value;
     }
 
     showEditUser(){

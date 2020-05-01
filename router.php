@@ -100,8 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->deleteUser();
-			// echo "test";
-			// header('Location: ../user');
+			header('Location: ../user');
 			break;
 		case $baseURL . '/admin/tea/add':
 			require_once "controller/adminController.php";

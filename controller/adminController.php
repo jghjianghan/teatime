@@ -110,9 +110,9 @@
             if (isset($_POST['idUser']) && $_POST['idUser'] !=="" && isset($_POST['posisi']) && $_POST['posisi']!==""){
                 $id = $this->db->escapeString($_POST['idUser']);
                 $posisi = $this->db->escapeString($_POST['posisi']);
-                $s = $id | $posisi;
-                return $s;
-                // $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
+                // $s = $id .'|'. $posisi;
+                // return $s;
+                $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
             }
         }
 

@@ -163,6 +163,8 @@
         <span class='close'>&times;</span>
         Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser"></span>?<br>
         <form method="post" action="user/delete">
+            <input type='hidden' name='idUser' value = "">
+            <input type='hidden' name='posisi' value = "">
             <input type="submit" value="Ok">
             <!-- <button id="del-btn">Ok</button> -->
         </form>
