@@ -25,6 +25,9 @@
                     <form method='POST' action=''>
                         <input type='hidden' name='idUser' value = ".$value->getId().">
                         <input type='hidden' name='posisi' value = ".$value->getPosisi().">
+                        <input type='hidden' name='nama' value = '".$value->getNama()."'>
+                        <input type='hidden' name='ttl' value = '".$value->getTtl()."'>
+                        <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
                         <input type='button' class='editBtn' value='Edit'>
                         <input type='button' class='resetBtn' value='Reset'>
                         <input type='button' class='deleteBtn' value='Delete'>
@@ -97,7 +100,7 @@
         <h2><span id='response-message'></span></h2>
         Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
         Berikan passwordnya pada user<br>
-        <button id="ok-btn" class="close-ok">Ok</button>
+        <button class="close-ok">Ok</button>
     </div>
 </div>
 
@@ -122,22 +125,22 @@
                 <tr>
                     <td><label for="email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="email" name="email" required></td>
+                    <td><input type="text" id="edit-email" name="email" required></td>
                 </tr>
                 <tr>
                     <td><label for="nama">Nama Lengkap</label></td>
                     <td>:</td>
-                    <td><input type="text" id="nama" name="nama" required></td>
+                    <td><input type="text" id="edit-nama" name="nama" required></td>
                 </tr>
                 <tr>
                     <td>Tanggal Lahir</td>
                     <td>:</td>
-                    <td><input type="date" id="ttl" name="ttl" required></td>
+                    <td><input type="date" id="edit-ttl" name="ttl" required></td>
                 </tr>
                 <tr>
                     <td><label for="alamat">Alamat</label></td>
                     <td>:</td>
-                    <td><textarea id="alamat" rows="4" cols="35" name="alamat" required></textarea></td>
+                    <td><textarea id="edit-alamat" rows="4" cols="35" name="alamat" required></textarea></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -152,16 +155,16 @@
 <div class="modal" id="modal-res">
     <div>
         <h2><span id='response-message'></span></h2>
-        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
+        Password Baru Untuk <span id="namaUser-res"></span>: <span id="res-pass"></span><br>
         Berikan passwordnya pada user<br>
-        <button id="res-btn">Ok</button>
+        <button class="close-ok">Ok</button>
     </div>
 </div>
 
 <div class="modal" id="modal-del">
     <div>
         <span class='close'>&times;</span>
-        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser"></span>?<br>
+        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser-del"></span>?<br>
         <form method="post" action="user/delete">
             <input type='hidden' name='idUser' value = "">
             <input type='hidden' name='posisi' value = "">

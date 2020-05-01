@@ -103,7 +103,24 @@
         }
 
         public function resetPass(){
-            
+            if (isset($_POST['idUser']) 
+                && isset($_POST['posisi'])
+                &&isset($_POST['nama'])
+                && $_POST['idUser'] !=="" 
+                && $_POST['posisi']!==""
+                && $_POST['nama']!==""
+            ){
+                $id = $this->db->escapeString($_POST['idUser']);
+                $posisi = $this->db->escapeString($_POST['posisi']);
+                $nama = $this->db->escapeString($_POST['nama']);
+                $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
+                $this->db->executeNonSelectQuery("UPDATE $posisi SET password = '$rnd_pass' WHERE id = $id");
+                $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                return json_encode($response);
+            }else{
+                return json_encode(array("status"=>"error"));
+            }
         }
 
         public function deleteUser(){

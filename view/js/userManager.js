@@ -42,16 +42,41 @@ class pop{
         delModal.style.display = 'block';
         let formElements = delModal.querySelector('form').elements;
         let sourceElements = event.currentTarget.parentNode.elements;
+        document.getElementById('namaUser-del').textContent = sourceElements['nama'].value;
         formElements['idUser'].value = sourceElements['idUser'].value;
         formElements['posisi'].value = sourceElements['posisi'].value;
     }
 
-    showEditUser(){
-        document.getElementById('modal-edit').style.display = 'block';
+    showEditUser(event){
+        let editModal = document.getElementById('modal-edit');
+        editModal.style.display = 'block';
+        let formElements = delModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['edit-email'].value = sourceElements['email'].value;
+        formElements['edit-nama'].value = sourceElements['nama'].value;
+        formElements['edit-ttl'].value = sourceElements['ttl'].value;
+        formElements['edit-alamat'].value = sourceElements['alamat'].value;
     }
 
-    showResPass(){
-        document.getElementById('modal-res').style.display = 'block';
+    showResPass(event){
+        let form = event.target.parentNode;
+        form.setAttribute("action", "user/reset");
+        form.submit();
+        // let resetModal = document.getElementById('modal-res');
+        // resetModal.style.display = 'block';
+        // fetch('user/reset',init).then(response => response.json()).then(function(json){
+        //     let res = document.getElementById("modal-res");
+        //     if (json.status==='success'){
+        //         res.querySelector('#response-message').textContent = 'Success!';
+        //         res.querySelector('#namaUser-res').textContent = json.name;
+        //         res.querySelector('#res-pass').textContent = json.password;
+        //     } else {
+        //         res.querySelector('#response-message').textContent = 'An Error Has Occured!';
+
+        //     }
+        //     res.style.display = 'block';
+        //     console.log(json);
+        // });
     }
 
     onSubmit(event){
