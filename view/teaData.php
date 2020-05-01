@@ -20,13 +20,10 @@
                 echo "<td class='adminData'>".$value->getHargaRegular()."</td>";
                 echo "<td class='adminData'>".$value->getHargaLarge()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='tea/update'>
+                    <form method='POST' action=''>
                         <input type='hidden' name='idTeh' value = ".$value->getId().">
-                        <input type='submit' value='Update'>
-                    </form>
-                    <form method='POST' action='index/delete'>
-                        <input type='hidden' name='idTeh' value = ".$value->getId().">
-                        <input type='submit' value='Delete'>
+                        <input type='button' id='updateBtn' value='Update'>
+                        <input type='button' id='deleteBtn' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -75,6 +72,52 @@
                     <td><input type="submit" value="Tambah"></td>
                 </tr>
             </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="edit-addTea">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Add Tea</h2>
+        <form method="post" action="tea/add">
+            <table>
+                <tr>
+                    <td><label for="nama">Nama</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="nama" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td><label for="reg">Harga Regular</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="reg" name="reg" required></td>
+                </tr>
+                <tr>
+                    <td><label for="large">Harga Large</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="large" name="large"></td>
+                </tr>
+                <tr>
+                    <td><label for="foto">Foto</label></td>
+                    <td>:</td>
+                    <td><input type="file" id="foto" name="foto"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Tambah"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-delTea">
+    <div>
+        <span class='close'>&times;</span>
+        Apakah anda yakin ingin menghapus teh <span id="namaTeh"></span>?<br>
+        <form method="post" action="teh/delete">
+            <input type="submit" value="Ok">
         </form>
     </div>
 </div>

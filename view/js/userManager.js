@@ -18,12 +18,34 @@ class pop{
 
         btns = document.getElementsByClassName('editBtn');
         for(let x of btns){
-            x.addEventListener('click',);
+            x.addEventListener('click',this.showEditUser);
+        }
+
+        btns = document.getElementsByClassName('resetBtn');
+        for(let x of btns){
+            x.addEventListener('click',this.showResPass);
+        }
+
+        btns = document.getElementsByClassName('deleteBtn');
+        for(let x of btns){
+            x.addEventListener('click',this.showDelUser);
         }
     }
 
     showAddUser(){
         document.getElementById('modal-addUser').style.display = 'block';
+    }
+
+    showDelUser(){
+        document.getElementById('modal-del').style.display = 'block';
+    }
+
+    showEditUser(){
+        document.getElementById('modal-edit').style.display = 'block';
+    }
+
+    showResPass(){
+        document.getElementById('modal-res').style.display = 'block';
     }
 
     onSubmit(event){

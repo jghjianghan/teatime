@@ -23,13 +23,10 @@
                 echo "<td class='adminData'>".$value->getAlamat()."</td>";
                 echo "<td class='adminData'>
                     <form method='POST' action=''>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
+                        <input type='hidden' name='idUser' value = ".$value->getId().">
+                        <input type='hidden' name='posisi' value = ".$value->getPosisi().">
                         <input type='button' class='editBtn' value='Edit'>
-                    
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
                         <input type='button' class='resetBtn' value='Reset'>
-                    
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
                         <input type='button' class='deleteBtn' value='Delete'>
                     </form>
                     </td>
@@ -107,8 +104,8 @@
 <div class="modal" id="modal-edit">
     <div>
         <span class='close'>&times;</span>
-        <h2>Add User</h2>
-        <form id="add_User" method="post" action="">
+        <h2>Edit User</h2>
+        <form id="edit_User" method="post" action="">
             <table>
                 <tr>
                     <td>Posisi</td>
@@ -148,6 +145,26 @@
                     <td><button id="edit">Ubah</button></td>
                 </tr>
             </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-res">
+    <div>
+        <h2><span id='response-message'></span></h2>
+        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
+        Berikan passwordnya pada user<br>
+        <button id="res-btn">Ok</button>
+    </div>
+</div>
+
+<div class="modal" id="modal-del">
+    <div>
+        <span class='close'>&times;</span>
+        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser"></span>?<br>
+        <form method="post" action="user/delete">
+            <input type="submit" value="Ok">
+            <!-- <button id="del-btn">Ok</button> -->
         </form>
     </div>
 </div>

@@ -33,7 +33,7 @@
         }
         private function getAllUser(){
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat, id
                 FROM Admin
             ";
             $query_result = $this->db->executeSelectQuery($query);
@@ -41,27 +41,27 @@
             $result = [];
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat,id
                 FROM Manager
             ";
             $query_result = $this->db->executeSelectQuery($query);
 
             foreach($query_result as $key => $value){
-                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat,id
                 FROM Kasir
             ";
             $query_result = $this->db->executeSelectQuery($query);
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
             return $result;
         }
@@ -100,6 +100,20 @@
                 }else{
                     return json_encode(array("status"=>"error"));
                 }
+        }
+
+        public function resetPass(){
+            
+        }
+
+        public function deleteUser(){
+            if (isset($_POST['idUser']) && $_POST['idUser'] !=="" && isset($_POST['posisi']) && $_POST['posisi']!==""){
+                $id = $this->db->escapeString($_POST['idUser']);
+                $posisi = $this->db->escapeString($_POST['posisi']);
+                $s = $id | $posisi;
+                return $s;
+                // $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
+            }
         }
 
         //tea
