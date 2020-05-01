@@ -11,7 +11,11 @@
         }
         public function viewTPS()
         {
-            return View::createView('transactionRecord.php',[]);
+            return View::createView('transactionRecord.php',[
+                "title" => "Transaction Record",
+                "styleSrcList" => ["kasir.css", "font-awesome.css"],
+                "scriptSrcList" => ["teaChooser.js", "toppingChooser.js", "orderList.js", "orderManager.js"]
+            ]);
         }
     }
 ?>
