@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    /* overflow: hidden; */
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    margin: 15px 5px 5px;
+}
+main>section {
+    flex: 1;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+main>section:first-child {
+    border-right: 1px solid grey;
+}
+h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+#nota {
+    padding: 20px;
+}
+
+#nota-form{
+    padding-top: 15px;
+    text-align: right;
+}
+
+.box{
+    flex: 1 1 0;
+    overflow-y: scroll;
+    border: 1px solid black;
+    position: relative;
+}
+
+#pesanan-form {
+    display: flex;
+    margin: 10px 0;
+}
+#pesanan-form>div{
+    flex: 1;
+}
+
+.search {
+    float: right;
+    position: sticky;
+    right: 3px;
+    top: 5px;
+}
+form.search>button{
+    color: rgb(73, 73, 73);
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+}
+form.search>input[type='text']{
+    border-radius: 1em;
+    border: 1px solid gray;
+    padding: 5px 6px;
+}
+
+.thumbnail {
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+}
+.thumbnail:hover{
+    background-color: rgb(236, 236, 236);
+}
+.thumbnail img {
+    display: block;
+}
+#tea-option img {
+    width: 120px;
+    height: 120px;
+}
+#topping-option img {
+    width: 90px;
+    height: 90px;
+}
+
+input[type='number']{
+    width: 50px;
+}

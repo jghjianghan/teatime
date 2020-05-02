@@ -152,18 +152,7 @@
         }
 
         private function getAllTea(){
-            $query="
-                SELECT id, gambar, nama, hargaRegular, hargaLarge
-                FROM Teh
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-
-            $result = [];
-            
-            foreach($query_result as $key => $value){
-                $result [] = new Teh($value['id'],$value['gambar'],$value['nama'],$value['hargaRegular'],$value['hargaLarge']);
-            }
-            return $result;
+            return Teh::getAllTea();
         }
 
         public function addTea(){
