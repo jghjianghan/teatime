@@ -192,18 +192,7 @@
         }
 
         private function getAllTopping(){
-            $query="
-                SELECT id, gambar, nama, harga
-                FROM Topping
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-
-            $result = [];
-            
-            foreach($query_result as $key => $value){
-                $result [] = new Topping($value['id'],$value['gambar'],$value['nama'],$value['harga']);
-            }
-            return $result;
+            return Topping::getAllTopping();
         }
         
         public function addTopping(){
@@ -214,11 +203,11 @@
                     if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                         $oldname = $_FILES['foto']['tmp_name'];
                         $newName = dirname(__DIR__)."\\asset\\img\\topping\\";
-                        move_uploaded_file($oldname, $newName);
+                        return move_uploaded_file($oldname, $newName);
                         $nama = $this->db->escapeString($_POST['nama']);
                         $harga = $this->db->escapeString($_POST['harga']);
                         $foto = $this->db->escapeString($_FILES['foto']['name']);
-                        $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
+                        // $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
                     }
                 }
         }
