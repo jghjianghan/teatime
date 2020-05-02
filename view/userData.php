@@ -22,17 +22,15 @@
                 echo "<td class='adminData'>".$value->getTtl()."</td>";
                 echo "<td class='adminData'>".$value->getAlamat()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='edit'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Edit'>
-                    </form>    
-                    <form method='POST' action='reset'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Reset'>
-                    </form>
-                    <form method='POST' action='index/delete'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Delete'>
+                    <form method='POST' action=''>
+                        <input type='hidden' name='idUser' value = ".$value->getId().">
+                        <input type='hidden' name='posisi' value = ".$value->getPosisi().">
+                        <input type='hidden' name='nama' value = '".$value->getNama()."'>
+                        <input type='hidden' name='ttl' value = '".$value->getTtl()."'>
+                        <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
+                        <input type='button' class='editBtn' value='Edit'>
+                        <input type='button' class='resetBtn' value='Reset'>
+                        <input type='button' class='deleteBtn' value='Delete'>
                     </form>
                     </td>
                 ";
