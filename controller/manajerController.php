@@ -68,8 +68,8 @@ class ManajerController
                 $pesanan = new Pesanan($value['id'], $value['jumlah'], $value['namaTeh'], $value['ukuran'], $value['banyakEs'], $value['banyakGula']);
                 $arrTransaksi[$value['kode']]->addPesanan($pesanan);
             }
+            $arrTransaksi[$value['kode']]->pesanan[$value['id']]->addTopping($value['namaTopping'],$value['jumlahTopping']);
         }
-        print_r($arrTransaksi);
 
         return $arrTransaksi;
     }

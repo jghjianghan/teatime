@@ -194,6 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					echo '404 Not Found';
 					break;
 			}
+			break;
 		default:
 			echo '404 Not Found';
 			break;
