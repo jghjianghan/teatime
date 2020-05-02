@@ -48,7 +48,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Add Tea</h2>
-        <form method="post" action="tea/add">
+        <form method="post" action="tea/add" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><label for="nama">Nama</label></td>

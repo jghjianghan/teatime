@@ -159,12 +159,19 @@
             if(isset($_POST['nama'])
                 && isset($_POST['reg'])
                 && isset($_POST['large'])
-                && isset($_POST['foto'])){
-                    $nama = $this->db->escapeString($_POST['nama']);
+                && isset($_FILES['foto']['name'])
+                && $_FILES['foto']['name']!=""){
+                    if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                        $oldname = $_FILES['foto']['tmp_name'];
+                        $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
+                        move_uploaded_file($oldname, $newName);
+                        $nama = $this->db->escapeString($_POST['nama']);
                     $reg = $this->db->escapeString($_POST['reg']);
                     $large = $this->db->escapeString($_POST['large']);
-                    $foto = $this->db->escapeString($_POST['foto']);
+                    $foto = $this->db->escapeString($_FILES['foto']['name']);
                     $this->db->executeNonSelectQuery("INSERT INTO teh(nama, hargaRegular,hargaLarge,gambar) VALUES('".$nama."','".$reg."','".$large."','".$foto."')");
+                    }
+                    
                 }
         }
 
