@@ -14,7 +14,7 @@
             foreach($result as $key => $value){
                 echo "<tr class='adminData'>";
                 echo "<td class='adminData'>".$no++."</td>";
-                echo "<td class='adminData'>".$value->getGambar()."</td>";
+                echo "<td class='adminData'><img src=".$upPrefix."/asset/img/topping/".$value->getGambar()."></td>";
                 echo "<td class='adminData'>".$value->getNama()."</td>";
                 echo "<td class='adminData'>".$value->getHarga()."</td>";
                 echo "<td class='adminData'>
