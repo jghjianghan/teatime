@@ -71,3 +71,49 @@
         </form>
     </div>
 </div>
+
+<div class="modal" id="modal-updateTopping">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Update Topping</h2>
+        <form method="post" action="topping/update">
+            <table>
+                <tr>
+                    <td><label for="namaBaru">Nama</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="namaBaru" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td><label for="hargaBaru">Harga</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="hargaBaru" name="harga" required></td>
+                </tr>
+                <tr>
+                    <td>Foto Lama</td>
+                    <td>:</td>
+                </tr>
+                <tr>
+                    <td><label for="fotoBaru">Foto</label></td>
+                    <td>:</td>
+                    <td><input type="file" id="fotoBaru" name="foto"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Ubah"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-delTopping">
+    <div>
+        <span class='close'>&times;</span>
+        Apakah anda yakin ingin menghapus topping <span id="namaTopping-del"></span>?<br>
+        <form method="post" action="topping/delete">
+            <input type="hidden" name="idTopping" value="">
+            <input type="submit" value="Ok">
+        </form>
+    </div>
+</div>

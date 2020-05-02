@@ -22,17 +22,15 @@
                 echo "<td class='adminData'>".$value->getTtl()."</td>";
                 echo "<td class='adminData'>".$value->getAlamat()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='edit'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Edit'>
-                    </form>    
-                    <form method='POST' action='reset'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Reset'>
-                    </form>
-                    <form method='POST' action='index/delete'>
-                        <input type='hidden' name='emailUser' value = ".$value->getEmail().">
-                        <input type='submit' value='Delete'>
+                    <form method='POST' action=''>
+                        <input type='hidden' name='idUser' value = ".$value->getId().">
+                        <input type='hidden' name='posisi' value = ".$value->getPosisi().">
+                        <input type='hidden' name='nama' value = '".$value->getNama()."'>
+                        <input type='hidden' name='ttl' value = '".$value->getTtl()."'>
+                        <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
+                        <input type='button' class='editBtn' value='Edit'>
+                        <input type='button' class='resetBtn' value='Reset'>
+                        <input type='button' class='deleteBtn' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -93,6 +91,84 @@
                     <td><input type="submit" value="Tambahkan"></td>
                 </tr>
             </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-pass">
+    <div>
+        <h2><span id='response-message'></span></h2>
+        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
+        Berikan passwordnya pada user<br>
+        <button class="close-ok">Ok</button>
+    </div>
+</div>
+
+<div class="modal" id="modal-edit">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Edit User</h2>
+        <form id="edit_User" method="post" action="user/edit">
+            <table>
+                <tr>
+                    <td>Posisi</td>
+                    <td>:</td>
+                    <td>
+                        <input type="radio" id="edit-admin" name="posisi" value="admin">
+                        <label for="edit-admin">Admin</label>
+                        <input type="radio" id="edit-manager" name="posisi" value="manager">
+                        <label for="edit-manager">Manager</label>
+                        <input type="radio" id="edit-kasir" name="posisi" value="kasir">
+                        <label for="edit-kasir">Kasir</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="edit-email">Email</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="edit-email" name="email" value="" required></td>
+                </tr>
+                <tr>
+                    <td><label for="edit-nama">Nama Lengkap</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="edit-nama" name="nama" value="" required></td>
+                </tr>
+                <tr>
+                    <td><label for="edit-ttl">Tanggal Lahir</label></td>
+                    <td>:</td>
+                    <td><input type="date" id="edit-ttl" name="ttl" value="" required></td>
+                </tr>
+                <tr>
+                    <td><label for="edit-alamat">Alamat</label></td>
+                    <td>:</td>
+                    <td><textarea id="edit-alamat" rows="4" cols="35" name="alamat" value="" required></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" id="edit" value="Ubah"></input></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-res">
+    <div>
+        <h2><span id='response-message'></span></h2>
+        Password Baru Untuk <span id="namaUser-res"></span>: <span id="res-pass"></span><br>
+        Berikan passwordnya pada user<br>
+        <button class="close-ok">Ok</button>
+    </div>
+</div>
+
+<div class="modal" id="modal-del">
+    <div>
+        <span class='close'>&times;</span>
+        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser-del"></span>?<br>
+        <form method="post" action="user/delete">
+            <input type='hidden' name='idUser' value = "">
+            <input type='hidden' name='posisi' value = "">
+            <input type="submit" value="Ok">
         </form>
     </div>
 </div>
