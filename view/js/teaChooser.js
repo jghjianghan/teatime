@@ -12,11 +12,10 @@ class TeaChooser {
     }
 
     insertThumbnail(json){
-        this.teaList = [];
+        this.teaList = new Object();
         for (let el of json){
             this.teaList[el.id] = (new TeaOption(el.id, el.nama, el.gambar, el.hargaRegular, el.hargaLarge, this.teaContainer));
         }
-        console.log(this.teaList);
     }
 
     selectTea(event){
@@ -31,7 +30,6 @@ class TeaChooser {
             this.selectedTea = event.detail;
             this.teaList[this.selectedTea].toggleActivation();
         }
-        console.log(this.selectedTea);
     }
 
     getSelected(){
