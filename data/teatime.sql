@@ -105,8 +105,8 @@ CREATE TABLE `teh` (
 --
 
 INSERT INTO `teh` (`id`, `nama`, `hargaRegular`, `hargaLarge`, `gambar`) VALUES
-(1, 'Original', '17000.00', '17000.00', 'ori.png'),
-(2, 'Thaitea', '18000.00', '22000.00', 'thaitea.jpg');
+(1, 'Original', '17000.00', '17000.00', 'ori.jpg'),
+(2, 'Thaitea', '18000.00', '22000.00', 'thaitea.png');
 
 -- --------------------------------------------------------
 
