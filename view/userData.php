@@ -76,7 +76,7 @@
                     <td><input type="text" id="nama" name="nama" required></td>
                 </tr>
                 <tr>
-                    <td>Tanggal Lahir</td>
+                    <td><label for="ttl">Tanggal Lahir</label></td>
                     <td>:</td>
                     <td><input type="date" id="ttl" name="ttl" required></td>
                 </tr>
@@ -108,44 +108,44 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Edit User</h2>
-        <form id="edit_User" method="post" action="">
+        <form id="edit_User" method="post" action="user/edit">
             <table>
                 <tr>
                     <td>Posisi</td>
                     <td>:</td>
                     <td>
-                        <input type="radio" id="admin" name="posisi" value="admin">
-                        <label for="admin">Admin</label>
-                        <input type="radio" id="manager" name="posisi" value="manager">
-                        <label for="manager">Manager</label>
-                        <input type="radio" id="kasir" name="posisi" value="kasir">
-                        <label for="kasir">Kasir</label>
+                        <input type="radio" id="edit-admin" name="posisi" value="admin">
+                        <label for="edit-admin">Admin</label>
+                        <input type="radio" id="edit-manager" name="posisi" value="manager">
+                        <label for="edit-manager">Manager</label>
+                        <input type="radio" id="edit-kasir" name="posisi" value="kasir">
+                        <label for="edit-kasir">Kasir</label>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="email">Email</label></td>
+                    <td><label for="edit-email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-email" name="email" required></td>
+                    <td><input type="text" id="edit-email" name="email" value="" required></td>
                 </tr>
                 <tr>
-                    <td><label for="nama">Nama Lengkap</label></td>
+                    <td><label for="edit-nama">Nama Lengkap</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-nama" name="nama" required></td>
+                    <td><input type="text" id="edit-nama" name="nama" value="" required></td>
                 </tr>
                 <tr>
-                    <td>Tanggal Lahir</td>
+                    <td><label for="edit-ttl">Tanggal Lahir</label></td>
                     <td>:</td>
-                    <td><input type="date" id="edit-ttl" name="ttl" required></td>
+                    <td><input type="date" id="edit-ttl" name="ttl" value="" required></td>
                 </tr>
                 <tr>
-                    <td><label for="alamat">Alamat</label></td>
+                    <td><label for="edit-alamat">Alamat</label></td>
                     <td>:</td>
-                    <td><textarea id="edit-alamat" rows="4" cols="35" name="alamat" required></textarea></td>
+                    <td><textarea id="edit-alamat" rows="4" cols="35" name="alamat" value="" required></textarea></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><button id="edit">Ubah</button></td>
+                    <td><input type="submit" id="edit" value="Ubah"></input></td>
                 </tr>
             </table>
         </form>

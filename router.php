@@ -96,6 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl = new AdminController();
 			echo $usCtrl->addUser();
 			break;
+		case $baseURL . '/admin/user/edit':
+			require_once "controller/adminController.php";
+			$usCtrl = new AdminController();
+			echo $usCtrl->editUser();
+			header('Location: ../user');
+			break;
 		case $baseURL . '/admin/user/delete':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
@@ -114,17 +120,35 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl->addTea();
 			header('Location: ../tea');
 			break;
+		case $baseURL . '/admin/tea/update':
+			require_once "controller/adminController.php";
+			$usCtrl = new AdminController();
+			echo $usCtrl->updateTea();
+			header('Location: ../tea');
+			break;
+		case $baseURL . '/admin/tea/delete':
+			require_once "controller/adminController.php";
+			$usCtrl = new AdminController();
+			echo $usCtrl->deleteTea();
+			header('Location: ../tea');
+			break;
 		case $baseURL . '/admin/topping/add':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			$usCtrl->addTopping();
 			header('Location: ../topping');
 			break;
-		case $baseURL . '/admin/tea/update':
+		case $baseURL . '/admin/topping/update':
 			require_once "controller/adminController.php";
-			// $usCtrl = new AdminController();
-			// echo $usCtrl->updateTea();
-			include "view/updateTea.php";
+			$usCtrl = new AdminController();
+			$usCtrl->addTopping();
+			header('Location: ../topping');
+			break;
+		case $baseURL . '/admin/topping/delete':
+			require_once "controller/adminController.php";
+			$usCtrl = new AdminController();
+			echo $usCtrl->deleteTopping();
+			header('Location: ../topping');
 			break;
 		case $baseURL . '/admin/admin':
 			header('Location: ../admin');

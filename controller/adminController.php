@@ -102,6 +102,10 @@
                 }
         }
 
+        public function editUser(){
+
+        }
+
         public function resetPass(){
             $post = json_decode(file_get_contents('php://input'), true);
             // return $post;
@@ -162,14 +166,6 @@
             return $result;
         }
 
-        public function viewAddTea(){
-            return View::createView('addTea.php',[
-                "uplevel"=>1,
-                "title"=>"Add Tea",
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
-
         public function addTea(){
             if(isset($_POST['nama'])
                 && isset($_POST['reg'])
@@ -183,6 +179,17 @@
                 }
         }
 
+        public function updateTea(){
+            
+        }
+
+        public function deleteTea(){
+            if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
+                $id = $this->db->escapeString($_POST['idTeh']);
+                $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
+            }
+        }
+
         //topping
         public function viewTopping(){
             $result = $this->getAllTopping();
@@ -194,6 +201,7 @@
                 "scriptSrcList"=> ["toppingManager.js"]
                 ]);
         }
+
         private function getAllTopping(){
             $query="
                 SELECT id, gambar, nama, harga
@@ -208,14 +216,6 @@
             }
             return $result;
         }
-                
-        public function viewAddTopping(){
-            return View::createView('addTopping.php',[
-                "uplevel"=>1,
-                "title"=>"Add Topping",
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
         
         public function addTopping(){
             if(isset($_POST['nama'])
@@ -228,23 +228,23 @@
                 }
         }
 
+        public function updateTopping(){
+            
+        }
+        
+        public function deleteTopping(){
+            if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
+                $id = $this->db->escapeString($_POST['idTopping']);
+                $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
+            }
+        }
+
         public function getTeaById($id){
             $id = $this->db->escapeString($id);
 
             return $this->db->executeSelectQuery("SELECT * FROM Tea WHERE id = $id")[0];
         }
 
-        public function updateTea()
-        {
-            if (isset($_POST['idTea']) && $_POST['idTea']!==""){
-                $tea = $this->getTeaById($_POST['idTea']);
-                
-                return View::createView('updateTea.php', [
-                    "nama" => $tea['nama'],
-                    "hargaRegular" => $tea['hargaRegular'],
-                    "hargaLarge" => $tea['hargaLarge']
-                ]);
-            }
-        }
+        
     }
 ?>

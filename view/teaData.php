@@ -22,8 +22,12 @@
                 echo "<td class='adminData'>
                     <form method='POST' action=''>
                         <input type='hidden' name='idTeh' value = ".$value->getId().">
-                        <input type='button' id='updateBtn' value='Update'>
-                        <input type='button' id='deleteBtn' value='Delete'>
+                        <input type='hidden' name='namaTeh' value = '".$value->getNama()."'>
+                        <input type='hidden' name='gambarTeh' value = '".$value->getGambar()."'>
+                        <input type='hidden' name='regular' value = '".$value->getHargaRegular()."'>
+                        <input type='hidden' name='large' value = '".$value->getHargaLarge()."'>
+                        <input type='button' class='updateTeaBtn' value='Update'>
+                        <input type='button' class='deleteTeaBtn' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -76,36 +80,40 @@
     </div>
 </div>
 
-<div class="modal" id="edit-addTea">
+<div class="modal" id="modal-updateTea">
     <div>
         <span class='close'>&times;</span>
-        <h2>Add Tea</h2>
-        <form method="post" action="tea/add">
+        <h2>Update Tea</h2>
+        <form method="post" action="tea/update">
             <table>
                 <tr>
-                    <td><label for="nama">Nama</label></td>
+                    <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
-                    <td><input type="text" id="nama" name="nama" required></td>
+                    <td><input type="text" id="namaBaru" name="nama" required></td>
                 </tr>
                 <tr>
-                    <td><label for="reg">Harga Regular</label></td>
+                    <td><label for="regBaru">Harga Regular</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="reg" name="reg" required></td>
+                    <td>Rp.<input type="number" id="regBaru" name="reg" required></td>
                 </tr>
                 <tr>
-                    <td><label for="large">Harga Large</label></td>
+                    <td><label for="largeBaru">Harga Large</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="large" name="large"></td>
+                    <td>Rp.<input type="number" id="largeBaru" name="large"></td>
                 </tr>
                 <tr>
-                    <td><label for="foto">Foto</label></td>
+                    <td>Foto Lama</td>
                     <td>:</td>
-                    <td><input type="file" id="foto" name="foto"></td>
+                </tr>
+                <tr>
+                    <td><label for="fotoBaru">Foto Baru</label></td>
+                    <td>:</td>
+                    <td><input type="file" id="fotoBaru" name="foto"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" value="Tambah"></td>
+                    <td><input type="submit" value="Ubah"></td>
                 </tr>
             </table>
         </form>
@@ -115,8 +123,9 @@
 <div class="modal" id="modal-delTea">
     <div>
         <span class='close'>&times;</span>
-        Apakah anda yakin ingin menghapus teh <span id="namaTeh"></span>?<br>
-        <form method="post" action="teh/delete">
+        Apakah anda yakin ingin menghapus teh <span id="namaTeh-del"></span>?<br>
+        <form method="post" action="tea/delete">
+            <input type="hidden" name="idTeh" value="">
             <input type="submit" value="Ok">
         </form>
     </div>

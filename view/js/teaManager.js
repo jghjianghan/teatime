@@ -7,8 +7,13 @@ class pop{
         for (let x of btns){
             x.addEventListener('click', this.closeModal);
         }
+
+        btns = document.getElementsByClassName("updateTeaBtn");
+        for(let x of btns){
+            x.addEventListener('click',this.showUdateTea);
+        }
         
-        btns = document.getElementById("deleteBtn");
+        btns = document.getElementsByClassName("deleteTeaBtn");
         for(let x of btns){
             x.addEventListener('click',this.showDeleteTea);
         }
@@ -18,13 +23,17 @@ class pop{
         document.getElementById('modal-addTea').style.display = 'block';
     }
 
-    showDeleteTea(){
-        document.getElementsById('modal-delTea').style.display = 'block';
-        
-        // let node = event.target.parentNode.parentNode.previousSibling.previousSibling; 
-        // let namaTeh = node.previousSibling.textContent;
-        // nama.querySelector("input[name='idTeh']").value = event.target.previousElementSibling.value;
-        // nama.querySelector('#namaTeh').textContent = namaTeh;
+    showUdateTea(){
+        document.getElementById('modal-updateTea').style.display = 'block';
+    }
+
+    showDeleteTea(event){
+        let delModal = document.getElementById('modal-delTea');
+        delModal.style.display = 'block';
+        let formElements = delModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        document.getElementById('namaTeh-del').textContent = sourceElements['namaTeh'].value;
+        formElements['idTeh'].value = sourceElements['idTeh'].value;
     }
 
     closeModal(event){
