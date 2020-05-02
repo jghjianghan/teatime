@@ -17,6 +17,5 @@
     //     echo "<td>" . $value->getHargaTotal() . "</td>";
     //     echo "</tr>";
     // }
-
     ?>
 </table>
