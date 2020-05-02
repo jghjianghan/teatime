@@ -209,11 +209,17 @@
         public function addTopping(){
             if(isset($_POST['nama'])
                 && isset($_POST['harga'])
-                && isset($_POST['foto'])){
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $harga = $this->db->escapeString($_POST['harga']);
-                    $foto = $this->db->escapeString($_POST['foto']);
-                    $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
+                && isset($_FILES['foto']['name'])
+                && $_FILES['foto']['name']!=""){
+                    if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                        $oldname = $_FILES['foto']['tmp_name'];
+                        $newName = dirname(__DIR__)."\\asset\\img\\topping";
+                        move_uploaded_file($oldname, $newName);
+                        $nama = $this->db->escapeString($_POST['nama']);
+                        $harga = $this->db->escapeString($_POST['harga']);
+                        $foto = $this->db->escapeString($_FILES['foto']['name']);
+                        $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
+                    }
                 }
         }
 
