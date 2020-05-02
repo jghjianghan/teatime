@@ -4,6 +4,9 @@ require_once "controller/services/view.php";
 require_once "model/user.php";
 require_once "model/teh.php";
 require_once "model/topping.php";
+require_once "model/transaksi.php";
+require_once "model/pairtransaksi.php";
+require_once "model/pesanan.php";
 
 class ManajerController
 {
@@ -48,10 +51,10 @@ class ManajerController
                 INNER JOIN transaksi
                 ON pesanan.fkKode = transaksi.kode
                 INNER JOIN kasir
-                ON transaksi.email = kasir.email
+                ON transaksi.idKasir = kasir.id
                 INNER JOIN teh
                 ON pesanan.fkTeh = teh.id
-                WHERE transaksi.waktu LIKE " . date_format($exd, 'Y-m-d') . " %
+                WHERE transaksi.waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
             ";
         $query_result = $this->db->executeSelectQuery($query);
 
