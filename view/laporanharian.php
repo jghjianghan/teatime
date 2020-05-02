@@ -1,4 +1,4 @@
-<h1 id="judul">Laporan Transaksi Harian <?php echo $_POST['tanggal'];?></h1>
+<h1 id="judul">Laporan Transaksi Harian <?php echo $_POST['tanggal1'];?></h1>
 <table id="table-laporan">
     <tr>
         <th>Waktu</th>

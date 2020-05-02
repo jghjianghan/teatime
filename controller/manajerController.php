@@ -16,6 +16,7 @@
         {
             return View::createView('manajer.php',[
                 "styleSrcList"=>["style.css"],
+                "scriptSrcList"=> ["tanggal.js"],
                 "title"=>"Report"
             ]);
         }
