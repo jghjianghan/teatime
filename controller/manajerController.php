@@ -64,13 +64,13 @@ class ManajerController
             if (!array_key_exists($value['kode'], $arrTransaksi)) {
                 $arrTransaksi[$value['kode']] = new Transaksi($value['kode'], $value['waktu'], $value['totalHarga'], $value['namaPemesan'], $value['namaKasir']);
             }
-            if (!array_key_exists($value['id'], $arrTransaksi->pesanan)) {
-                $pesanan = new Pesanan($value['jumlah'], $value['namaTeh'], $value['ukuran'], $value['banyakEs'], $value['banyakGula']);
+            if (!array_key_exists($value['id'], $arrTransaksi[$value['kode']]->pesanan)) {
+                $pesanan = new Pesanan($value['id'], $value['jumlah'], $value['namaTeh'], $value['ukuran'], $value['banyakEs'], $value['banyakGula']);
+                $arrTransaksi[$value['kode']]->addPesanan($pesanan);
             }
-            $arrTransaksi[$value['kode']]->addPesanan($pesanan);
         }
-
         print_r($arrTransaksi);
+
         return $arrTransaksi;
     }
 

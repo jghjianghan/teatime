@@ -30,7 +30,8 @@
         }
 
         public function addPesanan($pesanan2){
-            array_push($this->pesanan, $pesanan2);
+            // array_push($this->pesanan, $pesanan2);
+            $this->pesanan[$pesanan2->getId()] = $pesanan2;
         }
     }
 ?>

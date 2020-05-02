@@ -1,5 +1,6 @@
 <?php
     class Pesanan{
+        protected $id;
         protected $jumlahPesanan;
         protected $namaTeh;
         public $topping = [];
@@ -7,14 +8,17 @@
         protected $jumlahEs;
         protected $jumlahGula;
 
-        public function __construct($jumlahPesanan,$namaTeh,$ukuranGelas,$jumlahEs,$jumlahGula){
+        public function __construct($id, $jumlahPesanan,$namaTeh,$ukuranGelas,$jumlahEs,$jumlahGula){
+            $this->id = $id;
             $this->jumlahPesanan = $jumlahPesanan;
             $this->namaTeh = $namaTeh;
             $this->ukuranGelas = $ukuranGelas;
             $this->jumlahEs = $jumlahEs;
             $this->jumlahGula = $jumlahGula;
         }
-
+        public function getId(){
+            return $this->id;
+        }
         public function getNamaTeh(){
             return $this->namaTeh;
         }public function getTopping(){
