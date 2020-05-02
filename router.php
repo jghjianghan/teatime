@@ -49,6 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$usCtrl = new KasirController();
 			echo $usCtrl->viewTPS();
 			break;
+		case $baseURL . '/kasir/tea':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo json_encode($ctrl->getAllTea());
+			break;
 		case $baseURL . '/manajer':
 			require_once "controller/manajerController.php";
 			$usCtrl = new manajerController();

@@ -28,13 +28,13 @@
 
         public static function getAllTea()
         {
+            require_once "controller/services/mysqlDB.php";
             $db = new MySQLDB("localhost","root","", "teatime");
             $query="
                 SELECT id, gambar, nama, hargaRegular, hargaLarge
                 FROM Teh
             ";
             $query_result = $db->executeSelectQuery($query);
-
             $result = [];
             
             foreach($query_result as $key => $value){
