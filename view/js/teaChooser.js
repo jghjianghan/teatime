@@ -1,31 +1,50 @@
 class TeaChooser {
     constructor(){
         this.teaList;
+        this.selectedTea = -1;
         this.teaContainer = document.getElementById('tea-option');
         this.insertThumbnail = this.insertThumbnail.bind(this);
         fetch('kasir/tea').then(response => response.json())
         .then(this.insertThumbnail);
+
+        this.selectTea = this.selectTea.bind(this);
+        document.addEventListener('tea-selected', this.selectTea);
     }
 
     insertThumbnail(json){
         this.teaList = [];
         for (let el of json){
-            let thumbnail = document.createElement("div");
-            thumbnail.className = "thumbnail";
-            let img = document.createElement('img');
-            img.src = "asset/img/tea/"+el.gambar;
-            
-            img.alt = el.nama;
-            let label = document.createTextNode(el.nama);
-            thumbnail.appendChild(img);
-            thumbnail.appendChild(label);
-            this.teaContainer.appendChild(thumbnail);
-            this.teaList[el.id] = {
-                nama: el.nama,
-                hargaRegular: el.hargaRegular,
-                hargaLarge: el.hargaLarge
-            };
+            this.teaList[el.id] = (new TeaOption(el.id, el.nama, el.gambar, el.hargaRegular, el.hargaLarge, this.teaContainer));
         }
         console.log(this.teaList);
+    }
+
+    selectTea(event){
+        if (this.selectedTea == event.detail){
+            this.teaList[this.selectedTea].toggleActivation();
+            this.selectedTea = -1;
+        } else {
+            if (this.selectedTea != -1){
+                this.teaList[this.selectedTea].toggleActivation();
+            }
+            
+            this.selectedTea = event.detail;
+            this.teaList[this.selectedTea].toggleActivation();
+        }
+        console.log(this.selectedTea);
+    }
+
+    getSelected(){
+        if (this.selectedTea == -1){
+            return null;
+        } else {
+            return this.teaList[this.selectedTea];
+        }
+    }
+    reset (){
+        if (this.selectedTea!=-1){
+            this.teaList[this.selectedTea].toggleActivation();
+            this.selectedTea = -1;
+        }
     }
 }

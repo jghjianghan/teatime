@@ -15,7 +15,11 @@
             return View::createView('transactionRecord.php',[
                 "title" => "Transaction Record",
                 "styleSrcList" => ["kasir.css", "font-awesome.css"],
-                "scriptSrcList" => ["teaChooser.js", "toppingChooser.js", "orderList.js", "orderManager.js"]
+                "scriptSrcList" => [
+                    "teaOption.js", "teaChooser.js",
+                    "toppingOption.js", "toppingChooser.js",
+                    "orderList.js", "orderManager.js"
+                ]
             ]);
         }
 
