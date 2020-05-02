@@ -11,62 +11,6 @@
             <form class="search" id='topping-form'>
                 <input type="text" name="query" placeholder="Search..." size=10><button type='submit'><i class="fa fa-lg fa-search"></i></button>
             </form>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            <div class="thumbnail">
-                <img src="<?php echo $upPrefix;?>asset/img/tea/black-tea.png" alt="">
-                Black Tea<br>
-                <input type="number" name="">
-            </div>
-            
         </div>
         <form id='pesanan-form'>
             <div>
@@ -110,3 +54,12 @@
         </form>
     </section>
 </main>
+
+<div class="modal">
+    <div>
+        <span class='close'>&times;</span>
+        <h2></h2>
+        <span id='message'></span><br>
+        <button>OK</button>
+    </div>
+</div>

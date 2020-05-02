@@ -8,27 +8,43 @@ class ToppingOption {
         img.alt = src;
         let br = document.createElement('br');
         let label = document.createTextNode(nama);
-        let numInput = document.createTextNode(input);
-        numInput.setAttribute("type", "number");
+        this.numInput = document.createElement("input");
+        this.numInput.setAttribute("type", "number");
+
+        this.onChange = this.onChange.bind(this);
+        this.numInput.addEventListener('change', this.onChange);
+
         this.thumbnail.appendChild(img);
         this.thumbnail.appendChild(label);
         this.thumbnail.appendChild(br);
-        this.thumbnail.appendChild(numInput);
+        this.thumbnail.appendChild(this.numInput);
 
         container.appendChild(this.thumbnail);
 
         this.id = id;
         this.nama = nama;
-        this.hargaR = hargaR;
-        this.hargaL = hargaL;
+        this.harga = harga;
 
-        this.clicked = this.clicked.bind(this);
-        this.thumbnail.addEventListener('click', this.clicked);
+        this.getTotalHarga = this.getTotalHarga.bind(this)
     }
-    clicked (){
-        document.dispatchEvent(new CustomEvent('tea-selected', {detail: this.id}));
+    onChange (event){
+        if (event.currentTarget.value < 0){
+            event.currentTarget.value = 0;
+        }
+        if (event.currentTarget.value == "" || event.currentTarget.value==0){
+            this.thumbnail.classList.remove("clicked");
+        } else {
+            this.thumbnail.classList.add("clicked");
+        }
     }
-    toggleActivation(){
-        this.thumbnail.classList.toggle("clicked");
+    getJumlah(){
+        return this.numInput.value;
+    }
+    getTotalHarga(){
+        return this.getJumlah() * this.harga;
+    }
+    reset(){
+        this.numInput.value = "";
+        this.thumbnail.classList.remove("clicked");
     }
 }
