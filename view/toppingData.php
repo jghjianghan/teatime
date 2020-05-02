@@ -45,7 +45,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Add Topping</h2>
-        <form method="post" action="topping/add">
+        <form method="post" action="topping/add" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><label for="nama">Nama</label></td>

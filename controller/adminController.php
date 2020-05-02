@@ -213,7 +213,7 @@
                 && $_FILES['foto']['name']!=""){
                     if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                         $oldname = $_FILES['foto']['tmp_name'];
-                        $newName = dirname(__DIR__)."\\asset\\img\\topping";
+                        $newName = dirname(__DIR__)."\\asset\\img\\topping\\";
                         move_uploaded_file($oldname, $newName);
                         $nama = $this->db->escapeString($_POST['nama']);
                         $harga = $this->db->escapeString($_POST['harga']);
