@@ -3,31 +3,34 @@
         protected $kode;
         protected $waktu;
         protected $totalHarga;
-        protected $pesanan = [];
+        public $pesanan = [];
         protected $namaPemesan;
-        protected $email;
+        protected $namaKasir;
 
-        public function __construct($kode,$waktu,$pesanan,$totalHarga,$namaPemesan,$email){
+        public function __construct($kode,$waktu,$totalHarga,$namaPemesan,$namaKasir){
             $this->kode = $kode;
             $this->waktu = $waktu;
-            $this->pesanan = $pesanan;
             $this->totalHarga = $totalHarga;
             $this->namaPemesan = $namaPemesan;
-            $this->email = $email;
+            $this->namaKasir = $namaKasir;
         }
 
         public function getKode(){
-            return $this->id;
+            return $this->kode;
         }public function getWaktu(){
-            return $this->gambar;
+            return $this->waktu;
         }public function getTotalHarga(){
-            return $this->nama;
+            return $this->totalHarga;
         }public function getNamaPemesan(){
-            return $this->harga;
-        }public function getEmail(){
-            return $this->email;
+            return $this->namaPemesan;
+        }public function getNamaKasir(){
+            return $this->namaKasir;
         }public function getPesanan(){
             return $this->pesanan;
+        }
+
+        public function addPesanan($pesanan2){
+            array_push($this->pesanan, $pesanan2);
         }
     }
 ?>
