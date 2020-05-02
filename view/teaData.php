@@ -78,3 +78,55 @@
         </form>
     </div>
 </div>
+</div>
+
+<div class="modal" id="modal-updateTea">
+    <div>
+        <span class='close'>&times;</span>
+        <h2>Update Tea</h2>
+        <form method="post" action="tea/update">
+            <table>
+                <tr>
+                    <td><label for="namaBaru">Nama</label></td>
+                    <td>:</td>
+                    <td><input type="text" id="namaBaru" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td><label for="regBaru">Harga Regular</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="regBaru" name="reg" required></td>
+                </tr>
+                <tr>
+                    <td><label for="largeBaru">Harga Large</label></td>
+                    <td>:</td>
+                    <td>Rp.<input type="number" id="largeBaru" name="large"></td>
+                </tr>
+                <tr>
+                    <td>Foto Lama</td>
+                    <td>:</td>
+                </tr>
+                <tr>
+                    <td><label for="fotoBaru">Foto Baru</label></td>
+                    <td>:</td>
+                    <td><input type="file" id="fotoBaru" name="foto"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Ubah"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="modal-delTea">
+    <div>
+        <span class='close'>&times;</span>
+        Apakah anda yakin ingin menghapus teh <span id="namaTeh-del"></span>?<br>
+        <form method="post" action="tea/delete">
+            <input type="hidden" name="idTeh" value="">
+            <input type="submit" value="Ok">
+        </form>
+    </div>
+</div>
