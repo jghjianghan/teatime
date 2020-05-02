@@ -20,13 +20,14 @@
                 echo "<td class='adminData'>".$value->getHargaRegular()."</td>";
                 echo "<td class='adminData'>".$value->getHargaLarge()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='tea/update'>
+                    <form method='POST' action=''>
                         <input type='hidden' name='idTeh' value = ".$value->getId().">
-                        <input type='submit' value='Update'>
-                    </form>
-                    <form method='POST' action='index/delete'>
-                        <input type='hidden' name='idTeh' value = ".$value->getId().">
-                        <input type='submit' value='Delete'>
+                        <input type='hidden' name='namaTeh' value = '".$value->getNama()."'>
+                        <input type='hidden' name='gambarTeh' value = '".$value->getGambar()."'>
+                        <input type='hidden' name='regular' value = '".$value->getHargaRegular()."'>
+                        <input type='hidden' name='large' value = '".$value->getHargaLarge()."'>
+                        <input type='button' class='updateTeaBtn' value='Update'>
+                        <input type='button' class='deleteTeaBtn' value='Delete'>
                     </form>
                     </td>
                 ";
@@ -77,7 +78,6 @@
             </table>
         </form>
     </div>
-</div>
 </div>
 
 <div class="modal" id="modal-updateTea">

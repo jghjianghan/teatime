@@ -51,7 +51,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Add User</h2>
-        <form method="post" action="user/add">
+        <form id="add_User" method="post" action="">
             <table>
                 <tr>
                     <td>Posisi</td>
@@ -76,7 +76,7 @@
                     <td><input type="text" id="nama" name="nama" required></td>
                 </tr>
                 <tr>
-                    <td>Tanggal Lahir</td>
+                    <td><label for="ttl">Tanggal Lahir</label></td>
                     <td>:</td>
                     <td><input type="date" id="ttl" name="ttl" required></td>
                 </tr>
@@ -88,7 +88,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" value="Tambahkan"></td>
+                    <td><button id="tambahkan">Tambahkan</button></td>
                 </tr>
             </table>
         </form>

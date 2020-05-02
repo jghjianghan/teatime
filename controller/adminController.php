@@ -33,7 +33,7 @@
         }
         private function getAllUser(){
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat, id
                 FROM Admin
             ";
             $query_result = $this->db->executeSelectQuery($query);
@@ -41,27 +41,27 @@
             $result = [];
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat,id
                 FROM Manager
             ";
             $query_result = $this->db->executeSelectQuery($query);
 
             foreach($query_result as $key => $value){
-                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
-                SELECT email, nama, tanggalLahir, alamat
+                SELECT email, nama, tanggalLahir, alamat,id
                 FROM Kasir
             ";
             $query_result = $this->db->executeSelectQuery($query);
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat']);
+                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
             return $result;
         }
@@ -75,24 +75,68 @@
         // }
 
         public function addUser(){
-            if(isset($_POST['posisi']) 
-                && isset($_POST['email'])
-                && isset($_POST['nama'])
-                && isset($_POST['ttl'])
-                && isset($_POST['alamat'])
-                && $_POST['email']!==""
-                && $_POST['nama']!==""
-                && $_POST['alamat']!==""
+            $post = json_decode(file_get_contents('php://input'), true);
+            if(isset($post['posisi']) 
+                && isset($post['email'])
+                && isset($post['nama'])
+                && isset($post['ttl'])
+                && isset($post['alamat'])
+                && $post['email']!==""
+                && $post['nama']!==""
+                && $post['alamat']!==""
                 ){
-                    $posisi = $this->db->escapeString($_POST['posisi']);
-                    $email = $this->db->escapeString($_POST['email']);
-                    $nama = $this->db->escapeString($_POST['nama']);
-                    $ttl = $this->db->escapeString($_POST['ttl']);
-                    $alamat = $this->db->escapeString($_POST['alamat']);
+                    $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                    $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
+                    $posisi = $this->db->escapeString($post['posisi']);
+                    $email = $this->db->escapeString($post['email']);
+                    $nama = $this->db->escapeString($post['nama']);
+                    $ttl = $this->db->escapeString($post['ttl']);
+                    $alamat = $this->db->escapeString($post['alamat']);
                     $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
-                        VALUES('".$email."','katasandi','".$nama."','".$ttl."','".$alamat."')
+                        VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
                     ");
+                    $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                    return json_encode($response);
+                }else{
+                    return json_encode(array("status"=>"error"));
                 }
+        }
+
+        public function editUser(){
+
+        }
+
+        public function resetPass(){
+            $post = json_decode(file_get_contents('php://input'), true);
+            // return $post;
+            if (isset($post['idUser']) 
+                && isset($post['posisi'])
+                &&isset($post['nama'])
+                && $post['idUser'] !=="" 
+                && $post['posisi']!==""
+                && $post['nama']!==""
+            ){
+                $id = $this->db->escapeString($post['idUser']);
+                $posisi = $this->db->escapeString($post['posisi']);
+                $nama = $this->db->escapeString($post['nama']);
+                $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
+                $this->db->executeNonSelectQuery("UPDATE $posisi SET password = '$rnd_pass' WHERE id = $id");
+                $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                return json_encode($response);
+            }else{
+                return json_encode(array("status"=>"error"));
+            }
+        }
+
+        public function deleteUser(){
+            if (isset($_POST['idUser']) && $_POST['idUser'] !=="" && isset($_POST['posisi']) && $_POST['posisi']!==""){
+                $id = $this->db->escapeString($_POST['idUser']);
+                $posisi = $this->db->escapeString($_POST['posisi']);
+                // $s = $id .'|'. $posisi;
+                // return $s;
+                $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
+            }
         }
 
         //tea
@@ -111,14 +155,6 @@
             return Teh::getAllTea();
         }
 
-        public function viewAddTea(){
-            return View::createView('addTea.php',[
-                "uplevel"=>1,
-                "title"=>"Add Tea",
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
-
         public function addTea(){
             if(isset($_POST['nama'])
                 && isset($_POST['reg'])
@@ -132,6 +168,17 @@
                 }
         }
 
+        public function updateTea(){
+            
+        }
+
+        public function deleteTea(){
+            if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
+                $id = $this->db->escapeString($_POST['idTeh']);
+                $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
+            }
+        }
+
         //topping
         public function viewTopping(){
             $result = $this->getAllTopping();
@@ -143,6 +190,7 @@
                 "scriptSrcList"=> ["toppingManager.js"]
                 ]);
         }
+
         private function getAllTopping(){
             $query="
                 SELECT id, gambar, nama, harga
@@ -157,14 +205,6 @@
             }
             return $result;
         }
-                
-        public function viewAddTopping(){
-            return View::createView('addTopping.php',[
-                "uplevel"=>1,
-                "title"=>"Add Topping",
-                "styleSrcList"=>['mainStyle.css']
-            ]);
-        }
         
         public function addTopping(){
             if(isset($_POST['nama'])
@@ -177,23 +217,23 @@
                 }
         }
 
+        public function updateTopping(){
+            
+        }
+        
+        public function deleteTopping(){
+            if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
+                $id = $this->db->escapeString($_POST['idTopping']);
+                $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
+            }
+        }
+
         public function getTeaById($id){
             $id = $this->db->escapeString($id);
 
             return $this->db->executeSelectQuery("SELECT * FROM Tea WHERE id = $id")[0];
         }
 
-        public function updateTea()
-        {
-            if (isset($_POST['idTea']) && $_POST['idTea']!==""){
-                $tea = $this->getTeaById($_POST['idTea']);
-                
-                return View::createView('updateTea.php', [
-                    "nama" => $tea['nama'],
-                    "hargaRegular" => $tea['hargaRegular'],
-                    "hargaLarge" => $tea['hargaLarge']
-                ]);
-            }
-        }
+        
     }
 ?>

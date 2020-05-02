@@ -1,12 +1,14 @@
 <?php
     class User{
+        protected $id;
         protected $posisi;
         protected $email;
         protected $nama;
         protected $ttl;
         protected $alamat;
 
-        public function __construct($posisi,$email,$nama,$ttl,$alamat){
+        public function __construct($posisi,$email,$nama,$ttl,$alamat,$id){
+            $this->id = $id;
             $this->posisi = $posisi;
             $this->email = $email;
             $this->nama = $nama;
@@ -14,6 +16,9 @@
             $this->alamat = $alamat;
         }
 
+        public function getId(){
+            return $this->id;
+        }
         public function getPosisi(){
             return $this->posisi;
         }public function getEmail(){

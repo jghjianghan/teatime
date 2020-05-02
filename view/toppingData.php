@@ -18,13 +18,13 @@
                 echo "<td class='adminData'>".$value->getNama()."</td>";
                 echo "<td class='adminData'>".$value->getHarga()."</td>";
                 echo "<td class='adminData'>
-                    <form method='POST' action='edit'>
+                    <form method='POST' action=''>
                         <input type='hidden' name='idTopping' value = ".$value->getId().">
-                        <input type='submit' value='Update'>
-                    </form>
-                    <form method='POST' action='index/delete'>
-                        <input type='hidden' name='idTopping' value = ".$value->getId().">
-                        <input type='submit' value='Delete'>
+                        <input type='hidden' name='namaTopping' value = ".$value->getNama().">
+                        <input type='hidden' name='gambarTopping' value = ".$value->getGambar().">
+                        <input type='hidden' name='hargaTopping' value = ".$value->getHarga().">
+                        <input type='button' class='updateToppingBtn' value='Update'>
+                        <input type='button' class='deleteToppingBtn' value='Delete'>
                     </form>
                     </td>
                 ";

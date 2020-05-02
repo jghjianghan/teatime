@@ -8,11 +8,32 @@ class pop{
             x.addEventListener('click', this.closeModal);
         }
         
-        
+        btns = document.getElementsByClassName('updateToppingBtn');
+        for(let x of btns){
+            x.addEventListener('click',this.showUpdateTopping);
+        }
+
+        btns = document.getElementsByClassName('deleteToppingBtn');
+        for(let x of btns){
+            x.addEventListener('click',this.showDeleteTopping);
+        }
     }
 
     showAddTopping(){
         document.getElementById('modal-addTopping').style.display = 'block';
+    }
+
+    showUpdateTopping(){
+        document.getElementById('modal-updateTopping').style.display = 'block';
+    }
+
+    showDeleteTopping(event){
+        let delModal = document.getElementById('modal-delTopping');
+        delModal.style.display = 'block';
+        let formElements = delModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        document.getElementById('namaTopping-del').textContent = sourceElements['namaTopping'].value;
+        formElements['idTopping'].value = sourceElements['idTopping'].value;
     }
 
     closeModal(event){
