@@ -15,6 +15,10 @@ class OrderManager{
         this.showModal = this.showModal.bind(this);
         this.orderAdditiveForm.addEventListener('submit', this.addOrder);
 
+        this.sugarSelect = this.orderAdditiveForm.querySelector("select[name='sugar']");
+        this.iceSelect = this.orderAdditiveForm.querySelector("select[name='ice']");
+        this.cupSelect = this.orderAdditiveForm.querySelector("select[name='cup-size']");
+
         //fetch select option
         this.insertSelectOption = this.insertSelectOption.bind(this);
         fetch('kasir/sugar').then(response => response.json())
@@ -32,9 +36,15 @@ class OrderManager{
         if (teaChoice == null){
             this.showModal("Error","Tidak ada teh yang terpilih!");
         } else {
+            teaChoice = teaChoice.createTeaInfo(this.cupSelect.value);
+            console.log(teaChoice);
             toppingChoice = this.toppingChooser.getSelected();
-            this.toppingChooser.resetAll();
+
+            this.orderList.addOrder(teaChoice, toppingChoice, this.sugarSelect.value, this.iceSelect.value, this.cupSelect.value);
+
             this.teaChooser.reset();
+            this.toppingChooser.resetAll();
+            this.orderAdditiveForm.reset();
         }
     }
     showModal(title, message){
@@ -43,7 +53,19 @@ class OrderManager{
         this.modal.querySelector("span#message").textContent = message;
     }
     insertSelectOption(json){
-        let selectInput = this.orderAdditiveForm.querySelector("select[name='"+ json.name +"']");
+        let selectInput;
+        switch(json.name){
+            case "sugar":
+                selectInput = this.sugarSelect;
+                break;
+            case "ice":
+                selectInput = this.iceSelect;
+                break;
+            case "cup-size":
+                selectInput = this.cupSelect;
+                break;
+        }
+        
         for (let opt of json.option){
             let option = document.createElement('option');
             option.value = opt;

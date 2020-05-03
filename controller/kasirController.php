@@ -18,7 +18,7 @@ class KasirController
             "scriptSrcList" => [
                 "teaOption.js", "teaChooser.js",
                 "toppingOption.js", "toppingChooser.js",
-                "orderList.js", "orderManager.js"
+                "pesanan.js", "orderList.js", "orderManager.js"
             ]
         ]);
     }
