@@ -23,7 +23,7 @@
         }
 
         public function addTeh($teh,$jumlahteh){
-            array_push($this->teh,new PairTransaksi($teh,$jumlahteh));
+            array_push($this->teh,new PairTransaksi2($teh,$jumlahteh));
         }
     }
 ?>

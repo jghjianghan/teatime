@@ -29,6 +29,8 @@
             return $this->jumlahGula;
         }public function getJumlahPesanan(){
             return $this->jumlahPesanan;
+        }public function getUkuranGelas(){
+            return $this->ukuranGelas;
         }
 
         public function addTopping($top,$jumlahtop){

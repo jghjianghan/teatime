@@ -9,10 +9,10 @@
         }
 
         public function getNamaTopping(){
-            return $this->namaTeh;
+            return $this->namaTopping;
         }
         public function getJumlahTopping(){
-            return $this->jumlahPesanan;
+            return $this->jumlahTopping;
         }
     }
 ?>

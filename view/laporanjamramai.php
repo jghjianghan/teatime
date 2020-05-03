@@ -15,21 +15,16 @@
         <th>20:00-21:00</th>
     </tr>
     <?php
-    foreach ($result as $key => $value) {
-        echo "<tr>";
-        echo "<td>" . $value->getWaktu(). "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "<td>" . $value->getTotal() . "</td>";
-        echo "</tr>";
-    }
+    // foreach ($result as $key => $value) {
+    //     echo "<tr>";
+    //     echo "<td>" . $value->getWaktu(). "</td>";
+    //     echo "<td>";
+    //     foreach ($value->jam as $key => $value2) {
+    //         echo $value2->getTotal();
+    //         echo "<br>";
+    //     };
+    //     echo "</td>";
+    //     echo "</tr>";
+    // }
     ?>
 </table>

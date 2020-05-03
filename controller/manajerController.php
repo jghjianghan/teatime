@@ -6,6 +6,7 @@ require_once "model/teh.php";
 require_once "model/topping.php";
 require_once "model/transaksi.php";
 require_once "model/pairtransaksi.php";
+require_once "model/pairtransaksi2.php";
 require_once "model/pesanan.php";
 require_once "model/hari.php";
 require_once "model/jam.php";
@@ -117,7 +118,7 @@ class ManajerController
             }
             $arrHari[$value['hari']]->jam[$value['jam']]->addTrans($value['total']);
         }
-
+        print_r($arrHari);
         return $arrHari;
     }
 

@@ -26,7 +26,6 @@
             return $this->namaPemesan;
         }public function getNamaKasir(){
             return $this->namaKasir;
-        }public function getPesanan(){
         }
 
         public function addPesanan($pesanan2){
