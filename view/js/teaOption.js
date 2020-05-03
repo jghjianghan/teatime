@@ -25,4 +25,12 @@ class TeaOption {
     toggleActivation(){
         this.thumbnail.classList.toggle("clicked");
     }
+    createTeaInfo(size){
+        return {
+            id: this.id,
+            nama: this.nama,
+            harga: parseInt((size=="Regular")?this.hargaR:this.hargaL),
+            size: size
+        };
+    }
 }

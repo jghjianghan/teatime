@@ -1,4 +1,4 @@
 {
 	"name":"sugar",
-	"option": ["None", "Slight", "Half", "Less", "Normal"]
+	"option": ["Normal", "Less", "Half", "Slight", "No"]
 }

@@ -29,7 +29,8 @@ h2 {
 }
 
 #nota {
-    padding: 20px;
+    padding: 10px 15px;
+    font-size: 0.9em;
 }
 
 #nota-form{
@@ -131,4 +132,46 @@ input[type='number']{
 .close:hover, .close:focus {
     color: #000;
     cursor: pointer;
+}
+
+input[type='number']{
+    width: 40px;
+}
+
+.order-item {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.order-item td{
+    padding: 0;
+    height: 1em;
+}
+
+.order-item td:first-child{
+    width: 1%;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+.order-item td:last-child{
+    text-align: right;
+}
+.order-item tr:last-child{
+    font-weight: bold;
+}
+
+.order-item .remove{
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+#bill-total{
+    text-align: right;
+    font-weight: bold;
+}
+#bill-total span{
+    display: inline-block;
+}
+#bill-total span:first-child{
+    padding-right: 50px;
 }

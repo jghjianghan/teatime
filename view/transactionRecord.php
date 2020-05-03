@@ -29,13 +29,16 @@
                 </select>
             </div>
             <input type="submit" value="Add Order">
-            
         </form>
     </section>
     <section id='right'>
         <h2>Order #400</h2>
         <div id='nota' class='box'>
-
+            <hr>
+            <div id='bill-total'>
+                <span>Total</span>
+                <span>Rp. 23000.00</span>
+            </div>
         </div>
         <form id='nota-form'>
             Orderer's Name:

@@ -1,4 +1,4 @@
 {
 	"name":"ice",
-	"option": ["No", "Less", "Normal"]
+	"option": ["Normal", "Less", "No"]
 }
