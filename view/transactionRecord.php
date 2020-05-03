@@ -16,26 +16,16 @@
             <div>
                 Sugar:
                 <select name="sugar">
-                    <option value="none">None</option>
-                    <option value="slight">Slight</option>
-                    <option value="half">Half</option>
-                    <option value="less">Less</option>
-                    <option value="normal">Normal</option>
                 </select>
             </div>
             <div>
                 Ice:
                 <select name="ice">
-                    <option value="none">None</option>
-                    <option value="less">Less</option>
-                    <option value="normal">Normal</option>
                 </select>
             </div>
             <div>
                 Cup Size:
                 <select name="cup-size">
-                    <option value="regular">Regular</option>
-                    <option value="large">Large</option>
                 </select>
             </div>
             <input type="submit" value="Add Order">
@@ -55,9 +45,8 @@
     </section>
 </main>
 
-<div class="modal">
+<div class="modal" id='modal-kasir'>
     <div>
-        <span class='close'>&times;</span>
         <h2></h2>
         <span id='message'></span><br>
         <button>OK</button>

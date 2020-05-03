@@ -59,6 +59,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new KasirController();
 			echo json_encode($ctrl->getAllTopping());
 			break;
+		case $baseURL . '/kasir/sugar':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo $ctrl->getConfig('sugarLevel');
+			break;
+		case $baseURL . '/kasir/ice':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo $ctrl->getConfig('ice');
+			break;
+		case $baseURL . '/kasir/cup':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo $ctrl->getConfig('cupSize');
+			break;
 		case $baseURL . '/manajer':
 			require_once "controller/manajerController.php";
 			$usCtrl = new manajerController();

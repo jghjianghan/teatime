@@ -55,4 +55,10 @@ class KasirController
         }
         return $result;
     }
+
+    public function getConfig($filename)
+    {
+        // return "config/$filename.json";
+        return file_get_contents("config/$filename.json");
+    }
 }
