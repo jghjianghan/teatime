@@ -76,59 +76,83 @@ class ManajerController
 
     public function viewJamRamai()
     {
-        // $result = $this->getJamRamai();
+        $result = $this->getJamRamai();
         return View::createView('laporanjamramai.php', [
-            // "result" = $result,
+            "result" = $result,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Popular Hours Report"
         ]);
     }
 
-    // private function getJamRamai(){
-    //     $query="
+    private function getJamRamai(){
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $tgl2 = $_POST['tanggal2'];
+        $exd2 = date_create($tgl2);
 
-    //     ";
-    //     $query_result = $this->db->executeSelectQuery($query);
+        $query="
+                SELECT date(transaksi.waktu) as hari, hour(transaksi.waktu) as jam, count(transaksi.kode) as total
+                FROM transaksi
+                WHERE transaksi.waktu >= '". date_format($exd, 'Y-m-d'). " 00:00:00' AND transaksi.waktu <= '". date_format($exd2, 'Y-m-d') . " 23:59:59'
+                GROUP BY date(transaksi.waktu), hour(transaksi.waktu)
+        ";
+        $query_result = $this->db->executeSelectQuery($query);
 
-    //     $result = [];
+        $arrHari = [];
 
-    //     foreach($query_result as $key => $value){
-    //         $result [] = 
-    //     }
+        foreach($query_result as $key => $value){
+            if (!array_key_exists($value['hari'], $arrHari)) {
+                $arrHari[$value['hari']] = new Hari($value['hari']);
+            }
+            if (!array_key_exists($value['jam'], $arrHari[$value['hari']]->jam)) {
+                $jam = new Jam($value['jam']);
+                $arrHari[$value['hari']]->addJam($jam);
+            }
+            $arrHari[$value['hari']]->jam[$value['jam']]->addTrans($value['total']);
+        }
 
-    //     return $result;
-    // }
+        return $arrHari;
+    }
 
     public function viewKasir()
     {
-        // $result = $this->getKasir();
+        $result = $this->getKasir();
         return View::createView('laporankasir.php', [
-            // "result" = $result,
+            "result" = $result,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Mainstreamed Cashiers Report"
         ]);
     }
 
-    // private function getKasir(){
-    //     $query="
+    private function getKasir(){
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $tgl2 = $_POST['tanggal2'];
+        $exd2 = date_create($tgl2);
 
-    //     ";
-    //     $query_result = $this->db->executeSelectQuery($query);
+        $query="
+                SELECT date(transaksi.waktu), kasir.nama, sum(transaksi.totalHarga) as total
+                FROM transaksi INNER JOIN kasir
+                ON transaksi.IdKasir = kasir.id               
+                WHERE transaksi.waktu >= '". date_format($exd, 'Y-m-d'). " 00:00:00' AND transaksi.waktu <= '". date_format($exd2, 'Y-m-d') . " 23:59:59'
+                GROUP BY kasir.nama
+        ";
+        $query_result = $this->db->executeSelectQuery($query);
 
-    //     $result = [];
+        $result = [];
 
-    //     foreach($query_result as $key => $value){
-    //         $result [] = 
-    //     }
+        foreach($query_result as $key => $value){
+            $result [] = new Kasir($value['waktu'], $value['nama'],$value['total']);
+        }
 
-    //     return $result;
-    // }
+        return $result;
+    }
 
     public function viewKeuangan()
     {
-        // $result = $this->getKeuangan();
+        $result = $this->getKeuangan();
         return View::createView('laporankeuangan.php', [
             // "result" = $result,
             "uplevel" => 1,
@@ -137,20 +161,28 @@ class ManajerController
         ]);
     }
 
-    // private function getKeuangan(){
-    //     $query="
+    private function getKeuangan(){
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $tgl2 = $_POST['tanggal2'];
+        $exd2 = date_create($tgl2);
 
-    //     ";
-    //     $query_result = $this->db->executeSelectQuery($query);
+        $query="
+            SELECT date(transaksi.waktu), sum(transaksi.totalHarga) as total
+            FROM transaksi
+            WHERE transaksi.waktu >= '". date_format($exd, 'Y-m-d'). " 00:00:00' AND transaksi.waktu <= '". date_format($exd2, 'Y-m-d') . " 23:59:59'
+            GROUP BY date(transaksi.waktu)
+        ";
+        $query_result = $this->db->executeSelectQuery($query);
 
-    //     $result = [];
+        $result = [];
 
-    //     foreach($query_result as $key => $value){
-    //         $result [] = 
-    //     }
+        foreach($query_result as $key => $value){
+            $result [] = new Keuangan($value['waktu'],$value['total']);
+        }
 
-    //     return $result;
-    // }
+        return $result;
+    }
 
     public function viewRentang()
     {
