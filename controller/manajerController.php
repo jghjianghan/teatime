@@ -7,6 +7,10 @@ require_once "model/topping.php";
 require_once "model/transaksi.php";
 require_once "model/pairtransaksi.php";
 require_once "model/pesanan.php";
+require_once "model/hari.php";
+require_once "model/jam.php";
+require_once "model/kasir.php";
+require_once "model/keuangan.php";
 
 class ManajerController
 {
@@ -78,7 +82,7 @@ class ManajerController
     {
         $result = $this->getJamRamai();
         return View::createView('laporanjamramai.php', [
-            "result" = $result,
+            "result" => $result,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Popular Hours Report"
@@ -119,7 +123,7 @@ class ManajerController
     {
         $result = $this->getKasir();
         return View::createView('laporankasir.php', [
-            "result" = $result,
+            "result" => $result,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Mainstreamed Cashiers Report"
@@ -133,7 +137,7 @@ class ManajerController
         $exd2 = date_create($tgl2);
 
         $query="
-                SELECT date(transaksi.waktu), kasir.nama, sum(transaksi.totalHarga) as total
+                SELECT date(transaksi.waktu) as waktu, kasir.nama, sum(transaksi.totalHarga) as total
                 FROM transaksi INNER JOIN kasir
                 ON transaksi.IdKasir = kasir.id               
                 WHERE transaksi.waktu >= '". date_format($exd, 'Y-m-d'). " 00:00:00' AND transaksi.waktu <= '". date_format($exd2, 'Y-m-d') . " 23:59:59'
@@ -168,7 +172,7 @@ class ManajerController
         $exd2 = date_create($tgl2);
 
         $query="
-            SELECT date(transaksi.waktu), sum(transaksi.totalHarga) as total
+            SELECT date(transaksi.waktu) as waktu, sum(transaksi.totalHarga) as total
             FROM transaksi
             WHERE transaksi.waktu >= '". date_format($exd, 'Y-m-d'). " 00:00:00' AND transaksi.waktu <= '". date_format($exd2, 'Y-m-d') . " 23:59:59'
             GROUP BY date(transaksi.waktu)
@@ -186,27 +190,27 @@ class ManajerController
 
     public function viewRentang()
     {
-        // $result = $this->getRentang();
+        $result = $this->getRentang();
         return View::createView('laporanrentang.php', [
-            // "result" = $result,
+            "result" => $result,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Ranged Report"
         ]);
     }
 
-    // private function getRentang(){
-    //     $query="
+    private function getRentang(){
+        $query="
 
-    //     ";
-    //     $query_result = $this->db->executeSelectQuery($query);
+        ";
+        $query_result = $this->db->executeSelectQuery($query);
 
-    //     $result = [];
+        $result = [];
 
-    //     foreach($query_result as $key => $value){
-    //         $result [] = 
-    //     }
+        // foreach($query_result as $key => $value){
+        //     $result [] =
+        // }
 
-    //     return $result;
-    // }
+        return $result;
+    }
 }
