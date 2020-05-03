@@ -14,4 +14,22 @@
         <th>19:00-20:00</th>
         <th>20:00-21:00</th>
     </tr>
+    <?php
+    foreach ($result as $key => $value) {
+        echo "<tr>";
+        echo "<td>" . $value->getWaktu(). "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "<td>" . $value->getTotal() . "</td>";
+        echo "</tr>";
+    }
+    ?>
 </table>

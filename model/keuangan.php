@@ -8,7 +8,7 @@
             $this->jumlahHarga = $jumlahHarga;
         }
 
-        public function getwaktu(){
+        public function getWaktu(){
             return $this->waktu;
         }
         public function getJumlahHarga(){

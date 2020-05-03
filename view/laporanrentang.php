@@ -5,4 +5,13 @@
         <th>Teh</th>
         <th>Topping</th>
     </tr>
+    <?php
+    foreach ($result as $key => $value) {
+        echo "<tr>";
+        echo "<td>" . $value->getWaktu(). "</td>";
+        echo "<td>" . $value->getTeh() . "</td>";
+        echo "<td>" . $value->getTopping() . "</td>";
+        echo "</tr>";
+    }
+    ?>
 </table>

@@ -4,4 +4,12 @@
         <th>Tanggal</th>
         <th>Total pendapatan</th>
     </tr>
+    <?php
+    foreach ($result as $key => $value) {
+        echo "<tr>";
+        echo "<td>" . $value->getWaktu(). "</td>";
+        echo "<td>" . $value->getJumlahHarga() . "</td>";
+        echo "</tr>";
+    }
+    ?>
 </table>

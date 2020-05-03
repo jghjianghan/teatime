@@ -10,6 +10,9 @@
         public function getJam(){
             return $this->jam;
         }
+        public function getTotal(){
+            return $this->total;
+        }
 
         public function addTrans($total){
             $this->total = $total;

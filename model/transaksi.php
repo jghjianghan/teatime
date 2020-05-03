@@ -17,8 +17,9 @@
 
         public function getKode(){
             return $this->kode;
-        }public function getWaktu(){
-            return $this->waktu;
+        }public function getWaktu(){           
+            $exd = date_create($this->waktu);
+            return date_format($exd, 'G:ia');
         }public function getTotalHarga(){
             return $this->totalHarga;
         }public function getNamaPemesan(){
@@ -26,7 +27,6 @@
         }public function getNamaKasir(){
             return $this->namaKasir;
         }public function getPesanan(){
-            return $this->pesanan;
         }
 
         public function addPesanan($pesanan2){
@@ -34,4 +34,3 @@
             $this->pesanan[$pesanan2->getId()] = $pesanan2;
         }
     }
-?>
