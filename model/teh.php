@@ -33,6 +33,7 @@
             $query="
                 SELECT id, gambar, nama, hargaRegular, hargaLarge
                 FROM Teh
+                ORDER BY nama
             ";
             $query_result = $db->executeSelectQuery($query);
             $result = [];

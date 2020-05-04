@@ -28,6 +28,7 @@
             $query="
                 SELECT id, gambar, nama, harga
                 FROM Topping
+                ORDER BY nama
             ";
             $query_result = $db->executeSelectQuery($query);
 
