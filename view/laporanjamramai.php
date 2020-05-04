@@ -21,7 +21,7 @@
         for($i = 10;$i <= 20; $i++){
             if(array_key_exists("$i",$value->jam)){
                 echo "<td>";
-                echo $value->jam->getTotal();
+                echo $value->jam["$i"]->getTotal();
                 echo "</td>";
             }else{
                 echo "<td>-</td>";
