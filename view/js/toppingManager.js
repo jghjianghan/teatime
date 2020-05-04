@@ -28,6 +28,7 @@ class pop{
         editModal.style.display = 'block';
         let formElements = editModal.querySelector('form').elements;
         let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['idTopping'].value = sourceElements['idTopping'].value;
         formElements['update-nama'].value = sourceElements['namaTopping'].value;
         formElements['update-harga'].value = sourceElements['hargaTopping'].value;
     }

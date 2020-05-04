@@ -78,6 +78,7 @@
         <h2>Update Topping</h2>
         <form method="post" action="topping/update">
             <table>
+                <input type="hidden" name="idTopping" value="">
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>

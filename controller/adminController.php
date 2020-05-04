@@ -234,7 +234,22 @@
         }
 
         public function updateTopping(){
-            
+            if(isset($_POST['update-nama'])
+                && isset($_POST['update-harga'])
+                && isset($_FILES['foto']['name'])
+                && isset($_POST['idTopping'])
+                && $_FILES['foto']['name']!=""){
+                    if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                        $oldname = $_FILES['foto']['tmp_name'];
+                        $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$_FILES['foto']['name'];
+                        move_uploaded_file($oldname, $newName);
+                        $id = $this->db->escapeString($_POST['idTopping']);
+                        $nama = $this->db->escapeString($_POST['nama']);
+                        $harga = $this->db->escapeString($_POST['harga']);
+                        $foto = $this->db->escapeString($_FILES['foto']['name']);
+                        $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
+                    }
+                }
         }
         
         public function deleteTopping(){
