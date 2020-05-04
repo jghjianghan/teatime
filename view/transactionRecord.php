@@ -37,7 +37,7 @@
             <hr>
             <div id='bill-total'>
                 <span>Total</span>
-                <span>Rp. 23000.00</span>
+                <span id='total-harga'>Rp. 0</span>
             </div>
         </div>
         <form id='nota-form'>

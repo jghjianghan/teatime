@@ -1,11 +1,16 @@
 class Pesanan {
-    constructor(teh, toppingList, sugar, ice, size){
+    constructor(nomor, teh, toppingList, sugar, ice, size){
+        this.nomor = nomor;
         this.teh = teh;
         this.toppingList = toppingList;
         this.sugar = sugar;
         this.ice = ice;
         this.size = size;
-        this.jumlah = 1;   
+        this.jumlah = 1;
+        this.subtotal;
+
+        this.deleteSelf = this.deleteSelf.bind(this);
+        this.onChangeJumlah = this.onChangeJumlah.bind(this);
     }
     renderData (){
         let table = document.createElement("table");
@@ -17,9 +22,12 @@ class Pesanan {
         let span = document.createElement('span');
         span.className = "remove";
         span.textContent = '\xD7';
+        span.dataset.nomor = this.nomor;
         span.addEventListener('click', this.deleteSelf);
         let input = document.createElement('input');
         input.setAttribute('type', 'number');
+        input.value = this.jumlah;
+        input.addEventListener('change', this.onChangeJumlah);
         
         td.appendChild(span);
         td.appendChild(document.createTextNode(" "));
@@ -50,11 +58,9 @@ class Pesanan {
         }
 
         //additive
-        table.appendChild(this.createRow("",this.sugar + " Sugar, " + this.ice + " Ice",""));
-        // table.appendChild(this.createRow("",this.ice + " Ice",""));
-        
+        table.appendChild(this.createRow("",this.sugar + " Sugar, " + this.ice + " Ice",""));        
         table.appendChild(this.createRow("","Subtotal","Rp. "+this.getHargaPesanan()));
-
+        this.subtotal = table.lastChild.lastChild;
         return table;
     }
 
@@ -76,6 +82,15 @@ class Pesanan {
         return tr;
     }
 
+    onChangeJumlah(event){
+        if (event.currentTarget.value <= 0){
+            event.currentTarget.value = 1;
+        }
+        this.jumlah = event.currentTarget.value;
+        this.subtotal.textContent = "Rp. " + this.getHargaPesanan();
+        document.dispatchEvent(new CustomEvent("change-jumlah"));
+    }
+
     getHargaPesanan(){
         let harga = parseInt(this.teh.harga);
         if (this.toppingList != null){
@@ -83,11 +98,15 @@ class Pesanan {
                 harga += topping.harga;
             }
         }
-        return harga;
+        return harga * this.jumlah;
     }
 
     deleteSelf(event){
-        console.log('delete');
-        console.log(event.currentTarget.parentElement.parentElement.parentElement);
+        const data = {
+            detail: this.nomor
+        };
+        document.dispatchEvent(new CustomEvent('delete-order', data));
+        let thisTable = event.currentTarget.parentElement.parentElement.parentElement;
+        thisTable.remove();
     }
 }

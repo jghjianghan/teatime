@@ -18,6 +18,11 @@ class OrderManager{
         this.sugarSelect = this.orderAdditiveForm.querySelector("select[name='sugar']");
         this.iceSelect = this.orderAdditiveForm.querySelector("select[name='ice']");
         this.cupSelect = this.orderAdditiveForm.querySelector("select[name='cup-size']");
+        
+        this.totalHarga = document.getElementById("total-harga");
+        this.updateTotal = this.updateTotal.bind(this);
+        document.addEventListener('delete-order', this.updateTotal);
+        document.addEventListener('change-jumlah', this.updateTotal);
 
         //fetch select option
         this.insertSelectOption = this.insertSelectOption.bind(this);
@@ -45,6 +50,7 @@ class OrderManager{
             this.teaChooser.reset();
             this.toppingChooser.resetAll();
             this.orderAdditiveForm.reset();
+            this.updateTotal();
         }
     }
     showModal(title, message){
@@ -72,6 +78,12 @@ class OrderManager{
             option.textContent = opt;
             selectInput.appendChild(option);
         }
+    }
+
+    updateTotal(){
+        console.log("updating");
+        this.totalHarga.textContent = "Rp. " + this.orderList.getTotalHarga();
+        console.log(this.totalHarga);
     }
 }
 new OrderManager();
