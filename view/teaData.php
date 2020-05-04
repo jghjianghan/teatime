@@ -86,6 +86,7 @@
         <h2>Update Tea</h2>
         <form method="post" action="tea/update">
             <table>
+                <input type="hidden" name="idTeh" value="">
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
