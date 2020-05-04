@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/admin/topping/update':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
-			$usCtrl->addTopping();
+			$usCtrl->updateTopping();
 			header('Location: ../topping');
 			break;
 		case $baseURL . '/admin/topping/delete':

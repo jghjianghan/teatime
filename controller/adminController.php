@@ -175,23 +175,53 @@
                 && isset($_POST['large'])
                 && isset($_FILES['foto']['name'])
                 && $_FILES['foto']['name']!=""){
-                    if(getimagesize($_FILES['foto']['tmp_name'])!=0){
-                        $oldname = $_FILES['foto']['tmp_name'];
-                        $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
-                        move_uploaded_file($oldname, $newName);
-                        $nama = $this->db->escapeString($_POST['nama']);
+                if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                    $oldname = $_FILES['foto']['tmp_name'];
+                    $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
+                    move_uploaded_file($oldname, $newName);
+                    $nama = $this->db->escapeString($_POST['nama']);
                     $reg = $this->db->escapeString($_POST['reg']);
                     $large = $this->db->escapeString($_POST['large']);
                     $foto = $this->db->escapeString($_FILES['foto']['name']);
                     $this->db->executeNonSelectQuery("INSERT INTO teh(nama, hargaRegular,hargaLarge,gambar) VALUES('".$nama."','".$reg."','".$large."','".$foto."')");
-                    }
-                    
                 }
+                    
+            }
         }
 
         public function updateTea(){
+            if(isset($_POST['update-nama'])
+                && isset($_POST['idTeh'])
+                && isset($_POST['update-reg'])
+                && isset($_POST['update-large'])){
+                    if(isset($_FILES['foto'])&& $_FILES['foto']['name']!=""){
+                        if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                            $oldname = $_FILES['foto']['tmp_name'];
+                            $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
+                            move_uploaded_file($oldname, $newName);
+                            $id = $this->db->escapeString($_POST['idTeh']);
+                            $nama = $this->db->escapeString($_POST['update-nama']);
+                            $reg = $this->db->escapeString($_POST['update-reg']);
+                            $large = $this->db->escapeString($_POST['update-large']);
+                            $foto = $this->db->escapeString($_FILES['foto']['name']);
+                            $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
+                            echo $id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
+                            
+                        }
+                    }
+                    else{
+                        $id = $this->db->escapeString($_POST['idTeh']);
+                        $nama = $this->db->escapeString($_POST['update-nama']);
+                        $reg = $this->db->escapeString($_POST['update-reg']);
+                        $large = $this->db->escapeString($_POST['update-large']);
+                        $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."' WHERE id = $id");
+                        // echo $id.'|'.$nama.'|'.$reg.'|'.$large;
+                
+                    }
+            }
             
         }
+        
 
         public function deleteTea(){
             if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
@@ -236,20 +266,29 @@
         public function updateTopping(){
             if(isset($_POST['update-nama'])
                 && isset($_POST['update-harga'])
-                && isset($_FILES['foto']['name'])
                 && isset($_POST['idTopping'])
-                && $_FILES['foto']['name']!=""){
-                    if(getimagesize($_FILES['foto']['tmp_name'])!=0){
-                        $oldname = $_FILES['foto']['tmp_name'];
-                        $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$_FILES['foto']['name'];
-                        move_uploaded_file($oldname, $newName);
-                        $id = $this->db->escapeString($_POST['idTopping']);
-                        $nama = $this->db->escapeString($_POST['nama']);
-                        $harga = $this->db->escapeString($_POST['harga']);
-                        $foto = $this->db->escapeString($_FILES['foto']['name']);
-                        $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
+                ){
+                    if(isset($_FILES['foto']['name']) && $_FILES['foto']['name']!=""){
+                        if(getimagesize($_FILES['foto']['tmp_name'])!=0){
+                            $oldname = $_FILES['foto']['tmp_name'];
+                            $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$_FILES['foto']['name'];
+                            move_uploaded_file($oldname, $newName);
+                            $id = $this->db->escapeString($_POST['idTopping']);
+                            $nama = $this->db->escapeString($_POST['update-nama']);
+                            $harga = $this->db->escapeString($_POST['update-harga']);
+                            $foto = $this->db->escapeString($_FILES['foto']['name']);
+                            $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
+                            // echo $id.'|'.$nama.'|'.$harga.'|'.$foto;
+                        }  
                     }
-                }
+                    else{
+                        $id = $this->db->escapeString($_POST['idTopping']);
+                        $nama = $this->db->escapeString($_POST['update-nama']);
+                        $harga = $this->db->escapeString($_POST['update-harga']);
+                        $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."' WHERE id = $id");
+                        // echo $id.'|'.$nama.'|'.$harga;
+                    }
+            }
         }
         
         public function deleteTopping(){

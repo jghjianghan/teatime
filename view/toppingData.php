@@ -79,7 +79,6 @@
         <form method="post" action="topping/update">
             <table>
                 <input type="hidden" name="idTopping" value="">
-                <input type="hidden" name="foto" value="">
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
@@ -93,6 +92,7 @@
                 <tr>
                     <td>Foto Lama</td>
                     <td>:</td>
+                    <td><img src=""></td>
                 </tr>
                 <tr>
                     <td><label for="fotoBaru">Foto</label></td>
