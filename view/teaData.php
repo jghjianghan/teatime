@@ -94,7 +94,7 @@
                 <tr>
                     <td><label for="regBaru">Harga Regular</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="regBaru" name="-update-reg" required></td>
+                    <td>Rp.<input type="number" id="regBaru" name="update-reg" required></td>
                 </tr>
                 <tr>
                     <td><label for="largeBaru">Harga Large</label></td>
