@@ -118,7 +118,7 @@ class ManajerController
             }
             $arrHari[$value['hari']]->jam[$value['jam']]->addTrans($value['total']);
         }
-        print_r($arrHari);
+        
         return $arrHari;
     }
 
