@@ -29,7 +29,7 @@ class pop{
         let formElements = editModal.querySelector('form').elements;
         let sourceElements = event.currentTarget.parentNode.elements;
         formElements['idTeh'].value = sourceElements['idTeh'].value;
-        formElements['foto'].value = sourceElements['gambarTeh'].value;
+        editModal.querySelector('img').src = "../asset/img/tea/" + sourceElements['gambarTeh'].value;
         formElements['update-nama'].value = sourceElements['namaTeh'].value;
         formElements['update-reg'].value = sourceElements['regular'].value;
         formElements['update-large'].value = sourceElements['large'].value;
