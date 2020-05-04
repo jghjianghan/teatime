@@ -52,6 +52,8 @@ class pop{
         editModal.style.display = 'block';
         let formElements = editModal.querySelector('form').elements;
         let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['idUser'].value = sourceElements['idUser'].value;
+        formElements['posisi'].value = sourceElements['posisi'].value;
         formElements['edit-email'].value = sourceElements['email'].value;
         formElements['edit-nama'].value = sourceElements['nama'].value;
         formElements['edit-ttl'].value = sourceElements['ttl'].value;

@@ -103,7 +103,22 @@
         }
 
         public function editUser(){
-
+            if(isset($_POST['idUser'])
+                && isset($_POST['posisi'])
+                && isset($_POST['edit-email'])
+                && isset($_POST['edit-nama'])
+                && isset($_POST['edit-ttl'])
+                && isset($_POST['edit-alamat'])){
+                    $id = $this->db->escapeString($_POST['idUser']);
+                    $posisi = $this->db->escapeString($_POST['posisi']);
+                    $email = $this->db->escapeString($_POST['edit-email']);
+                    $nama = $this->db->escapeString($_POST['edit-nama']);
+                    $ttl = $this->db->escapeString($_POST['edit-ttl']);
+                    $alamat = $this->db->escapeString($_POST['edit-alamat']);
+                    $this->db->executeNonSelectQuery("UPDATE $posisi 
+                        SET email = $email, nama = $nama, tanggalLahir = $ttl, alamat = $alamat
+                        WHERE id = $id");
+                }
         }
 
         public function resetPass(){

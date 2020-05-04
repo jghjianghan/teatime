@@ -30,5 +30,8 @@
         }public function getAlamat(){
             return $this->alamat;
         }
+        public function getTtlRaw(){
+            return $this->ttl;
+        }
     }
 ?>

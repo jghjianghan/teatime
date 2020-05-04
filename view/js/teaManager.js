@@ -10,7 +10,7 @@ class pop{
 
         btns = document.getElementsByClassName("updateTeaBtn");
         for(let x of btns){
-            x.addEventListener('click',this.showUdateTea);
+            x.addEventListener('click',this.showUpdateTea);
         }
         
         btns = document.getElementsByClassName("deleteTeaBtn");
@@ -23,7 +23,7 @@ class pop{
         document.getElementById('modal-addTea').style.display = 'block';
     }
 
-    showUdateTea(event){
+    showUpdateTea(event){
         let editModal = document.getElementById('modal-updateTea');
         editModal.style.display = 'block';
         let formElements = editModal.querySelector('form').elements;

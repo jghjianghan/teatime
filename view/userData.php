@@ -27,7 +27,7 @@
                         <input type='hidden' name='posisi' value = ".$value->getPosisi().">
                         <input type='hidden' name='email' value = ".$value->getemail().">
                         <input type='hidden' name='nama' value = '".$value->getNama()."'>
-                        <input type='hidden' name='ttl' value = '".$value->getTtl()."'>
+                        <input type='hidden' name='ttl' value = '".$value->getTtlRaw()."'>
                         <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
                         <input type='button' class='editBtn' value='Edit'>
                         <input type='button' class='resetBtn' value='Reset'>
@@ -111,18 +111,8 @@
         <h2>Edit User</h2>
         <form id="edit_User" method="post" action="user/edit">
             <table>
-                <tr>
-                    <td>Posisi</td>
-                    <td>:</td>
-                    <td>
-                        <input type="radio" id="edit-admin" name="posisi" value="admin">
-                        <label for="edit-admin">Admin</label>
-                        <input type="radio" id="edit-manager" name="posisi" value="manager">
-                        <label for="edit-manager">Manager</label>
-                        <input type="radio" id="edit-kasir" name="posisi" value="kasir">
-                        <label for="edit-kasir">Kasir</label>
-                    </td>
-                </tr>
+                <input type="hidden" name="idUser" value="">
+                <input type="hidden" name="posisi" value="">
                 <tr>
                     <td><label for="edit-email">Email</label></td>
                     <td>:</td>
