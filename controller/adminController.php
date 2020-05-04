@@ -115,9 +115,8 @@
                     $nama = $this->db->escapeString($_POST['edit-nama']);
                     $ttl = $this->db->escapeString($_POST['edit-ttl']);
                     $alamat = $this->db->escapeString($_POST['edit-alamat']);
-                    $this->db->executeNonSelectQuery("UPDATE $posisi 
-                        SET email = $email, nama = $nama, tanggalLahir = $ttl, alamat = $alamat
-                        WHERE id = $id");
+                    // echo $id.'|'.$posisi.'|'.$email.'|'.$nama.'|'.$ttl.'|'.$alamat;
+                    $this->db->executeNonSelectQuery("UPDATE $posisi SET email = '".$email."', nama = '".$nama."', tanggalLahir = '".$ttl."', alamat = '".$alamat."' WHERE id = $id");
                 }
         }
 
@@ -229,7 +228,7 @@
                         $nama = $this->db->escapeString($_POST['nama']);
                         $harga = $this->db->escapeString($_POST['harga']);
                         $foto = $this->db->escapeString($_FILES['foto']['name']);
-                        // $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
+                        $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
                     }
                 }
         }
