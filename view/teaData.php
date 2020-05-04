@@ -89,26 +89,27 @@
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
-                    <td><input type="text" id="namaBaru" name="nama" required></td>
+                    <td><input type="text" id="namaBaru" name="update-nama" required></td>
                 </tr>
                 <tr>
                     <td><label for="regBaru">Harga Regular</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="regBaru" name="reg" required></td>
+                    <td>Rp.<input type="number" id="regBaru" name="-update-reg" required></td>
                 </tr>
                 <tr>
                     <td><label for="largeBaru">Harga Large</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="largeBaru" name="large"></td>
+                    <td>Rp.<input type="number" id="largeBaru" name="update-large" required></td>
                 </tr>
                 <tr>
                     <td>Foto Lama</td>
                     <td>:</td>
+                    <td><img src=""></td>
                 </tr>
                 <tr>
                     <td><label for="fotoBaru">Foto Baru</label></td>
                     <td>:</td>
-                    <td><input type="file" id="fotoBaru" name="foto"></td>
+                    <td><input type="file" id="fotoBaru" name="foto" required></td>
                 </tr>
                 <tr>
                     <td></td>

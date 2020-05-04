@@ -25,6 +25,7 @@
                     <form method='POST' action=''>
                         <input type='hidden' name='idUser' value = ".$value->getId().">
                         <input type='hidden' name='posisi' value = ".$value->getPosisi().">
+                        <input type='hidden' name='email' value = ".$value->getemail().">
                         <input type='hidden' name='nama' value = '".$value->getNama()."'>
                         <input type='hidden' name='ttl' value = '".$value->getTtl()."'>
                         <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
@@ -125,7 +126,7 @@
                 <tr>
                     <td><label for="edit-email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-email" name="edit-email" value="" required></td>
+                    <td><input type="text" id="edit-email" name="edit-email" value="<?php ?>" required></td>
                 </tr>
                 <tr>
                     <td><label for="edit-nama">Nama Lengkap</label></td>

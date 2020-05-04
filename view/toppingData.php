@@ -81,12 +81,12 @@
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
-                    <td><input type="text" id="namaBaru" name="nama" required></td>
+                    <td><input type="text" id="namaBaru" name="update-nama" required></td>
                 </tr>
                 <tr>
                     <td><label for="hargaBaru">Harga</label></td>
                     <td>:</td>
-                    <td>Rp.<input type="number" id="hargaBaru" name="harga" required></td>
+                    <td>Rp.<input type="number" id="hargaBaru" name="update-harga" required></td>
                 </tr>
                 <tr>
                     <td>Foto Lama</td>

@@ -23,8 +23,13 @@ class pop{
         document.getElementById('modal-addTopping').style.display = 'block';
     }
 
-    showUpdateTopping(){
-        document.getElementById('modal-updateTopping').style.display = 'block';
+    showUpdateTopping(event){
+        let editModal = document.getElementById('modal-updateTopping');
+        editModal.style.display = 'block';
+        let formElements = editModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['update-nama'].value = sourceElements['namaTopping'].value;
+        formElements['update-harga'].value = sourceElements['hargaTopping'].value;
     }
 
     showDeleteTopping(event){

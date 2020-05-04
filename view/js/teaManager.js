@@ -23,8 +23,14 @@ class pop{
         document.getElementById('modal-addTea').style.display = 'block';
     }
 
-    showUdateTea(){
-        document.getElementById('modal-updateTea').style.display = 'block';
+    showUdateTea(event){
+        let editModal = document.getElementById('modal-updateTea');
+        editModal.style.display = 'block';
+        let formElements = editModal.querySelector('form').elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        formElements['update-nama'].value = sourceElements['namaTeh'].value;
+        formElements['update-reg'].value = sourceElements['regular'].value;
+        formElements['update-large'].value = sourceElements['large'].value;
     }
 
     showDeleteTea(event){
