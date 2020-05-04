@@ -50,7 +50,7 @@ class pop{
     showEditUser(event){
         let editModal = document.getElementById('modal-edit');
         editModal.style.display = 'block';
-        let formElements = delModal.querySelector('form').elements;
+        let formElements = editModal.querySelector('form').elements;
         let sourceElements = event.currentTarget.parentNode.elements;
         formElements['edit-email'].value = sourceElements['email'].value;
         formElements['edit-nama'].value = sourceElements['nama'].value;
