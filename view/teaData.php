@@ -84,7 +84,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Update Tea</h2>
-        <form method="post" action="tea/update">
+        <form method="post" action="tea/update" enctype="multipart/form-data">
             <table>
                 <input type="hidden" name="idTeh" value="">
                 <tr>

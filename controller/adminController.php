@@ -194,7 +194,7 @@
                 && isset($_POST['idTeh'])
                 && isset($_POST['update-reg'])
                 && isset($_POST['update-large'])){
-                    if(isset($_FILES['foto'])&& $_FILES['foto']['name']!=""){
+                    if(isset($_FILES['foto']['name'])&& $_FILES['foto']['name']!=""){
                         if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                             $oldname = $_FILES['foto']['tmp_name'];
                             $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
@@ -205,7 +205,7 @@
                             $large = $this->db->escapeString($_POST['update-large']);
                             $foto = $this->db->escapeString($_FILES['foto']['name']);
                             $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
-                            echo $id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
+                            // echo 'f '.$id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
                             
                         }
                     }
@@ -215,7 +215,7 @@
                         $reg = $this->db->escapeString($_POST['update-reg']);
                         $large = $this->db->escapeString($_POST['update-large']);
                         $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."' WHERE id = $id");
-                        // echo $id.'|'.$nama.'|'.$reg.'|'.$large;
+                        // echo 'nf '.$id.'|'.$nama.'|'.$reg.'|'.$large;
                 
                     }
             }
@@ -268,7 +268,7 @@
                 && isset($_POST['update-harga'])
                 && isset($_POST['idTopping'])
                 ){
-                    if(isset($_FILES['foto']['name']) && $_FILES['foto']['name']!=""){
+                    if(file_exists($_FILES['foto']['tmp_name']) || is_uploaded_file($_FILES['foto']['tmp_name'])){
                         if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                             $oldname = $_FILES['foto']['tmp_name'];
                             $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$_FILES['foto']['name'];
@@ -278,7 +278,7 @@
                             $harga = $this->db->escapeString($_POST['update-harga']);
                             $foto = $this->db->escapeString($_FILES['foto']['name']);
                             $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
-                            // echo $id.'|'.$nama.'|'.$harga.'|'.$foto;
+                            // echo 'f'.$id.'|'.$nama.'|'.$harga.'|'.$foto;
                         }  
                     }
                     else{
@@ -286,7 +286,7 @@
                         $nama = $this->db->escapeString($_POST['update-nama']);
                         $harga = $this->db->escapeString($_POST['update-harga']);
                         $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."' WHERE id = $id");
-                        // echo $id.'|'.$nama.'|'.$harga;
+                        // echo 'nf'.$id.'|'.$nama.'|'.$harga;
                     }
             }
         }
