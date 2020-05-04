@@ -21,7 +21,7 @@
                     <form method='POST' action=''>
                         <input type='hidden' name='idTopping' value = ".$value->getId().">
                         <input type='hidden' name='namaTopping' value = ".$value->getNama().">
-                        <input type='hidden' name='gambarTopping' value = ".$value->getGambar().">
+                        <input type='hidden' name='gambarTopping' value = '".$value->getGambar()."'>
                         <input type='hidden' name='hargaTopping' value = ".$value->getHarga().">
                         <input type='button' class='updateToppingBtn' value='Update'>
                         <input type='button' class='deleteToppingBtn' value='Delete'>
@@ -79,6 +79,7 @@
         <form method="post" action="topping/update">
             <table>
                 <input type="hidden" name="idTopping" value="">
+                <input type="hidden" name="foto" value="">
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>

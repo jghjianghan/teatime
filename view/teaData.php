@@ -87,6 +87,7 @@
         <form method="post" action="tea/update">
             <table>
                 <input type="hidden" name="idTeh" value="">
+                <input type="hidden" name="foto" value="">
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
