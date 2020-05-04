@@ -109,7 +109,7 @@
                 <tr>
                     <td><label for="fotoBaru">Foto Baru</label></td>
                     <td>:</td>
-                    <td><input type="file" id="fotoBaru" name="foto" required></td>
+                    <td><input type="file" id="fotoBaru" name="foto"></td>
                 </tr>
                 <tr>
                     <td></td>
