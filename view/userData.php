@@ -125,22 +125,22 @@
                 <tr>
                     <td><label for="edit-email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-email" name="email" value="" required></td>
+                    <td><input type="text" id="edit-email" name="edit-email" value="" required></td>
                 </tr>
                 <tr>
                     <td><label for="edit-nama">Nama Lengkap</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-nama" name="nama" value="" required></td>
+                    <td><input type="text" id="edit-nama" name="edit-nama" value="" required></td>
                 </tr>
                 <tr>
                     <td><label for="edit-ttl">Tanggal Lahir</label></td>
                     <td>:</td>
-                    <td><input type="date" id="edit-ttl" name="ttl" value="" required></td>
+                    <td><input type="date" id="edit-ttl" name="edit-ttl" value="" required></td>
                 </tr>
                 <tr>
                     <td><label for="edit-alamat">Alamat</label></td>
                     <td>:</td>
-                    <td><textarea id="edit-alamat" rows="4" cols="35" name="alamat" value="" required></textarea></td>
+                    <td><textarea id="edit-alamat" rows="4" cols="35" name="edit-alamat" value="" required></textarea></td>
                 </tr>
                 <tr>
                     <td></td>

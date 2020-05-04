@@ -6,7 +6,8 @@ td>form{
     margin-right: auto;
   }
   .adminData{
-        border: 2px solid gray;
+    border: 2px solid gray;
+    border-collapse: collapse;
   }
   #user-data{
     text-align: center;
