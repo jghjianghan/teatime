@@ -58,5 +58,19 @@ class MySQLDB{
 	public function closeConnection(){
 		$this->db_connection->close();
 	}
+
+	public function insertAndGetId($sql)
+	{
+		$this->openConnection();
+		$query_result = $this->db_connection->query($sql); //TRUE or FALSE
+		$result = null;
+		if ($query_result === TRUE){
+			$result = $this->db_connection->insert_id;
+		} else {
+			$result = false;
+		}
+		$this->closeConnection();
+		return $result;
+	}
 }
 ?>
