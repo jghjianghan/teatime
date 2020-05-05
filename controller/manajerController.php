@@ -129,6 +129,7 @@ class ManajerController
             "result2" => $result2,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
+            "scriptSrcList" => ['chart.js'],
             "title" => "Popular Hours Report"
         ]);
     }
@@ -178,7 +179,6 @@ class ManajerController
                 }
             }
         }
-        print_r($result);
 
         return $result;
     }
