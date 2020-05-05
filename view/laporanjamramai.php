@@ -1,4 +1,4 @@
-<h1 id="judul">Laporan Jam Ramai <?php echo $_POST['tanggal1']?> - <?php echo $_POST['tanggal2']?></h1>
+<h1 id="judul">Laporan Jam Ramai <?php echo $_POST['tanggal1'] ?> - <?php echo $_POST['tanggal2'] ?></h1>
 <table id="table-laporan">
     <tr>
         <th>Tanggal/Jam</th>
@@ -17,17 +17,31 @@
     <?php
     foreach ($result as $key => $value) {
         echo "<tr>";
-        echo "<td>" . $value->getWaktu(). "</td>";
-        for($i = 10;$i <= 20; $i++){
-            if(array_key_exists("$i",$value->jam)){
+        echo "<td>" . $value->getWaktu() . "</td>";
+        for ($i = 10; $i <= 20; $i++) {
+            if (array_key_exists("$i", $value->jam)) {
                 echo "<td>";
                 echo $value->jam["$i"]->getTotal();
                 echo "</td>";
-            }else{
+            } else {
                 echo "<td>-</td>";
             }
         }
         echo "</tr>";
     }
+    echo "<tr>";
+    echo "<td>Total</td>";
+    foreach ($result2 as $key => $value) {
+        for ($i = 10; $i <= 20; $i++) {
+            if (array_key_exists("$i", $value)) {
+                echo "<td>";
+                echo $value["$i"];
+                echo "</td>";
+            } else {
+                echo "<td>-</td>";
+            }
+        }
+    }
+    echo "</tr>";
     ?>
 </table>

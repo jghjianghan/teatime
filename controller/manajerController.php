@@ -1,9 +1,6 @@
 <?php
 require_once "controller/services/mysqlDB.php";
 require_once "controller/services/view.php";
-require_once "model/user.php";
-require_once "model/teh.php";
-require_once "model/topping.php";
 require_once "model/transaksi.php";
 require_once "model/pairtransaksi.php";
 require_once "model/pairtransaksi2.php";
@@ -34,8 +31,12 @@ class ManajerController
     public function viewHarian()
     {
         $result = $this->getLaporanHarian();
+        $result2 = $this->getTotalPesananHarian();
+        $result3 = $this->getTotalUangHarian();
         return View::createView('laporanharian.php', [
             "result" => $result,
+            "result2" => $result2,
+            "result3" => $result3,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Daily Report"
@@ -80,18 +81,59 @@ class ManajerController
         return $arrTransaksi;
     }
 
+    public function getTotalPesananHarian()
+    {
+        $arr = $this->getLaporanHarian();
+        $result = [];
+
+        foreach ($arr as $key => $value) {
+            foreach ($value->pesanan as $key2 => $value2) {
+                if (!array_key_exists($value2->getNamaTeh(), $result)) {
+                    $result[$value2->getNamaTeh()] = 0;
+                }
+                $result[$value2->getNamaTeh()] += $value2->getJumlahPesanan();
+                foreach ($value2->topping as $key3 => $value3) {
+                    if (!array_key_exists($value3->getNamaTopping(), $result)) {
+                        $result[$value3->getNamaTopping()] = 0;
+                    }
+                    $result[$value3->getNamaTopping()] += $value3->getJumlahTopping();
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    public function getTotalUangHarian()
+    {
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+
+        $query = "
+                SELECT sum(transaksi.totalHarga) as total
+                FROM transaksi
+                WHERE transaksi.waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
+            ";
+
+        $query_result = $this->db->executeSelectQuery($query);
+
+        return $query_result[0]['total'];
+    }
+
     public function viewJamRamai()
     {
-        $result = $this->getJamRamai();
+        $result = $this->getLaporanJamRamai();
+        $result2 = $this->getTotalJamRamai();
         return View::createView('laporanjamramai.php', [
             "result" => $result,
+            "result2" => $result2,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Popular Hours Report"
         ]);
     }
 
-    private function getJamRamai()
+    private function getLaporanJamRamai()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -118,13 +160,30 @@ class ManajerController
             }
             $arrHari[$value['hari']]->jam[$value['jam']]->addTrans($value['total']);
         }
-        
+
         return $arrHari;
+    }
+
+    public function getTotalJamRamai()
+    {
+        $arr = $this->getLaporanJamRamai();
+        $result = [];
+
+        foreach ($arr as $key => $value) {
+            for($i = 10;$i <= 20; $i++){
+                if(!array_key_exists("$i",$value->jam)){
+                    $result["$i"] = 0;
+                }
+                $result["$i"] += $value->jam["$i"]->getTotal();
+            }
+        }
+
+        return $result;
     }
 
     public function viewKasir()
     {
-        $result = $this->getKasir();
+        $result = $this->getLaporanKasir();
         return View::createView('laporankasir.php', [
             "result" => $result,
             "uplevel" => 1,
@@ -133,7 +192,7 @@ class ManajerController
         ]);
     }
 
-    private function getKasir()
+    private function getLaporanKasir()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -160,16 +219,18 @@ class ManajerController
 
     public function viewKeuangan()
     {
-        $result = $this->getKeuangan();
+        $result = $this->getLaporanKeuangan();
+        $result2 = $this->getTotalUang();
         return View::createView('laporankeuangan.php', [
             "result" => $result,
+            "result2" => $result2,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Incomes Report"
         ]);
     }
 
-    private function getKeuangan()
+    private function getLaporanKeuangan()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -193,18 +254,40 @@ class ManajerController
         return $result;
     }
 
+    public function getTotalUang()
+    {
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $tgl2 = $_POST['tanggal2'];
+        $exd2 = date_create($tgl2);
+
+        $query = "
+        SELECT sum(transaksi.totalHarga) as total
+        FROM transaksi
+        WHERE transaksi.waktu >= '" . date_format($exd, 'Y-m-d') . " 00:00:00' AND transaksi.waktu <= '" . date_format($exd2, 'Y-m-d') . " 23:59:59'
+            ";
+
+        $query_result = $this->db->executeSelectQuery($query);
+
+        return $query_result[0]['total'];
+    }
+
     public function viewRentang()
     {
-        $result = $this->getRentang();
+        $result = $this->getLaporanRentang();
+        $result2 = $this->getTotalPesananTehRentang();
+        $result3 = $this->getTotalPesananToppingRentang();
         return View::createView('laporanrentang.php', [
             "result" => $result,
+            "result2" => $result2,
+            "result3" => $result3,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Ranged Report"
         ]);
     }
 
-    private function getRentang()
+    private function getLaporanRentang()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -251,5 +334,39 @@ class ManajerController
         }
 
         return $arrHarian;
+    }
+
+    public function getTotalPesananTehRentang()
+    {
+        $arr = $this->getLaporanRentang();
+        $result = [];
+
+        foreach ($arr as $key => $value) {
+            foreach ($value->teh as $key2 => $value2) {
+                if (!array_key_exists($value2->getNamaTeh(), $result)) {
+                    $result[$value2->getNamaTeh()] = 0;
+                }
+                $result[$value2->getNamaTeh()] += $value2->getJumlahTeh();
+            }
+        }
+
+        return $result;
+    }
+
+    public function getTotalPesananToppingRentang()
+    {
+        $arr = $this->getLaporanRentang();
+        $result = [];
+
+        foreach ($arr as $key => $value) {
+            foreach ($value->topping as $key2 => $value2) {
+                if (!array_key_exists($value2->getNamaTopping(), $result)) {
+                    $result[$value2->getNamaTopping()] = 0;
+                }
+                $result[$value2->getNamaTopping()] += $value2->getJumlahTopping();
+            }
+        }
+
+        return $result;
     }
 }
