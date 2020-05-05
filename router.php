@@ -74,6 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new KasirController();
 			echo $ctrl->getConfig('cupSize');
 			break;
+		case $baseURL . '/kasir/orderNum':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo $ctrl->getOrderNumber();
+			break;
 		case $baseURL . '/manajer':
 			require_once "controller/manajerController.php";
 			$usCtrl = new manajerController();
@@ -177,6 +182,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 		case $baseURL . '/admin/admin':
 			header('Location: ../admin');
+			break;
+		case $baseURL . '/kasir/checkout':
+			require_once "controller/kasirController.php";
+			$ctrl = new KasirController();
+			echo $ctrl->addTransaction();
 			break;
 		case $baseURL . '/manajer/manajer':
 			switch ($_POST['select-laporan']) {

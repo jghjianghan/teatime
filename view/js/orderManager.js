@@ -18,9 +18,13 @@ class OrderManager{
         this.sugarSelect = this.orderAdditiveForm.querySelector("select[name='sugar']");
         this.iceSelect = this.orderAdditiveForm.querySelector("select[name='ice']");
         this.cupSelect = this.orderAdditiveForm.querySelector("select[name='cup-size']");
+
+        this.orderNumber = document.querySelector("#right > h2");
+        this.updateOrderNumber();
         
         this.checkout = this.checkout.bind(this);
         this.orderSubmitForm.addEventListener('submit', this.checkout);
+        this.postCheckoutReset = this.postCheckoutReset.bind(this);
 
         this.totalHarga = document.getElementById("total-harga");
         this.updateTotal = this.updateTotal.bind(this);
@@ -82,12 +86,18 @@ class OrderManager{
         }
     }
 
+    updateOrderNumber(){
+        fetch("kasir/orderNum").then(response=>response.text())
+        .then(text => this.orderNumber.textContent = "Order #" + text);
+    }
+
     updateTotal(){
         this.totalHarga.textContent = "Rp. " + this.orderList.getTotalHarga();
     }
 
     checkout(event){
         event.preventDefault();
+        event.currentTarget.querySelector("input[type='submit']").disabled = true;
         console.log('checkingout');
         let info = {
             orderList: this.orderList.createOrderListInfo(),
@@ -103,9 +113,19 @@ class OrderManager{
             body: JSON.stringify(info)
         };
         console.log(info);
-        fetch('kasir/checkout', init).then(response => response.text())
-        .then(text => console.log(text));
+        fetch('kasir/checkout', init).then(response => response.json())
+        .then(this.postCheckoutReset);
 
+    }
+    postCheckoutReset (json){
+        this.showModal(json.status, json.message);
+        if (json.status === "Success"){
+            this.updateOrderNumber();
+            this.orderSubmitForm.reset();
+            this.orderList.clear();
+            this.updateTotal();
+        }
+        this.orderSubmitForm.querySelector("input[type='submit']").disabled = false;
     }
 }
 new OrderManager();

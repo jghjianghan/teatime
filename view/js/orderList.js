@@ -40,4 +40,16 @@ class OrderList{
         }
         return info;
     }
+
+    clear(){
+        console.log(this.bill);
+        for (let x of this.orderList){
+            if(x != null){
+                this.bill.firstElementChild.remove();
+            }
+        }
+        this.counter = 0;
+        this.orderList = [];
+        console.log('cleared');
+    }
 }
