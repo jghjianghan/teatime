@@ -8,8 +8,12 @@
     foreach ($result as $key => $value) {
         echo "<tr>";
         echo "<td>" . $value->getWaktu(). "</td>";
-        echo "<td>" . $value->getJumlahHarga() . "</td>";
+        echo "<td>Rp. " . $value->getJumlahHarga() . "</td>";
         echo "</tr>";
     }
+    echo "<tr>";
+    echo "<td>Total</td>";
+    echo "<td>Rp. $result2</td>";
+    echo "</tr>";
     ?>
 </table>

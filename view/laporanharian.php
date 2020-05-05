@@ -16,7 +16,7 @@
         echo "<td>" . $value->getNamaKasir() . "</td>";
         echo "<td>" . $value->getNamaPemesan() . "</td>";
         echo "<td>";
-        foreach ($value->pesanan as $key => $value2) {
+        foreach ($value->pesanan as $key2 => $value2) {
             echo $value2->getJumlahPesanan();
             echo " ";
             echo $value2->getNamaTeh();
@@ -32,11 +32,23 @@
             echo $value2->getJumlahGula();
             echo " sugar<br>";
             echo $value2->getUkuranGelas();
-            echo"<br>";
+            echo"<br><br>";
         };
         echo "</td>";
-        echo "<td>" . $value->getTotalHarga() . "</td>";
+        echo "<td>Rp. " . $value->getTotalHarga() . "</td>";
         echo "</tr>";
+    };
+    echo "<tr>";
+    echo "<td> </td>";
+    echo "<td> </td>";
+    echo "<td> </td>";
+    echo "<td>Total</td>";
+    echo "<td>";
+    foreach($result2 as $key=>$value){
+        echo "$value $key<br>";
     }
+    echo "</td>";
+    echo "<td>Rp. $result3</td>";
+    echo "</tr>";
     ?>
 </table>

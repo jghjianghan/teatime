@@ -28,5 +28,18 @@
         echo "</td>";
         echo "</tr>";
     }
+    echo "<tr>";
+    echo "<td>Total</td>";
+    echo "<td>";
+    foreach ($result2 as $key=>$value){
+        echo "$value $key<br>";
+    }
+    echo "</td>";
+    echo "<td>";
+    foreach ($result3 as $key=>$value){
+        echo "$value $key<br>";
+    }
+    echo "</td>";
+    echo "</tr>";
     ?>
 </table>
