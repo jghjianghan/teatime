@@ -35,8 +35,15 @@
         echo "<td>$value</td>";
     }
     echo "</tr>";
-    ?>
+    echo "<tr>";
+    echo "<td>Rata-rata</td>";
+    foreach ($result3 as $key => $value) {
+        echo "<td>$value</td>";
+    }
+    echo "</tr>";
+    ?>   
 </table>
+
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
 var ctx = document.getElementById('myChart');

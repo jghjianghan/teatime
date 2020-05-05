@@ -124,9 +124,11 @@ class ManajerController
     {
         $result = $this->getLaporanJamRamai();
         $result2 = $this->getTotalJamRamai();
+        $result3 = $this->getRataJamRamai();
         return View::createView('laporanjamramai.php', [
             "result" => $result,
             "result2" => $result2,
+            "result3" => $result3,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "scriptSrcList" => ['chart.js'],
@@ -181,6 +183,24 @@ class ManajerController
         }
 
         return $result;
+    }
+
+    public function getRataJamRamai()
+    {
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $tgl2 = $_POST['tanggal2'];
+        $exd2 = date_create($tgl2);
+        $counter = date_diff($exd,$exd2);
+        $val = $counter->format("%a");
+
+        $arr = $this->getTotalJamRamai();
+
+        for($i = 10;$i <= 20; $i++){
+            $arr[$i] = $arr[$i]/$val;
+        }
+
+        return $arr;
     }
 
     public function viewKasir()
