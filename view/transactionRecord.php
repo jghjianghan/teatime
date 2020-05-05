@@ -32,7 +32,7 @@
         </form>
     </section>
     <section id='right'>
-        <h2>Order #400</h2>
+        <h2>Order List</h2>
         <div id='nota' class='box'>
             <hr>
             <div id='bill-total'>
@@ -42,7 +42,7 @@
         </div>
         <form id='nota-form'>
             Orderer's Name:
-            <input type="text" name="nama-pemesan" required>
+            <input type="text" name="nama-pemesan" required autocomplete="off">
             <input type="submit" value="Checkout">
         </form>
     </section>

@@ -19,6 +19,9 @@ class OrderManager{
         this.iceSelect = this.orderAdditiveForm.querySelector("select[name='ice']");
         this.cupSelect = this.orderAdditiveForm.querySelector("select[name='cup-size']");
         
+        this.checkout = this.checkout.bind(this);
+        this.orderSubmitForm.addEventListener('submit', this.checkout);
+
         this.totalHarga = document.getElementById("total-harga");
         this.updateTotal = this.updateTotal.bind(this);
         document.addEventListener('delete-order', this.updateTotal);
@@ -42,7 +45,6 @@ class OrderManager{
             this.showModal("Error","Tidak ada teh yang terpilih!");
         } else {
             teaChoice = teaChoice.createTeaInfo(this.cupSelect.value);
-            console.log(teaChoice);
             toppingChoice = this.toppingChooser.getSelected();
 
             this.orderList.addOrder(teaChoice, toppingChoice, this.sugarSelect.value, this.iceSelect.value, this.cupSelect.value);
@@ -81,9 +83,29 @@ class OrderManager{
     }
 
     updateTotal(){
-        console.log("updating");
         this.totalHarga.textContent = "Rp. " + this.orderList.getTotalHarga();
-        console.log(this.totalHarga);
+    }
+
+    checkout(event){
+        event.preventDefault();
+        console.log('checkingout');
+        let info = {
+            orderList: this.orderList.createOrderListInfo(),
+            namaPemesan: event.currentTarget.elements['nama-pemesan'].value,
+            totalHarga: this.orderList.getTotalHarga()
+        }
+
+        let init = {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(info)
+        };
+        console.log(info);
+        fetch('kasir/checkout', init).then(response => response.text())
+        .then(text => console.log(text));
+
     }
 }
 new OrderManager();

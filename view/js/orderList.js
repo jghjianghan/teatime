@@ -30,4 +30,14 @@ class OrderList{
         }
         return total;
     }
+
+    createOrderListInfo(){
+        let info = [];
+        for (let x of this.orderList){
+            if(x != null){
+                info.push(x.createPesananInfo());
+            }
+        }
+        return info;
+    }
 }

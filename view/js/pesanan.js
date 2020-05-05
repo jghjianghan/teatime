@@ -109,4 +109,25 @@ class Pesanan {
         let thisTable = event.currentTarget.parentElement.parentElement.parentElement;
         thisTable.remove();
     }
+
+    createPesananInfo(){
+        let info = {
+            idTeh: this.teh.id,
+            harga: this.getHargaPesanan(),
+            jumlah: this.jumlah,
+            gula: this.sugar,
+            es: this.ice,
+            ukuran: this.teh.size,
+            topping: []
+        }
+        if (this.toppingList != null){
+            for (let topping of this.toppingList){
+                info.topping.push({
+                    id: topping.id,
+                    jumlah: topping.jumlah
+                });
+            }
+        }
+        return info;
+    }
 }
