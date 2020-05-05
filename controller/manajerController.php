@@ -168,15 +168,17 @@ class ManajerController
     {
         $arr = $this->getLaporanJamRamai();
         $result = [];
-
+        for($i = 10;$i <= 20; $i++){
+            $result[$i] = 0;
+        }
         foreach ($arr as $key => $value) {
             for($i = 10;$i <= 20; $i++){
-                if(!array_key_exists("$i",$value->jam)){
-                    $result["$i"] = 0;
+                if(array_key_exists($i,$value->jam)){
+                    $result[$i] += $value->jam[$i]->getTotal();
                 }
-                $result["$i"] += $value->jam["$i"]->getTotal();
             }
         }
+        print_r($result);
 
         return $result;
     }
