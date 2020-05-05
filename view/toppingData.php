@@ -76,7 +76,7 @@
     <div>
         <span class='close'>&times;</span>
         <h2>Update Topping</h2>
-        <form method="post" action="topping/update">
+        <form method="post" action="topping/update" enctype="multipart/form-data">
             <table>
                 <input type="hidden" name="idTopping" value="">
                 <tr>
