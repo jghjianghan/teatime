@@ -177,7 +177,8 @@
                 && $_FILES['foto']['name']!=""){
                 if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                     $oldname = $_FILES['foto']['tmp_name'];
-                    $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$_FILES['foto']['name'];
+                    $filename = time()."_". basename($_FILES['foto']['name']);
+                    $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$filename;
                     move_uploaded_file($oldname, $newName);
                     $nama = $this->db->escapeString($_POST['nama']);
                     $reg = $this->db->escapeString($_POST['reg']);
@@ -205,10 +206,10 @@
                             $reg = $this->db->escapeString($_POST['update-reg']);
                             $large = $this->db->escapeString($_POST['update-large']);
                             $foto = $this->db->escapeString($_FILES['foto']['name']);
-                            $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
+                            $this->db->executeSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
                             // echo 'f '.$id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
-                            $slc = $this->db->executeNonSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                            unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc);
+                            $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
+                            unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
                         }
                     }
                     else{
@@ -228,8 +229,8 @@
         public function deleteTea(){
             if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
                 $id = $this->db->escapeString($_POST['idTeh']);
-                $slc = $this->db->executeNonSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc);
+                $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
+                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
                 $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
             }
         }
@@ -257,7 +258,8 @@
                 && $_FILES['foto']['name']!=""){
                     if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                         $oldname = $_FILES['foto']['tmp_name'];
-                        $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$_FILES['foto']['name'];
+                        $filename = time()."_". basename($_FILES['foto']['name']);
+                        $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$filename;
                         move_uploaded_file($oldname, $newName);
                         $nama = $this->db->escapeString($_POST['nama']);
                         $harga = $this->db->escapeString($_POST['harga']);
@@ -284,8 +286,8 @@
                             $foto = $this->db->escapeString($_FILES['foto']['name']);
                             $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
                             // echo 'f'.$id.'|'.$nama.'|'.$harga.'|'.$foto;
-                            $slc = $this->db->executeNonSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                            unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc);
+                            $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
+                            unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
                         }  
                     }
                     else{
@@ -301,8 +303,8 @@
         public function deleteTopping(){
             if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
                 $id = $this->db->escapeString($_POST['idTopping']);
-                $slc = $this->db->executeNonSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc);
+                $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
+                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
                 $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
             }
         }
