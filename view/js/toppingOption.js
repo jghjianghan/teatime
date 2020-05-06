@@ -47,4 +47,10 @@ class ToppingOption {
         this.numInput.value = "";
         this.thumbnail.classList.remove("clicked");
     }
+    hide(){
+        this.thumbnail.style.display = "none";
+    }
+    show(){
+        this.thumbnail.style.display = "inline-block";
+    }
 }

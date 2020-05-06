@@ -9,6 +9,11 @@ class TeaChooser {
 
         this.selectTea = this.selectTea.bind(this);
         document.addEventListener('tea-selected', this.selectTea);
+
+        //search
+        this.teaSearch = this.teaContainer.querySelector("#tea-form input[type='text']");
+        this.filterOption = this.filterOption.bind(this);
+        this.teaSearch.addEventListener('keyup', this.filterOption);
     }
 
     insertThumbnail(json){
@@ -43,6 +48,16 @@ class TeaChooser {
         if (this.selectedTea!=-1){
             this.teaList[this.selectedTea].toggleActivation();
             this.selectedTea = -1;
+        }
+    }
+
+    filterOption(event){
+        for (let i in this.teaList){
+            if (this.teaList[i] != null && this.teaList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
+                this.teaList[i].show();
+            } else {
+                this.teaList[i].hide();
+            }
         }
     }
 }

@@ -59,13 +59,13 @@ h2 {
     right: 3px;
     top: 5px;
 }
-form.search>button{
+.search>button{
     color: rgb(73, 73, 73);
     background-color: white;
     border: 0;
     cursor: pointer;
 }
-form.search>input[type='text']{
+.search>input[type='text']{
     border-radius: 1em;
     border: 1px solid gray;
     padding: 5px 6px;

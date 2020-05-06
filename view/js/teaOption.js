@@ -33,4 +33,10 @@ class TeaOption {
             size: size
         };
     }
+    hide(){
+        this.thumbnail.style.display = "none";
+    }
+    show(){
+        this.thumbnail.style.display = "inline-block";
+    }
 }

@@ -2,15 +2,15 @@
     <section id='left'>
         <h2>Tea</h2>
         <div class="box" id="tea-option">
-            <form class="search" id='tea-form'>
+            <div class="search" id='tea-form'>
                 <input type="text" name="query" id="" placeholder="Search..." size=10><button type='submit'><i class="fa fa-lg fa-search"></i></button>
-            </form>
+            </div>
         </div>
         <h2>Topping</h2>
         <div class="box" id="topping-option">
-            <form class="search" id='topping-form'>
+            <div class="search" id='topping-form'>
                 <input type="text" name="query" placeholder="Search..." size=10><button type='submit'><i class="fa fa-lg fa-search"></i></button>
-            </form>
+            </div>
         </div>
         <form id='pesanan-form'>
             <div>
@@ -55,3 +55,6 @@
         <button>OK</button>
     </div>
 </div>
+<script>
+    let variableGaje = "busuk";
+</script>

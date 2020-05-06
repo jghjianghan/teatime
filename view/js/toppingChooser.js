@@ -5,6 +5,11 @@ class ToppingChooser {
         this.insertThumbnail = this.insertThumbnail.bind(this);
         fetch('kasir/topping').then(response => response.json())
         .then(this.insertThumbnail);
+
+        //search
+        this.toppingSearch = this.toppingContainer.querySelector("#topping-form input[type='text']");
+        this.filterOption = this.filterOption.bind(this);
+        this.toppingSearch.addEventListener('keyup', this.filterOption);
     }
 
     insertThumbnail(json){
@@ -33,6 +38,15 @@ class ToppingChooser {
     resetAll (){
         for (let i in this.toppingList){
             this.toppingList[i].reset();
+        }
+    }
+    filterOption(event){
+        for (let i in this.toppingList){
+            if (this.toppingList[i] != null && this.toppingList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
+                this.toppingList[i].show();
+            } else {
+                this.toppingList[i].hide();
+            }
         }
     }
 }
