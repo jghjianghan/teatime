@@ -183,7 +183,7 @@
                     $nama = $this->db->escapeString($_POST['nama']);
                     $reg = $this->db->escapeString($_POST['reg']);
                     $large = $this->db->escapeString($_POST['large']);
-                    $foto = $this->db->escapeString($_FILES['foto']['name']);
+                    $foto = $this->db->escapeString($filename);
                     $this->db->executeNonSelectQuery("INSERT INTO teh(nama, hargaRegular,hargaLarge,gambar) VALUES('".$nama."','".$reg."','".$large."','".$foto."')");
                 }
                     
@@ -205,11 +205,12 @@
                             $nama = $this->db->escapeString($_POST['update-nama']);
                             $reg = $this->db->escapeString($_POST['update-reg']);
                             $large = $this->db->escapeString($_POST['update-large']);
-                            $foto = $this->db->escapeString($_FILES['foto']['name']);
-                            $this->db->executeSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
-                            // echo 'f '.$id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
+                            $foto = $this->db->escapeString($filename);
                             $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
                             unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
+                            $this->db->executeSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
+                            // echo 'f '.$id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
+                            
                         }
                     }
                     else{
@@ -263,7 +264,7 @@
                         move_uploaded_file($oldname, $newName);
                         $nama = $this->db->escapeString($_POST['nama']);
                         $harga = $this->db->escapeString($_POST['harga']);
-                        $foto = $this->db->escapeString($_FILES['foto']['name']);
+                        $foto = $this->db->escapeString($filename);
                         $this->db->executeNonSelectQuery("INSERT INTO topping(nama,harga,gambar) VALUES('".$nama."','".$harga."','".$foto."')");
                     }
                 }
@@ -283,11 +284,11 @@
                             $id = $this->db->escapeString($_POST['idTopping']);
                             $nama = $this->db->escapeString($_POST['update-nama']);
                             $harga = $this->db->escapeString($_POST['update-harga']);
-                            $foto = $this->db->escapeString($_FILES['foto']['name']);
-                            $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
-                            // echo 'f'.$id.'|'.$nama.'|'.$harga.'|'.$foto;
+                            $foto = $this->db->escapeString($filename);
                             $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
                             unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
+                            $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
+                            // echo 'f'.$id.'|'.$nama.'|'.$harga.'|'.$foto;
                         }  
                     }
                     else{
