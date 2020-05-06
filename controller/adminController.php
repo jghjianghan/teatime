@@ -177,7 +177,8 @@
                 && $_FILES['foto']['name']!=""){
                 if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                     $oldname = $_FILES['foto']['tmp_name'];
-                    $filename = time()."_". basename($_FILES['foto']['name']);
+                    $gambar = pathinfo($_FILES['foto']['name']);
+                    $filename = time().".". $gambar['extension'];
                     $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$filename;
                     move_uploaded_file($oldname, $newName);
                     $nama = $this->db->escapeString($_POST['nama']);
@@ -198,7 +199,8 @@
                     if(isset($_FILES['foto']['name'])&& $_FILES['foto']['name']!=""){
                         if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                             $oldname = $_FILES['foto']['tmp_name'];
-                            $filename = time()."_". basename($_FILES['foto']['name']);
+                            $gambar = pathinfo($_FILES['foto']['name']);
+                            $filename = time().".". $gambar['extension'];
                             $newName = dirname(__DIR__)."\\asset\\img\\tea\\".$filename;
                             move_uploaded_file($oldname, $newName);
                             $id = $this->db->escapeString($_POST['idTeh']);
@@ -259,7 +261,8 @@
                 && $_FILES['foto']['name']!=""){
                     if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                         $oldname = $_FILES['foto']['tmp_name'];
-                        $filename = time()."_". basename($_FILES['foto']['name']);
+                        $gambar = pathinfo($_FILES['foto']['name']);
+                        $filename = time().".". $gambar['extension'];
                         $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$filename;
                         move_uploaded_file($oldname, $newName);
                         $nama = $this->db->escapeString($_POST['nama']);
@@ -278,7 +281,8 @@
                     if(file_exists($_FILES['foto']['tmp_name']) || is_uploaded_file($_FILES['foto']['tmp_name'])){
                         if(getimagesize($_FILES['foto']['tmp_name'])!=0){
                             $oldname = $_FILES['foto']['tmp_name'];
-                            $filename = time()."_". basename($_FILES['foto']['name']);
+                            $gambar = pathinfo($_FILES['foto']['name']);
+                            $filename = time().".". $gambar['extension'];
                             $newName = dirname(__DIR__)."\\asset\\img\\topping\\".$filename;
                             move_uploaded_file($oldname, $newName);
                             $id = $this->db->escapeString($_POST['idTopping']);
@@ -304,8 +308,8 @@
         public function deleteTopping(){
             if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
                 $id = $this->db->escapeString($_POST['idTopping']);
-                $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
+                $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
+                unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
                 $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
             }
         }
