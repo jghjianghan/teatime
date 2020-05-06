@@ -49,15 +49,24 @@ class TeaChooser {
             this.teaList[this.selectedTea].toggleActivation();
             this.selectedTea = -1;
         }
+        this.teaSearch.value = "";
+        for (let i in this.teaList){
+            if (this.teaList[i] != null ){
+                this.teaList[i].show();
+            }
+        }
     }
 
     filterOption(event){
         for (let i in this.teaList){
-            if (this.teaList[i] != null && this.teaList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
-                this.teaList[i].show();
-            } else {
-                this.teaList[i].hide();
-            }
+            if (this.teaList[i] != null){
+                if (this.teaList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
+                    this.teaList[i].show();
+                }
+                else {
+                    this.teaList[i].hide();
+                }
+            } 
         }
     }
 }

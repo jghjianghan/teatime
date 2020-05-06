@@ -39,13 +39,23 @@ class ToppingChooser {
         for (let i in this.toppingList){
             this.toppingList[i].reset();
         }
+
+        this.toppingSearch.value = "";
+        for (let i in this.toppingList){
+            if (this.toppingList[i] != null ){
+                this.toppingList[i].show();
+            }
+        }
     }
     filterOption(event){
         for (let i in this.toppingList){
-            if (this.toppingList[i] != null && this.toppingList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
-                this.toppingList[i].show();
-            } else {
-                this.toppingList[i].hide();
+            if (this.toppingList[i] != null){
+                if (this.toppingList[i].nama.toLowerCase().includes(event.currentTarget.value.toLowerCase())){
+                    this.toppingList[i].show();
+                }
+                else {
+                    this.toppingList[i].hide();
+                }
             }
         }
     }
