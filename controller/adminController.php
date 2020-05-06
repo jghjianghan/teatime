@@ -233,8 +233,13 @@
             if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
                 $id = $this->db->escapeString($_POST['idTeh']);
                 $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
-                unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
-                $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
+                $result = $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
+                if($result){
+                    unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
+                }
+                else{
+
+                }
             }
         }
 
@@ -309,8 +314,13 @@
             if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
                 $id = $this->db->escapeString($_POST['idTopping']);
                 $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
-                unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
-                $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
+                $result = $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
+                if($result){
+                    unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
+                }
+                else{
+                    
+                }
             }
         }
 
