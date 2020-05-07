@@ -92,14 +92,21 @@
                     $nama = $this->db->escapeString($post['nama']);
                     $ttl = $this->db->escapeString($post['ttl']);
                     $alamat = $this->db->escapeString($post['alamat']);
-                    $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
-                        VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
-                    ");
-                    $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
-                    return json_encode($response);
-                }else{
+                    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+                    if(filter_var($email, FILTER_VALIDATE_EMAIL){
+                        $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
+                            VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
+                        ");
+                        $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                        return json_encode($response);
+                    }
+                    else{
+                        return json_encode(array("status"=>"error"));
+                    }
+            }
+            else{
                     return json_encode(array("status"=>"error"));
-                }
+            }
         }
 
         public function editUser(){
@@ -115,8 +122,11 @@
                     $nama = $this->db->escapeString($_POST['edit-nama']);
                     $ttl = $this->db->escapeString($_POST['edit-ttl']);
                     $alamat = $this->db->escapeString($_POST['edit-alamat']);
+                    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+                    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                        $this->db->executeNonSelectQuery("UPDATE $posisi SET email = '".$email."', nama = '".$nama."', tanggalLahir = '".$ttl."', alamat = '".$alamat."' WHERE id = $id");
+                    }
                     // echo $id.'|'.$posisi.'|'.$email.'|'.$nama.'|'.$ttl.'|'.$alamat;
-                    $this->db->executeNonSelectQuery("UPDATE $posisi SET email = '".$email."', nama = '".$nama."', tanggalLahir = '".$ttl."', alamat = '".$alamat."' WHERE id = $id");
                 }
         }
 

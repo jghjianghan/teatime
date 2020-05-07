@@ -69,7 +69,7 @@
                 <tr>
                     <td><label for="email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="email" name="email" required></td>
+                    <td><input type="email" id="email" name="email" required></td>
                 </tr>
                 <tr>
                     <td><label for="nama">Nama Lengkap</label></td>
@@ -116,7 +116,7 @@
                 <tr>
                     <td><label for="edit-email">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-email" name="edit-email" value="<?php ?>" required></td>
+                    <td><input type="email" id="edit-email" name="edit-email" value="<?php ?>" required></td>
                 </tr>
                 <tr>
                     <td><label for="edit-nama">Nama Lengkap</label></td>
