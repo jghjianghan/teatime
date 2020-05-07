@@ -131,7 +131,7 @@ class ManajerController
             "result3" => $result3,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
-            "scriptSrcList" => ['chart.js'],
+            "scriptSrcList" => ['chart.js','jamChart.js'],
             "title" => "Popular Hours Report"
         ]);
     }
@@ -199,7 +199,7 @@ class ManajerController
         for($i = 10;$i <= 20; $i++){
             $arr[$i] = $arr[$i]/$val;
         }
-
+        echo json_encode($arr);
         return $arr;
     }
 
