@@ -2,87 +2,132 @@
 date_default_timezone_set("Asia/Bangkok");
 $url = $_SERVER['REDIRECT_URL'];
 $baseURL = '/teatime';
-// echo $url;
+// echo $_SERVER['REQUEST_URI'];
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	switch ($url) {
 		case $baseURL . '/index':
-			//require_once "controller/bukuController.php";
-			//echo $bkCtrl->viewBuku();
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewHome();
+			break;
+		case $baseURL . '/login':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewLogin();
+			break;
+		case $baseURL . '/logout':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->logout();
 			break;
 		case $baseURL . '/admin':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->view();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->view();
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/admin/user':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewUser();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewUser();
+			} else {
+				header('Location: login');
+			}
 			break;
-			// case $baseURL . '/admin/add-user':
-			// 	require_once "controller/adminController.php";
-			// 	$usCtrl = new AdminController();
-			// 	echo $usCtrl->viewAddUser();
-			// 	break;
 		case $baseURL . '/admin/tea':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewTea();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewTea();
+			} else {
+				header('Location: login');
+			}
 			break;
-			// case $baseURL . '/admin/add-tea':
-			// 	require_once "controller/adminController.php";
-			// 	$usCtrl = new AdminController();
-			// 	echo $usCtrl->viewAddTea();
-			// 	break;
 		case $baseURL . '/admin/topping':
-			require_once "controller/adminController.php";
-			$usCtrl = new AdminController();
-			echo $usCtrl->viewTopping();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+				require_once "controller/adminController.php";
+				$usCtrl = new AdminController();
+				echo $usCtrl->viewTopping();
+			} else {
+				header('Location: login');
+			}
 			break;
-			// case $baseURL . '/admin/add-topping':
-			// 	require_once "controller/adminController.php";
-			// 	$usCtrl = new AdminController();
-			// 	echo $usCtrl->viewAddTopping();
-			// 	break;
 		case $baseURL . '/kasir':
-			require_once "controller/kasirController.php";
-			$usCtrl = new KasirController();
-			echo $usCtrl->viewTPS();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$usCtrl = new KasirController();
+				echo $usCtrl->viewTPS();
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/tea':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo json_encode($ctrl->getAllTea());
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo json_encode($ctrl->getAllTea());
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/topping':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo json_encode($ctrl->getAllTopping());
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo json_encode($ctrl->getAllTopping());
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/sugar':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo $ctrl->getConfig('sugarLevel');
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo $ctrl->getConfig('sugarLevel');
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/ice':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo $ctrl->getConfig('ice');
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo $ctrl->getConfig('ice');
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/cup':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo $ctrl->getConfig('cupSize');
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo $ctrl->getConfig('cupSize');
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/kasir/orderNum':
-			require_once "controller/kasirController.php";
-			$ctrl = new KasirController();
-			echo $ctrl->getOrderNumber();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+				require_once "controller/kasirController.php";
+				$ctrl = new KasirController();
+				echo $ctrl->getOrderNumber();
+			} else {
+				header('Location: login');
+			}
 			break;
 		case $baseURL . '/manajer':
-			require_once "controller/manajerController.php";
-			$usCtrl = new manajerController();
-			echo $usCtrl->view();
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
+				require_once "controller/manajerController.php";
+				$usCtrl = new manajerController();
+				echo $usCtrl->view();
+			} else {
+				header('Location: login');
+			}
 			break;
 			// case $baseURL . '/manajer/detail-trans-harian':
 			// 	require_once "controller/manajerController.php";
@@ -115,11 +160,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	}
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($url) {
-		case $baseURL . '/index/add':
-			//require_once "controller/bukuController.php";
-			//$bkCtrl = new BukuController();
-			//$bkCtrl->addBook();
-			//header('Location: ../index');
+		case $baseURL . '/login':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->validateLogin();
 			break;
 		case $baseURL . '/admin/user/add':
 			require_once "controller/adminController.php";

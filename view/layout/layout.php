@@ -21,22 +21,23 @@
 <body>
 	<div id='header-bar'>
 		<div id='full-logo'>
-			<img src='<?php echo $upPrefix;?>asset/logo/logoHeader.svg' />
-			<p id='companyName'>Teatime</p>
+			<a href="<?php echo $upPrefix; ?>index">
+				<img src='<?php echo $upPrefix;?>asset/logo/logoHeader.svg' />
+				<p id='companyName'>Teatime</p>
+			</a>
 		</div>
 		<div id='page-title'>
 			<h2><?php echo $title; ?></h2>
 		</div>
 		<div id='account-info'>
 			<?php
-				if (isset($username)){
-					echo $username;
+				if (isset($_SESSION['role'])){
+					echo "<span>". $_SESSION['name'] ."</span>";
+					echo "<span><a href='".$upPrefix."changePassword'><button>Change<br>Password</button></a></span>";
+					echo "<span><a href='".$upPrefix."logout'>Logout</a></span>";
 				}
-				if (isset($changePassword)){
-					echo $changePassword;
-				}
-				if (isset($logOption)){
-					echo $logOption;
+				else {
+					echo "<span><a href='".$upPrefix."login'>Login</a></span>";
 				}
 			?>
 		</div>

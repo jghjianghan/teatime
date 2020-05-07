@@ -36,18 +36,29 @@ html {
 #header-bar h2 {
   margin: 0;
 }
-#header-bar>div{
+#header-bar>div:first-child, #header-bar>div:last-child{
   flex: 1;
 }
-#full-logo {
+
+#full-logo a {
+  text-decoration: none;
   display: flex;
+  color: black;
 }
+
+
 #page-title{
   text-align: center;
 }
-#account-info{
+#account-info {
   text-align: right;
 }
+
+#account-info span{
+  vertical-align: middle;
+  padding-right: 20px;
+}
+
 #companyName {
   font-family: teatimeFont;
   font-size: 2em;
