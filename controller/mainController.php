@@ -88,4 +88,11 @@
             session_destroy();
             header("location: index");
         }
+        public function viewChangePass()
+        {
+            return View::createView("changePassword.php",[
+                'title' => "",
+                'styleSrcList' => ['changePassword.css']
+            ]);
+        }
     }
