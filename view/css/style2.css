@@ -36,7 +36,6 @@ td {
     padding: 10px;
 }
 
-/* canvas {
-    width: 400px;
-    height: 400px;
-} */
+canvas {
+    margin: auto;
+}

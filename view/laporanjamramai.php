@@ -42,11 +42,9 @@
     }
     echo "</tr>";
     ?>   
-</table><br><hr>
-
-<div id='chart-container' width="100" height="100">
-    <canvas id="line-chart" style="width: 512px; height: 256px"></canvas>
-</div>
+</table><br>
+<h2>Grafik Rata-Rata Transaksi Per Jam <?php echo $_POST['tanggal1'] ?> - <?php echo $_POST['tanggal2'] ?></h2>
+<canvas id="line-chart" style="width: 512px; height: 256px"></canvas>
 
 <script>
     let meanData = JSON.parse('<?php echo json_encode($result3); ?>');
