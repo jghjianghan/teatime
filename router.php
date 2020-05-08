@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->logout();
 			break;
 		case $baseURL . '/admin':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 				require_once "controller/adminController.php";
 				$usCtrl = new AdminController();
 				echo $usCtrl->view();
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/admin/user':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 				require_once "controller/adminController.php";
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewUser();
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/admin/tea':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 				require_once "controller/adminController.php";
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewTea();
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/admin/topping':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 				require_once "controller/adminController.php";
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewTopping();
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$usCtrl = new KasirController();
 				echo $usCtrl->viewTPS();
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/tea':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo json_encode($ctrl->getAllTea());
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/topping':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo json_encode($ctrl->getAllTopping());
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/sugar':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('sugarLevel');
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/ice':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('ice');
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/cup':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('cupSize');
@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/kasir/orderNum':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'kasir') {
 				require_once "controller/kasirController.php";
 				$ctrl = new KasirController();
 				echo $ctrl->getOrderNumber();
@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/manajer':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager') {
 				require_once "controller/manajerController.php";
 				$usCtrl = new manajerController();
 				echo $usCtrl->view();
@@ -223,6 +223,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					require_once "controller/manajerController.php";
 					$usCtrl = new manajerController();
 					echo $usCtrl->viewHarian();
+					require_once "controller/pdfController.php";
+					$test = new pdfController();
+					$test->getPdfHarian();
 					break;
 				case "trans-rentang":
 					require_once "controller/manajerController.php";
@@ -233,6 +236,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					require_once "controller/manajerController.php";
 					$usCtrl = new manajerController();
 					echo $usCtrl->viewKeuangan();
+					require_once "controller/pdfController.php";
+					$test = new pdfController();
+					$test->getPdfKeuangan();
 					break;
 				case "performa-kasir":
 					require_once "controller/manajerController.php";
