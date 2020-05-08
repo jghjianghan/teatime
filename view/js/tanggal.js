@@ -6,6 +6,8 @@ class tanggal {
 
         this.showTanggal = this.showTanggal.bind(this);
         this.page.addEventListener('change', this.showTanggal);
+        window.addEventListener('load', this.showTanggal);
+        this.showTanggal();
     }
 
     showTanggal() {
