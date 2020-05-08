@@ -9,6 +9,11 @@ table{
   border: 2px solid gray;
   border-collapse: collapse;
 }
+.adminData img {
+  object-fit: contain;
+  width: 120px;
+  height: 110px;
+}
 #user-data{
   text-align: center;
 }
