@@ -1,6 +1,6 @@
 <div id="tea-data">
     <p>Data Tea</p>
-    <button id="addTea">Add Tea</button>
+    <button id="addTea"><span>Add Tea</span></button>
     <table class="adminData">
         <tr>
             <th class='adminData'>No</th>
