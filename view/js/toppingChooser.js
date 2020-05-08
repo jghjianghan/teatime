@@ -8,8 +8,10 @@ class ToppingChooser {
 
         //search
         this.toppingSearch = this.toppingContainer.querySelector("#topping-form input[type='text']");
+        this.clearFilter = this.clearFilter.bind(this);
+        this.toppingSearch.nextSibling.addEventListener('click', this.clearFilter);
         this.filterOption = this.filterOption.bind(this);
-        this.toppingSearch.addEventListener('keyup', this.filterOption);
+        this.toppingSearch.addEventListener('input', this.filterOption);
     }
 
     insertThumbnail(json){
@@ -39,7 +41,9 @@ class ToppingChooser {
         for (let i in this.toppingList){
             this.toppingList[i].reset();
         }
-
+        this.clearFilter();
+    }
+    clearFilter(){
         this.toppingSearch.value = "";
         for (let i in this.toppingList){
             if (this.toppingList[i] != null ){

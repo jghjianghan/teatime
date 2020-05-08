@@ -3,13 +3,13 @@
         <h2>Tea</h2>
         <div class="box" id="tea-option">
             <div class="search" id='tea-form'>
-                <input type="text" name="query" id="" placeholder="Search..." size=10><button type='submit'><i class="fa fa-lg fa-search"></i></button>
+                <input type="text" name="query" id="" placeholder="Search..." size=10><button><i class="fa fa-times"></i></button>
             </div>
         </div>
         <h2>Topping</h2>
         <div class="box" id="topping-option">
             <div class="search" id='topping-form'>
-                <input type="text" name="query" placeholder="Search..." size=10><button type='submit'><i class="fa fa-lg fa-search"></i></button>
+                <input type="text" name="query" placeholder="Search..." size=10><button><i class="fa fa-times"></i></button>
             </div>
         </div>
         <form id='pesanan-form'>
