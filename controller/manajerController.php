@@ -214,7 +214,7 @@ class ManajerController
         ]);
     }
 
-    private function getLaporanKasir()
+    public function getLaporanKasir()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -309,7 +309,7 @@ class ManajerController
         ]);
     }
 
-    private function getLaporanRentang()
+    public function getLaporanRentang()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
