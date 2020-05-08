@@ -129,31 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				header('Location: login');
 			}
 			break;
-			// case $baseURL . '/manajer/detail-trans-harian':
-			// 	require_once "controller/manajerController.php";
-			// 	$usCtrl = new manajerController();
-			// 	echo $usCtrl->viewHarian();
-			// 	break;
-			// case $baseURL . '/manajer/trans-rentang':
-			// 	require_once "controller/manajerController.php";
-			// 	$usCtrl = new manajerController();
-			// 	echo $usCtrl->viewRentang();
-			// 	break;
-			// case $baseURL . '/manajer/uang-masuk':
-			// 	require_once "controller/manajerController.php";
-			// 	$usCtrl = new manajerController();
-			// 	echo $usCtrl->viewKeuangan();
-			// 	break;
-			// case $baseURL . '/manajer/performa-kasir':
-			// 	require_once "controller/manajerController.php";
-			// 	$usCtrl = new manajerController();
-			// 	echo $usCtrl->viewKasir();
-			// 	break;
-			// case $baseURL . '/manajer/jam-ramai':
-			// 	require_once "controller/manajerController.php";
-			// 	$usCtrl = new manajerController();
-			// 	echo $usCtrl->viewJamRamai();
-			// 	break;
 		default:
 			echo '404 Not Found';
 			break;
