@@ -12,14 +12,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->viewHome();
 			break;
 		case $baseURL . '/login':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
-			echo $ctrl->viewLogin();
+			if (isset($_SESSION['role'])){
+				if ($_SESSION['role'] == 'admin'){
+					header('location: admin');
+				} else if ($_SESSION['role']=='kasir'){
+					header('location: kasir');
+				} else {
+					header('location: manajer');
+				}
+			} else {
+				require_once "controller/mainController.php";
+				$ctrl = new MainController();
+				echo $ctrl->viewLogin();
+			}
 			break;
 		case $baseURL . '/logout':
 			require_once "controller/mainController.php";
 			$ctrl = new MainController();
 			echo $ctrl->logout();
+			break;
+		case $baseURL . '/forbidden':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewForbidden();
 			break;
 		case $baseURL . '/admin':
 			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
@@ -27,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new AdminController();
 				echo $usCtrl->view();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/admin/user':
@@ -36,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewUser();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/admin/tea':
@@ -45,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewTea();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/admin/topping':
@@ -54,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new AdminController();
 				echo $usCtrl->viewTopping();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir':
@@ -63,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new KasirController();
 				echo $usCtrl->viewTPS();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/tea':
@@ -72,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo json_encode($ctrl->getAllTea());
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/topping':
@@ -81,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo json_encode($ctrl->getAllTopping());
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/sugar':
@@ -90,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('sugarLevel');
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/ice':
@@ -99,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('ice');
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/cup':
@@ -108,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo $ctrl->getConfig('cupSize');
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/kasir/orderNum':
@@ -117,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$ctrl = new KasirController();
 				echo $ctrl->getOrderNumber();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/manajer':
@@ -126,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new manajerController();
 				echo $usCtrl->view();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		case $baseURL . '/manajer/rataJamRamai':
@@ -135,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				$usCtrl = new manajerController();
 				echo $usCtrl->getRataJamRamai();
 			} else {
-				header('Location: login');
+				header('Location: forbidden');
 			}
 			break;
 		

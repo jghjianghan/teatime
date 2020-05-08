@@ -13,7 +13,13 @@
         {
             return View::createView("home.php",[
                 'title' => "Home"
-            ]);;
+            ]);
+        }
+        public function viewForbidden()
+        {
+            return View::createView("forbidden.php",[
+                'title' => "Access Denied"
+            ]);
         }
         public function viewLogin($message = "")
         {
