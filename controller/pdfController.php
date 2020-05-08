@@ -1,5 +1,6 @@
 <?php
 require("library/fpdf/fpdf.php");
+require("library/fpdf/fpdfMCT/mc_table.php") ;
 require_once "controller/manajerController.php";
 
 class pdfController
@@ -12,7 +13,7 @@ class pdfController
 
     public function getPdfHarian()
     {
-        $pdf = new FPDF('L', 'mm', array(500, 650));
+        $pdf = new PDF_MC_Table('L', 'mm', array(500, 650));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 12);
 
