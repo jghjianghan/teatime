@@ -32,7 +32,7 @@
 		<div id='account-info'>
 			<?php
 				if (isset($_SESSION['role'])){
-					echo "<span>". $_SESSION['name'] ."</span>";
+					echo "<span data-id='".$_SESSION['id']."'>". $_SESSION['name'] ."</span>";
 					echo "<span><a href='".$upPrefix."changePassword'><button>Change<br>Password</button></a></span>";
 					echo "<span><a href='".$upPrefix."logout'>Logout</a></span>";
 				}

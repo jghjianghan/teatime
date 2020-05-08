@@ -5,6 +5,8 @@ class OrderManager{
         this.orderAdditiveForm = document.getElementById('pesanan-form');
         this.orderList = new OrderList();
         this.orderSubmitForm = document.getElementById('nota-form');
+
+        this.idKasir = document.querySelector('#account-info span:first-child').dataset.id;
         
         this.modal = document.getElementById('modal-kasir');
         this.modal.querySelector("button").addEventListener("click", function(event){
@@ -102,7 +104,8 @@ class OrderManager{
         let info = {
             orderList: this.orderList.createOrderListInfo(),
             namaPemesan: event.currentTarget.elements['nama-pemesan'].value,
-            totalHarga: this.orderList.getTotalHarga()
+            totalHarga: this.orderList.getTotalHarga(),
+            idKasir: this.idKasir
         }
 
         let init = {

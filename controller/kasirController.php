@@ -68,11 +68,13 @@ class KasirController
         if(
             isset($post['totalHarga']) && $post['totalHarga']!="" && 
             isset($post['namaPemesan']) && $post['namaPemesan']!="" && 
+            isset($post['idKasir']) && $post['idKasir']!="" && 
             isset($post['orderList'])
         ){
             $totalHarga = $this->db->escapeString($post['totalHarga']);
             $namaPemesan = $this->db->escapeString($post['namaPemesan']);
-            $idKasir = 1;
+            $idKasir = $this->db->escapeString($post['idKasir']);
+            
             $kode = date("Ymd").$this->getOrderNumber();
             
             $query = "
