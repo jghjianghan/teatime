@@ -19,10 +19,15 @@
         echo "</td>";
         echo "<td>";
         foreach ($value->topping as $key => $value2) {
-            echo $value2->getJumlahTopping();
-            echo " ";
-            echo $value2->getNamaTopping();
-            echo "<br>";
+            if ($value2->getJumlahTopping() && $value2->getNamaTopping()) {
+                echo $value2->getJumlahTopping();
+                echo " ";
+                echo $value2->getNamaTopping();
+                echo "<br>";
+            }
+            else{
+                echo "-";
+            }
         }
         echo "<br>";
         echo "</td>";
@@ -31,13 +36,15 @@
     echo "<tr>";
     echo "<td>Total</td>";
     echo "<td>";
-    foreach ($result2 as $key=>$value){
+    foreach ($result2 as $key => $value) {
         echo "$value $key<br>";
     }
     echo "</td>";
     echo "<td>";
-    foreach ($result3 as $key=>$value){
-        echo "$value $key<br>";
+    foreach ($result3 as $key => $value) {
+        if ($value !== 0) {
+            echo "$value $key<br>";
+        }
     }
     echo "</td>";
     echo "</tr>";

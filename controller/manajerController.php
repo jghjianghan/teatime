@@ -51,9 +51,9 @@ class ManajerController
         $query = "
                 SELECT pesanan.id, pesanan.jumlah, topping.nama as namaTopping, topping_pesanan.jumlahTopping, transaksi.kode, transaksi.waktu, transaksi.namaPemesan, transaksi.totalHarga, kasir.nama as namaKasir, 
                        pesanan.banyakGula, pesanan.banyakEs, pesanan.ukuran, teh.nama as namaTeh
-                FROM topping_pesanan INNER JOIN pesanan
+                FROM topping_pesanan RIGHT OUTER JOIN pesanan
                 ON topping_pesanan.fkPesanan = pesanan.id
-                INNER JOIN topping
+                LEFT OUTER JOIN topping
                 ON topping_pesanan.fkTopping = topping.id
                 INNER JOIN transaksi
                 ON pesanan.fkKode = transaksi.kode
@@ -339,9 +339,9 @@ class ManajerController
 
         $query = "
             SELECT date(transaksi.waktu) as hari, topping.nama as topping, sum(topping_pesanan.jumlahTopping) as jumlahTopping
-            FROM topping_pesanan INNER JOIN pesanan
+            FROM topping_pesanan RIGHT OUTER JOIN pesanan
                 ON topping_pesanan.fkPesanan = pesanan.id
-                INNER JOIN topping
+                LEFT OUTER JOIN topping
                 ON topping_pesanan.fkTopping = topping.id
                 INNER JOIN transaksi
                 ON pesanan.fkKode = transaksi.kode           
