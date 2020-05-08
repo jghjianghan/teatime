@@ -199,7 +199,6 @@ class ManajerController
         for($i = 10;$i <= 20; $i++){
             $arr[$i] = $arr[$i]/$val;
         }
-        echo json_encode($arr);
         return $arr;
     }
 
