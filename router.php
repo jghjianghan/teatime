@@ -129,6 +129,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				header('Location: login');
 			}
 			break;
+		case $baseURL . '/manajer/rataJamRamai':
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
+				require_once "controller/manajerController.php";
+				$usCtrl = new manajerController();
+				echo $usCtrl->getRataJamRamai();
+			} else {
+				header('Location: login');
+			}
+			break;
+		
 		default:
 			echo '404 Not Found';
 			break;

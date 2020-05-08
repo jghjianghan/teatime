@@ -44,4 +44,10 @@
     ?>   
 </table><br><hr>
 
-<canvas id="line-chart"></canvas>
+<div id='chart-container' width="100" height="100">
+    <canvas id="line-chart" style="width: 512px; height: 256px"></canvas>
+</div>
+
+<script>
+    let meanData = JSON.parse('<?php echo json_encode($result3); ?>');
+</script>

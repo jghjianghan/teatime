@@ -192,7 +192,7 @@ class ManajerController
         $tgl2 = $_POST['tanggal2'];
         $exd2 = date_create($tgl2);
         $counter = date_diff($exd,$exd2);
-        $val = $counter->format("%a");
+        $val = $counter->format("%a") + 1;
 
         $arr = $this->getTotalJamRamai();
 
