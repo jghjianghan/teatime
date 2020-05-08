@@ -69,12 +69,12 @@
                 <tr>
                     <td><label for="email">Email</label></td>
                     <td>:</td>
-                    <td><input type="email" id="email" name="email" required></td>
+                    <td><input type="email" id="email" name="email" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="nama">Nama Lengkap</label></td>
                     <td>:</td>
-                    <td><input type="text" id="nama" name="nama" required></td>
+                    <td><input type="text" id="nama" name="nama" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="ttl">Tanggal Lahir</label></td>
@@ -116,12 +116,12 @@
                 <tr>
                     <td><label for="edit-email">Email</label></td>
                     <td>:</td>
-                    <td><input type="email" id="edit-email" name="edit-email" value="<?php ?>" required></td>
+                    <td><input type="email" id="edit-email" name="edit-email" value="<?php ?>" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="edit-nama">Nama Lengkap</label></td>
                     <td>:</td>
-                    <td><input type="text" id="edit-nama" name="edit-nama" value="" required></td>
+                    <td><input type="text" id="edit-nama" name="edit-nama" value="" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="edit-ttl">Tanggal Lahir</label></td>

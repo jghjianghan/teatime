@@ -53,7 +53,7 @@
                 <tr>
                     <td><label for="nama">Nama</label></td>
                     <td>:</td>
-                    <td><input type="text" id="nama" name="nama" required></td>
+                    <td><input type="text" id="nama" name="nama" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="reg">Harga Regular</label></td>
@@ -90,7 +90,7 @@
                 <tr>
                     <td><label for="namaBaru">Nama</label></td>
                     <td>:</td>
-                    <td><input type="text" id="namaBaru" name="update-nama" required></td>
+                    <td><input type="text" id="namaBaru" name="update-nama" required autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td><label for="regBaru">Harga Regular</label></td>
