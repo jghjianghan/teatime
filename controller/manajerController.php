@@ -43,7 +43,7 @@ class ManajerController
         ]);
     }
 
-    private function getLaporanHarian()
+    public function getLaporanHarian()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
@@ -252,7 +252,7 @@ class ManajerController
         ]);
     }
 
-    private function getLaporanKeuangan()
+    public function getLaporanKeuangan()
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
