@@ -21,18 +21,20 @@
             echo " ";
             echo $value2->getNamaTeh();
             echo "<br>";
-            foreach($value2->topping as $key2 => $value3){
-                echo $value3->getJumlahTopping();
-                echo " ";
-                echo $value3->getNamaTopping();
-                echo "<br>";
+            foreach ($value2->topping as $key2 => $value3) {
+                if ($value3->getJumlahTopping() && $value3->getNamaTopping()) {
+                    echo $value3->getJumlahTopping();
+                    echo " ";
+                    echo $value3->getNamaTopping();
+                    echo "<br>";
+                }
             }
             echo $value2->getJumlahEs();
             echo " ice<br>";
             echo $value2->getJumlahGula();
             echo " sugar<br>";
             echo $value2->getUkuranGelas();
-            echo"<br><br>";
+            echo "<br><br>";
         };
         echo "</td>";
         echo "<td>Rp. " . $value->getTotalHarga() . "</td>";
@@ -44,8 +46,10 @@
     echo "<td> </td>";
     echo "<td>Total</td>";
     echo "<td>";
-    foreach($result2 as $key=>$value){
-        echo "$value $key<br>";
+    foreach ($result2 as $key => $value) {
+        if ($value !== 0) {
+            echo "$value $key<br>";
+        }
     }
     echo "</td>";
     echo "<td>Rp. $result3</td>";
