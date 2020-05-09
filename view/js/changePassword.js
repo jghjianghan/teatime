@@ -11,15 +11,20 @@ class ChangePasswordForm {
         this.form.addEventListener('submit', this.validate);
 
         this.modal = document.querySelector('.modal');
+        this.refresh = this.refresh.bind(this);
+        this.button = this.form.querySelector('button');
         this.modal.querySelector('button').addEventListener('click', this.refresh);
         this.showModal = this.showModal.bind(this);
 
         let userInfo = document.querySelector('#account-info span:first-child');
         this.userId = userInfo.dataset.id;
         this.userRole = userInfo.dataset.role;
+
+        this.success = false;
     }
     validate(event){
         event.preventDefault();
+        this.button.disabled = true;
         if (this.newPass.value.length < 8 || this.oldPass.value.length < 8){
             this.showError("Password should be at least 8 characters long");
         } else if (this.newPass.value !== this.confirmPass.value){
@@ -48,6 +53,7 @@ class ChangePasswordForm {
         this.modal.style.display = 'block';
         this.modal.querySelector('h2').textContent = json.status;
         this.modal.querySelector('span').textContent = json.message;
+        this.success = (json.status == 'Success');
     }
 
     showError(text){
@@ -57,7 +63,11 @@ class ChangePasswordForm {
 
     refresh(){
         console.log('refresh');
-        location.reload();
+        if (this.success){
+            window.location.href = 'login';
+        } else {
+            location.reload();
+        }
     }
 }
 new ChangePasswordForm();

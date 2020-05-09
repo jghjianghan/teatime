@@ -112,7 +112,13 @@
                 if ($oriPass===$post['oldPass']){
                     if ($post['newPass'] === $post['confirmPass']){
                         $newPass = $this->db->escapeString($post['newPass']);
-                        $success = $this->db->executeNonSelectQuery("UPDATE $role SET password = '$newPass' WHERE id = $id");
+
+                        $success = null;
+                        if ($role == "admin"){
+                            $success = $this->db->executeNonSelectQuery("UPDATE $role SET password = '$newPass' WHERE id = $id");
+                        } else {
+                            $success = $this->db->executeNonSelectQuery("UPDATE $role SET password = '$newPass', isFirstTime = 0 WHERE id = $id");
+                        }
                         if ($success){
                             return json_encode(array("status"=>"Success", "message"=>"Password is successfully changed"));
                         } else {
