@@ -34,7 +34,21 @@ function showGraph() {
         type: 'line',
         data: chartdata,
         options: {
-            responsive: false
+            responsive: false,
+            scales: {
+                yAxes: [{
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Frekuensi Transaksi'
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Rentang Jam'
+                    }
+                }]
+            }
         }
     });
 }

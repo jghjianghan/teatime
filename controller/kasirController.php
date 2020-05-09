@@ -12,14 +12,21 @@ class KasirController
     }
     public function viewTPS()
     {
+        $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM kasir WHERE id = ".$_SESSION['id'])[0]['isFirstTime'];
+        $scriptList = [
+            "teaOption.js", "teaChooser.js",
+            "toppingOption.js", "toppingChooser.js",
+            "pesanan.js", "orderList.js", "orderManager.js"
+        ];
+        $styleList = ["kasir.css", "font-awesome.css"];
+        if ($isFirstTime == 1){
+            $scriptList[] = "changePassNotif.js";
+            $styleList[] = "changePassNotif.css";
+        }
         return View::createView('transactionRecord.php', [
             "title" => "Transaction Record",
-            "styleSrcList" => ["kasir.css", "font-awesome.css"],
-            "scriptSrcList" => [
-                "teaOption.js", "teaChooser.js",
-                "toppingOption.js", "toppingChooser.js",
-                "pesanan.js", "orderList.js", "orderManager.js"
-            ]
+            "styleSrcList" => $styleList,
+            "scriptSrcList" => $scriptList
         ]);
     }
 

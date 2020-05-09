@@ -117,11 +117,10 @@ class pop{
             if (json.status==='success'){
                 res.querySelector('#response-message').textContent = 'Success!';
                 resContainer.textContent = "Password untuk " + json.name + ": " + json.password;
-                let br = document.createElement('br');
-                resContainer.appendChild(br);
-                let text = document.createTextNode("Berikan passwordnya ada user");
+                resContainer.appendChild(document.createElement('br'));
+                let text = document.createTextNode("Berikan passwordnya pada user");
                 resContainer.appendChild(text);
-                resContainer.appendChild(br);
+                resContainer.appendChild(document.createElement('br'));
             } else {
                 res.querySelector('#response-message').textContent = 'An Error Has Occured!';
                 resContainer.textContent = json.message;
