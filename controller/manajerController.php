@@ -23,7 +23,7 @@ class ManajerController
     {
         $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM manager WHERE id = ".$_SESSION['id'])[0]['isFirstTime'];
         $styleList = ["style.css"];
-        $scriptList = ["tanggal.css"];
+        $scriptList = ["tanggal.js"];
         if ($isFirstTime == 1){
             $scriptList[] = "changePassNotif.js";
             $styleList[] = "changePassNotif.css";
