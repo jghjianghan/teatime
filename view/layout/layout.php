@@ -19,6 +19,9 @@
 </head>
 
 <body>
+	<div id='wrapper'>
+
+	
 	<div id='header-bar'>
 		<div id='full-logo'>
 			<a href="<?php echo $upPrefix; ?>index">
@@ -44,7 +47,7 @@
 	</div>
 
 	<?php echo $content; ?>
-
+	</div>
 	<footer>
 		<hr>
 		<?php
