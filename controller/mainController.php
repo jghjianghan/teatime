@@ -12,7 +12,9 @@
         public function viewHome()
         {
             return View::createView("home.php",[
-                'title' => "Home"
+                'title' => "Welcome",
+                'styleSrcList' => ['profile.css', "font-awesome.css"],
+                'scriptSrcList' => ['profile.js']
             ]);
         }
         public function viewForbidden()
@@ -92,7 +94,7 @@
         {
             return View::createView("changePassword.php",[
                 'title' => "",
-                'styleSrcList' => ['changePassword.css'],
+                'styleSrcList' => ['changePassword.css', ],
                 'scriptSrcList' => ['changePassword.js'],
                 'error' => $error
             ]);

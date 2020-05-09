@@ -1,0 +1,134 @@
+main {
+    margin: 0 120px;
+}
+
+.mySlides {
+    display: none;
+}
+
+.slideshow-container img{
+    vertical-align: middle;
+    object-fit: contain;
+    height: 350px;
+}
+
+.slideshow-container {
+    /* height: 600px; */
+    width: auto;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+.text {
+    color: #ffffff;
+    text-shadow: 0 0 4px #000000;
+    font-size: 15px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+  
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+.row {
+    display: flex;
+}
+
+.row img {
+    display: block;
+    max-height: 250px;
+    object-fit: cover;
+}
+.row>div.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#products{
+    justify-content: space-evenly;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.circle{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 20px;
+    color: white;
+}
+
+.circle:first-child{
+    background-color: rgb(100, 0, 146);
+}
+.circle:nth-child(2){
+    background-color: rgb(146, 71, 0);
+}
+.circle:last-child{
+    background-color: rgb(29, 146, 0);
+}
+
+#products::before{
+    margin: auto;
+}
+
+.description:first-of-type{
+    margin-left: 50px;
+}
+.description:last-of-type{
+    margin-right: 50px;
+}
+
+h2:last-of-type {
+    margin: 0;
+}
+
+.description i {
+    padding-right: 10px;
+}
