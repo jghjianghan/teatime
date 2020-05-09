@@ -19,8 +19,3 @@ input[type='email'], input[type='password']{
     font-size: 11px;
     color: red;
 }
-
-span.brsmall{
-    display: block;
-    margin-bottom: 0em;
-}
