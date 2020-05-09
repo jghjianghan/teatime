@@ -47,7 +47,16 @@
 
 	<footer>
 		<hr>
-		Copyleft &copy;<?php echo date('Y');?> Teatime
+		<?php
+			if (isset($_SESSION['role'])){
+				$posisi = $_SESSION['role'];
+				if ($posisi == 'manager'){
+					$posisi = "manajer";
+				}
+				echo "<a href='".$upPrefix.$posisi."'>Home</a> | ";
+			}
+		?>
+		<a href="<?php echo $upPrefix; ?>index">About Teatime</a>
 	</footer>
 </body>
 
