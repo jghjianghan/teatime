@@ -30,7 +30,7 @@
     <br><br><br>
     <div class='row'>
         <img src="asset/img/foto2.jpg">
-        <div class='description'>
+        <div class='description' id='desc1'>
             <h2>Your Daily Relief</h2>
             <p>
                 Teatime was founded sometime ago somewhere by someone. Our focus is on quality, taste, and experience. We strive to bring smile and happiness to all bubble tea lovers, regardless of space and time.
@@ -46,7 +46,7 @@
     </div>
     <br><br><br>
     <div class="row">
-        <div class="description">
+        <div class="description" id='desc2'>
             <h2>We surprise and we enchant</h2>
             
             <p>

@@ -1,5 +1,5 @@
 main {
-    margin: 0 120px;
+    margin: 0 140px;
 }
 
 .mySlides {
@@ -118,17 +118,17 @@ main {
     margin: auto;
 }
 
-.description:first-of-type{
-    margin-left: 50px;
-}
-.description:last-of-type{
-    margin-right: 50px;
+.description i {
+    padding-right: 10px;
 }
 
-h2:last-of-type {
+.row:last-child h2 {
     margin: 0;
 }
 
-.description i {
-    padding-right: 10px;
+#desc1 {
+    margin-left: 50px;
+}
+#desc2 {
+    margin-right: 50px;
 }
