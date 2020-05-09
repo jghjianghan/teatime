@@ -174,6 +174,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new MainController();
 			echo $ctrl->validateLogin();
 			break;
+		case $baseURL . '/changePassword':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->changePassword();
+			break;
 		case $baseURL . '/admin/user/add':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();

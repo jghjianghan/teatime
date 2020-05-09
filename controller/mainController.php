@@ -88,11 +88,44 @@
             session_destroy();
             header("location: index");
         }
-        public function viewChangePass()
+        public function viewChangePass($error="")
         {
             return View::createView("changePassword.php",[
                 'title' => "",
-                'styleSrcList' => ['changePassword.css']
+                'styleSrcList' => ['changePassword.css'],
+                'scriptSrcList' => ['changePassword.js'],
+                'error' => $error
             ]);
+        }
+        public function changePassword()
+        {
+            $post = json_decode(file_get_contents('php://input'), true);
+            if (isset($post['userId']) && $post['userId']!=""
+                && isset($post['role']) && $post['role']!=""
+                && isset($post['oldPass']) && $post['oldPass']!=""
+                && isset($post['newPass']) && $post['newPass']!=""
+                && isset($post['confirmPass']) && $post['confirmPass']!=""
+            ){
+                $id = $this->db->escapeString($post['userId']);
+                $role = $this->db->escapeString($post['role']);
+                $oriPass = $this->db->executeSelectQuery("SELECT password FROM $role WHERE id=$id")[0]['password'];
+                if ($oriPass===$post['oldPass']){
+                    if ($post['newPass'] === $post['confirmPass']){
+                        $newPass = $this->db->escapeString($post['newPass']);
+                        $success = $this->db->executeNonSelectQuery("UPDATE $role SET password = '$newPass' WHERE id = $id");
+                        if ($success){
+                            return json_encode(array("status"=>"Success", "message"=>"Password is successfully changed"));
+                        } else {
+                            return json_encode(array("status"=>"Error", "message"=>"Failed to update password"));
+                        }
+                    } else {
+                        return json_encode(array("status"=>"Error", "message"=>"New passsword is different with confirmed password"));
+                    }
+                } else {
+                    return json_encode(array("status"=>"Error", "message"=>"Old password is wrong"));
+                }
+            } else {
+                return json_encode(array("status"=>"Error", "message"=>"Incomplete input"));
+            }
         }
     }

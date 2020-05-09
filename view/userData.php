@@ -99,8 +99,7 @@
 <div class="modal" id="modal-pass">
     <div>
         <h2><span id='response-message'></span></h2>
-        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
-        Berikan passwordnya pada user<br>
+        <span id="response-content"></span>
         <button class="close-ok">Ok</button>
     </div>
 </div>
