@@ -94,17 +94,33 @@
                     $alamat = $this->db->escapeString($post['alamat']);
                     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
                     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-                        $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
-                            VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
-                        ");
-                        $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                        $userTableArr = array ("admin", "manager", "kasir");
+                        $used = false;
+                        for ($i = 0; $i<3 && !$used; $i++){
+                            if ($this->db->executeSelectQuery("SELECT id FROM ".$userTableArr[$i]." WHERE email = '$email'")!=null){
+                                $used = true;
+                            }
+                        }
+                        $response = null;
+                        if ($used){
+                            $response = array("status"=>"error", "message"=>"The email has been used by another account");
+                        } else {
+                            $success = $this->db->executeNonSelectQuery("INSERT INTO $posisi(email, password, nama, tanggalLahir, alamat)
+                                VALUES('".$email."','".$rnd_pass."','".$nama."','".$ttl."','".$alamat."')
+                            ");
+                            if ($success){
+                                $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
+                            } else {
+                                $response = array("status"=>"error", "message"=>"This account can't be created");
+                            }
+                        }
                         return json_encode($response);
                     }
                     else{
-                        return json_encode(array("status"=>"error"));
+                        return json_encode(array("status"=>"error", "message"=>"Email is invalid"));
                     }
                 }else{
-                    return json_encode(array("status"=>"error"));
+                    return json_encode(array("status"=>"error", "message"=>"Not enough information to create account"));
                 }
         }
 
