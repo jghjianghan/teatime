@@ -1,6 +1,6 @@
 <?php
 require("library/fpdf/fpdf.php");
-require("library/fpdf/fpdfMCT/mc_table.php") ;
+require("library/fpdf/fpdfMCT/mc_table.php");
 require_once "controller/manajerController.php";
 
 class pdfController
@@ -13,7 +13,7 @@ class pdfController
 
     public function getPdfHarian()
     {
-        $pdf = new PDF_MC_Table('L', 'mm', array(500, 650));
+        $pdf = new PDF_MC_Table();
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 12);
 
@@ -31,10 +31,10 @@ class pdfController
 
         $result = $this->mc->getLaporanHarian();
 
-        $pdf->Cell(30, 10, 'Kode', 1);
+        $pdf->Cell(30,10, 'Kode', 1);
         $pdf->Cell(30, 10, 'Waktu', 1);
         $pdf->Cell(30, 10, 'Nama Kasir', 1);
-        $pdf->Cell(30, 10, 'Nama Pemesan', 1);
+        $pdf->Cell(35, 10, 'Nama Pemesan', 1);
         $pdf->Cell(30, 10, 'Pesanan', 1);
         $pdf->Cell(30, 10, 'Harga total', 1);
         $pdf->Ln();
@@ -42,7 +42,7 @@ class pdfController
             $pdf->Cell(30, 10, $value->getKode(), 1);
             $pdf->Cell(30, 10, $value->getWaktu(), 1);
             $pdf->Cell(30, 10, $value->getNamaKasir(), 1);
-            $pdf->Cell(30, 10, $value->getNamaPemesan(), 1);
+            $pdf->Cell(35, 10, $value->getNamaPemesan(), 1);
             $kalimat = "";
             foreach ($value->pesanan as $key2 => $value2) {
                 $kalimat .= $value2->getJumlahPesanan() . " " . $value2->getNamaTeh() . "\n";

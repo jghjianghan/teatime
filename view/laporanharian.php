@@ -56,3 +56,8 @@
     echo "</tr>";
     ?>
 </table>
+
+<form method="post" action="manajer/pdfharian">
+    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
+    <button type="submit" value="Export to PDF">
+</form>
