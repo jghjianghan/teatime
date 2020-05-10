@@ -1,4 +1,15 @@
-<h1 id="judul">Laporan Jam Ramai <?php echo $_POST['tanggal1'] ?> - <?php echo $_POST['tanggal2'] ?></h1>
+<h1 id="judul">Laporan Jam Ramai <?php $tgl = date_create($_POST['tanggal1']);
+                                    $tgl = date_format($tgl, 'd-m-Y');
+                                    echo $tgl; ?> - <?php $tgl2 = date_create($_POST['tanggal2']);
+                                                    $tgl2 = date_format($tgl2, 'd-m-Y');
+                                                    echo $tgl2; ?></h1>
+                                                    
+<form method="post" action="manajer/pdfjamramai">
+    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
+    <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
+    <button type="submit">Export to PDF</button>
+</form>
+
 <table id="table-laporan">
     <tr class='first-row'>
         <th>Tanggal/Jam</th>
@@ -41,7 +52,7 @@
         echo "<td>$value</td>";
     }
     echo "</tr>";
-    ?>   
+    ?>
 </table><br>
 <h2>Grafik Rata-Rata Transaksi Per Jam <?php echo $_POST['tanggal1'] ?> - <?php echo $_POST['tanggal2'] ?></h2>
 <canvas id="line-chart" style="min-width: 600px; height: 400px"></canvas>
@@ -49,9 +60,3 @@
 <script>
     let meanData = JSON.parse('<?php echo json_encode($result3); ?>');
 </script>
-
-<form method="post" action="manajer/pdfjamramai">
-    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
-    <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
-    <button type="submit">Export to PDF</button>
-</form>
