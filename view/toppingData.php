@@ -35,11 +35,11 @@
     </table>
 </div>
 
-<div class="home-button">
+<!-- <div class="home-button">
     <form method="POST" action="admin">
         <input type="submit" value="Home">
     </form>
-</div>
+</div> -->
 
 <div class="modal" id="modal-addTopping">
     <div>
