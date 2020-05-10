@@ -24,12 +24,12 @@ class ChangePasswordForm {
     }
     validate(event){
         event.preventDefault();
-        this.button.disabled = true;
         if (this.newPass.value.length < 8 || this.oldPass.value.length < 8){
             this.showError("Password should be at least 8 characters long");
         } else if (this.newPass.value !== this.confirmPass.value){
             this.showError("New password and confirmed password is different");
         } else {
+            this.button.disabled = true;
             let input = {
                 userId: this.userId,
                 role: this.userRole,
