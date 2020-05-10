@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->viewHome();
 			break;
 		case $baseURL . '/login':
-			if (isset($_SESSION['role'])){
-				if ($_SESSION['role'] == 'admin'){
+			if (isset($_SESSION['role'])) {
+				if ($_SESSION['role'] == 'admin') {
 					header('location: admin');
-				} else if ($_SESSION['role']=='kasir'){
+				} else if ($_SESSION['role'] == 'kasir') {
 					header('location: kasir');
 				} else {
 					header('location: manajer');
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 		case $baseURL . '/manajer/rataJamRamai':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
+			if (isset($_SESSION['role']) && $_SESSION['role'] == 'manager') {
 				require_once "controller/manajerController.php";
 				$usCtrl = new manajerController();
 				echo $usCtrl->getRataJamRamai();
@@ -162,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				header('Location: forbidden');
 			}
 			break;
-		
+
 		default:
 			echo '404 Not Found';
 			break;
@@ -252,9 +252,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					require_once "controller/manajerController.php";
 					$usCtrl = new manajerController();
 					echo $usCtrl->viewHarian();
-					require_once "controller/pdfController.php";
-					$test = new pdfController();
-					$test->getPdfHarian();
+					// require_once "controller/pdfController.php";
+					// $test = new pdfController();
+					// $test->getPdfHarian();
 					break;
 				case "trans-rentang":
 					require_once "controller/manajerController.php";
@@ -265,9 +265,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					require_once "controller/manajerController.php";
 					$usCtrl = new manajerController();
 					echo $usCtrl->viewKeuangan();
-					require_once "controller/pdfController.php";
-					$test = new pdfController();
-					$test->getPdfKeuangan();
+					// require_once "controller/pdfController.php";
+					// $test = new pdfController();
+					// $test->getPdfKeuangan();
 					break;
 				case "performa-kasir":
 					require_once "controller/manajerController.php";
@@ -283,6 +283,32 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					echo '404 Not Found';
 					break;
 			}
+			break;
+		case $baseURL . '/manajer/manajer/pdfharian':
+			echo $url;
+			require_once "controller/pdfController.php";
+			$pdfCtrl = new pdfController();
+			echo $pdfCtrl->getPdfHarian();
+			break;
+		case $baseURL . '/manajer/manajer/pdfrentang':
+			require_once "controller/pdfController.php";
+			$pdfCtrl = new pdfController();
+			echo $pdfCtrl->getPdfRentang();
+			break;
+		case $baseURL . '/manajer/manajer/pdfkeuangan':
+			require_once "controller/pdfController.php";
+			$pdfCtrl = new pdfController();
+			echo $pdfCtrl->getPdfKeuangan();
+			break;
+		case $baseURL . '/manajer/manajer/pdfjamramai':
+			require_once "controller/pdfController.php";
+			$pdfCtrl = new pdfController();
+			echo $pdfCtrl->getPdfJamRamai();
+			break;
+		case $baseURL . '/manajer/manajer/pdfkasir':
+			require_once "controller/pdfController.php";
+			$pdfCtrl = new pdfController();
+			echo $pdfCtrl->getPdfKasir();
 			break;
 		default:
 			echo '404 Not Found';

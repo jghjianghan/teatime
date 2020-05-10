@@ -49,3 +49,9 @@
 <script>
     let meanData = JSON.parse('<?php echo json_encode($result3); ?>');
 </script>
+
+<form method="post" action="manajer/pdfjamramai">
+    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
+    <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
+    <button type="submit" value="Export to PDF">
+</form>

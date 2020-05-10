@@ -17,3 +17,7 @@
     echo "</tr>";
     ?>
 </table>
+
+<form method="post" action="manajer/pdfkeuangan">
+    <button type="submit" value="Export to PDF">
+</form>
