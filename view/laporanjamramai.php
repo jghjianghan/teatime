@@ -1,6 +1,6 @@
 <h1 id="judul">Laporan Jam Ramai <?php echo $_POST['tanggal1'] ?> - <?php echo $_POST['tanggal2'] ?></h1>
 <table id="table-laporan">
-    <tr>
+    <tr class='first-row'>
         <th>Tanggal/Jam</th>
         <th>10:00-11:00</th>
         <th>11:00-12:00</th>

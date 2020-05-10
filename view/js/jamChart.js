@@ -21,7 +21,7 @@ function showGraph() {
             "20.00 - 21.00"
         ],
         datasets: [{
-            label: 'Mean per hour',
+            label: 'Rata-Rata Frekuensi Transaksi Per Jam',
             borderColor: "#3e95cd",
             fill: false,
             data: mean
@@ -39,7 +39,7 @@ function showGraph() {
                 yAxes: [{
                     scaleLabel:{
                         display: true,
-                        labelString: 'Frekuensi Transaksi'
+                        labelString: 'Rata-Rata Frekuensi Transaksi'
                     }
                 }],
                 xAxes: [{
