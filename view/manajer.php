@@ -14,7 +14,7 @@
             </li><br>
             <li>
                 Pilih tanggal:
-                <input type="date" name="tanggal1" required> <span class="hide" id='tanggalKedua'>- <input type="date" name="tanggal2" required></span>
+                <input type="date" name="tanggal1" required> <span class="hide" id='tanggalKedua'>- <input type="date" name="tanggal2"></span>
             </li><br>
             <li>
                 <input type="submit" id="submit" value="Lihat Laporan">
