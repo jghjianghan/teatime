@@ -21,7 +21,20 @@
 <body>
 	<div id='header-bar'>
 		<div id='full-logo'>
-			<a href="<?php echo $upPrefix; ?>index">
+			<a href="
+			<?php
+				echo $upPrefix;
+				if (isset($_SESSION['role'])) {
+					$posisi = $_SESSION['role'];
+					if ($posisi == 'manager') {
+						$posisi = "manajer";
+					}
+					echo "$posisi";
+				} else {
+					echo "index";
+				}
+			?>
+			">
 				<img src='<?php echo $upPrefix; ?>asset/logo/logoHeader.svg' />
 				<p id='companyName'>Teatime</p>
 			</a>
