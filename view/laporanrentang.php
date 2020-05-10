@@ -34,15 +34,18 @@
         }
         echo "</td>";
         echo "<td>";
+        $exist = false;
         foreach ($value->topping as $key => $value2) {
             if ($value2->getJumlahTopping() && $value2->getNamaTopping()) {
+                $exist = true;
                 echo $value2->getJumlahTopping();
                 echo " ";
                 echo $value2->getNamaTopping();
                 echo "<br>";
-            } else {
-                echo "-<br>";
             }
+        }
+        if (!$exist){
+            echo "-<br>";
         }
         echo "<br>";
         echo "</td>";
