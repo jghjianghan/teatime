@@ -4,7 +4,7 @@
                                                         $tgl2 = date_format($tgl2, 'd-m-Y');
                                                         echo $tgl2; ?></h1>
                                                         
-<form method="post" action="manajer/pdfkasir">
+<form method="post" action="manajer/pdfkasir" target='_blank'>
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
     <button type="submit">Export to PDF</button>

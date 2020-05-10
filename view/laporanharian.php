@@ -3,7 +3,7 @@
                                         echo $tgl;
                                         ?></h1>
                                         
-<form method="post" action="manajer/pdfharian">
+<form method="post" action="manajer/pdfharian" target='_blank'>
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <button type="submit">Export to PDF</button>
 </form>
