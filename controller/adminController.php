@@ -185,7 +185,7 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Tea Data",
-                "styleSrcList"=>['admin.css'],
+                "styleSrcList"=>['admin.css', "font-awesome.css"],
                 "scriptSrcList"=> ["teaManager.js"]
                 ]);
         }
@@ -275,7 +275,7 @@
                 "result"=>$result,
                 "uplevel"=>1,
                 "title"=>"Topping Data",
-                "styleSrcList"=>['admin.css'],
+                "styleSrcList"=>['admin.css', "font-awesome.css"],
                 "scriptSrcList"=> ["toppingManager.js"]
                 ]);
         }

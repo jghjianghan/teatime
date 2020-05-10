@@ -6,10 +6,10 @@ table{
   margin-right: auto;
 }
 .adminData{
-  border: 2px solid gray;
+  border: 0.5px solid #a7a7a7;
   border-collapse: collapse;
 }
-.adminData img {
+.adminData img, .modal img {
   object-fit: contain;
   width: 120px;
   height: 110px;
@@ -91,5 +91,17 @@ td.adminData, th.adminData {
 }
 
 tr.adminData:not(.first-row):hover{
-  background-color: rgba(241, 241, 241, 0.836);
+  background-color: rgba(248, 248, 248);
+}
+
+.first-row {
+  background-color: rgb(255, 145, 0);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.first-row th {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

@@ -2,7 +2,7 @@
     <p>Data Topping</p>
     <button id="addTopping" class="addBtn"><span>Add Topping</span></button>
     <table class="adminData">
-        <tr>
+        <tr class='first-row'>
             <th class='adminData'>No</th>
             <th class='adminData'>Foto</th>
             <th class='adminData'>Nama</th>
@@ -23,8 +23,8 @@
                         <input type='hidden' name='namaTopping' value = ".$value->getNama().">
                         <input type='hidden' name='gambarTopping' value = '".$value->getGambar()."'>
                         <input type='hidden' name='hargaTopping' value = ".$value->getHarga().">
-                        <input type='button' class='updateToppingBtn' value='Update'>
-                        <input type='button' class='deleteToppingBtn' value='Delete'>
+                        <button type='button' class='updateToppingBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
+                        <button type='button' class='deleteToppingBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
                     </form>
                     </td>
                 ";

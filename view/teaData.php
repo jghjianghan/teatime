@@ -2,7 +2,7 @@
     <p>Data Tea</p>
     <button id="addTea" class="addBtn"><span>Add Tea</span></button>
     <table class="adminData">
-        <tr>
+        <tr class='first-row'>
             <th class='adminData'>No</th>
             <th class='adminData'>Foto</th>
             <th class='adminData'>Nama</th>
@@ -26,8 +26,8 @@
                         <input type='hidden' name='gambarTeh' value = '".$value->getGambar()."'>
                         <input type='hidden' name='regular' value = '".$value->getHargaRegular()."'>
                         <input type='hidden' name='large' value = '".$value->getHargaLarge()."'>
-                        <input type='button' class='updateTeaBtn' value='Update'>
-                        <input type='button' class='deleteTeaBtn' value='Delete'>
+                        <button type='button' class='updateTeaBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
+                        <button type='button' class='deleteTeaBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
                     </form>
                     </td>
                 ";
