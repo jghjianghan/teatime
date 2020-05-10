@@ -31,6 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new MainController();
 			echo $ctrl->logout();
 			break;
+		case $baseURL . '/changePassword':
+			if (!isset($_SESSION['role'])){
+				header('location: login');
+			} else {
+				require_once "controller/mainController.php";
+				$ctrl = new MainController();
+				echo $ctrl->viewChangePass();
+			}
+			break;
 		case $baseURL . '/forbidden':
 			require_once "controller/mainController.php";
 			$ctrl = new MainController();
@@ -164,6 +173,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/mainController.php";
 			$ctrl = new MainController();
 			echo $ctrl->validateLogin();
+			break;
+		case $baseURL . '/changePassword':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->changePassword();
 			break;
 		case $baseURL . '/admin/user/add':
 			require_once "controller/adminController.php";

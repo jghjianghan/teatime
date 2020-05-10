@@ -55,6 +55,3 @@
         <button>OK</button>
     </div>
 </div>
-<script>
-    let variableGaje = "busuk";
-</script>

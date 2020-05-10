@@ -6,10 +6,10 @@ table{
   margin-right: auto;
 }
 .adminData{
-  border: 2px solid gray;
+  border: 0.5px solid #a7a7a7;
   border-collapse: collapse;
 }
-.adminData img {
+.adminData img, .modal img {
   object-fit: contain;
   width: 120px;
   height: 110px;
@@ -31,116 +31,16 @@ table{
 }
 .admin-button>a:hover{
   background-color: #FFE4C4;
+  transition: all 0.5s;
+  border-radius: 4px;
 }
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0, 0.4);
-}
-.modal>div{ /*modal content*/
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border:1px solid #888;
-  width: 400px;
-  border-radius: 15px;
-}
-.modal h2{
-  margin-top: 0;
-}
-.close {
-  float: right;
-  color: #aaaaaa;
-  font-size: 28px;
-  font-weight: bold;
-}
-.close:hover, .close:focus {
-  color: #000;
-  cursor: pointer;
-}
+
 textarea{
   resize: none;
 }
-#addUser {
+.addBtn {
   border-radius: 4px;
-  background-color: #FFE4C4;
-  border: none;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  /* font-size: 10px; */
-  /* padding: 20px; */
-  width: 100px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-#addUser span{
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-#addUser span:after{
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-#addUser:hover span {
-  padding-right: 25px;
-}
-#addUser:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-#addTea {
-  border-radius: 4px;
-  background-color: #FFE4C4;
-  border: none;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  /* font-size: 10px; */
-  /* padding: 20px; */
-  width: 100px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-#addTea span{
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-#addTea span:after{
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-#addTea:hover span {
-  padding-right: 25px;
-}
-#addTea:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-#addTopping {
-  border-radius: 4px;
-  background-color: #FFE4C4;
+  background-color: transparent;
   border: none;
   color: rgb(0, 0, 0);
   text-align: center;
@@ -151,13 +51,13 @@ textarea{
   cursor: pointer;
   margin: 5px;
 }
-#addTopping span{
+.addBtn span{
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-#addTopping span:after{
+.addBtn span:after{
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -165,11 +65,43 @@ textarea{
   right: -20px;
   transition: 0.5s;
 }
-#addTopping:hover span {
+.addBtn:hover{
+  background-color: #FFE4C4;
+}
+.addBtn:hover span {
   padding-right: 25px;
 }
-#addTopping:hover span:after {
+.addBtn:hover span:after {
   opacity: 1;
   right: 0;
 }
 
+td.adminData form button {
+  background-color: transparent;
+  border: 0;
+  padding: 5px;
+}
+
+td.adminData form button:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+td.adminData, th.adminData {
+  padding: 3px;
+}
+
+tr.adminData:not(.first-row):hover{
+  background-color: rgba(248, 248, 248);
+}
+
+.first-row {
+  background-color: rgb(255, 145, 0);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.first-row th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

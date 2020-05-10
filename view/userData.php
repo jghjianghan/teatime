@@ -1,8 +1,8 @@
 <div id="user-data">
     <p>Data User</p>
-    <button id="addUser"><span>Add User</span></button><br><br>
+    <button id="addUser" class="addBtn"><span>Add User</span></button><br><br>
     <table class="adminData">
-        <tr class="adminData">
+        <tr class="adminData first-row">
             <th class="adminData">No</th>
             <th class="adminData">Posisi</th>
             <th class="adminData">Email</th>
@@ -29,9 +29,9 @@
                         <input type='hidden' name='nama' value = '".$value->getNama()."'>
                         <input type='hidden' name='ttl' value = '".$value->getTtlRaw()."'>
                         <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
-                        <input type='button' class='editBtn' value='Edit'>
-                        <input type='button' class='resetBtn' value='Reset'>
-                        <input type='button' class='deleteBtn' value='Delete'>
+                        <button type='button' class='editBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
+                        <button type='button' class='resetBtn' title='Reset'><i class='fa fa-2x fa-refresh'></i></button>
+                        <button type='button' class='deleteBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
                     </form>
                     </td>
                 ";
@@ -42,11 +42,11 @@
     </table>
 </div>
 
-<div class="home-button">
+<!-- <div class="home-button">
     <form method="POST" action="admin">
         <input type="submit" value="Home">
     </form>
-</div>
+</div> -->
 
 <div class="modal" id="modal-addUser">
     <div>
@@ -99,8 +99,7 @@
 <div class="modal" id="modal-pass">
     <div>
         <h2><span id='response-message'></span></h2>
-        Password Untuk <span id="namaUser"></span>: <span id="pass"></span><br>
-        Berikan passwordnya pada user<br>
+        <span id="response-content"></span>
         <button class="close-ok">Ok</button>
     </div>
 </div>

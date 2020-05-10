@@ -61,7 +61,7 @@ class pop{
     }
 
     showResPass(event){
-        let formElements = event.target.parentNode.elements;
+        let formElements = event.currentTarget.parentNode.elements;
         let input ={
             "idUser": formElements['idUser'].value,
             "posisi": formElements['posisi'].value,
@@ -94,6 +94,8 @@ class pop{
     onSubmit(event){
         event.preventDefault();
         let formElements = event.currentTarget.elements;
+        let submitButton = event.currentTarget.querySelector('#tambahkan');
+        submitButton.disabled = true;
         let input ={
             "posisi": formElements['posisi'].value,
             "email": formElements['email'].value,
@@ -109,17 +111,22 @@ class pop{
             body: JSON.stringify(input)
         };
         fetch('user/add',init).then(response => response.json()).then(function(json){
+            console.log(json);
             let res = document.getElementById("modal-pass");
+            let resContainer = res.querySelector('#response-content');
             if (json.status==='success'){
                 res.querySelector('#response-message').textContent = 'Success!';
-                res.querySelector('#namaUser').textContent = json.name;
-                res.querySelector('#pass').textContent = json.password;
+                resContainer.textContent = "Password untuk " + json.name + ": " + json.password;
+                resContainer.appendChild(document.createElement('br'));
+                let text = document.createTextNode("Berikan passwordnya pada user");
+                resContainer.appendChild(text);
+                resContainer.appendChild(document.createElement('br'));
             } else {
                 res.querySelector('#response-message').textContent = 'An Error Has Occured!';
-
+                resContainer.textContent = json.message;
+                resContainer.appendChild(document.createElement('br'));
             }
             res.style.display = 'block';
-            console.log(json);
         });
     }
 

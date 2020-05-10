@@ -1,0 +1,7 @@
+.modal #button-group {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 150px;
+    margin-top: 10px;
+}
