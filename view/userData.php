@@ -2,7 +2,7 @@
     <p>Data User</p>
     <button id="addUser" class="addBtn"><span>Add User</span></button><br><br>
     <table class="adminData">
-        <tr class="adminData">
+        <tr class="adminData first-row">
             <th class="adminData">No</th>
             <th class="adminData">Posisi</th>
             <th class="adminData">Email</th>
@@ -29,9 +29,9 @@
                         <input type='hidden' name='nama' value = '".$value->getNama()."'>
                         <input type='hidden' name='ttl' value = '".$value->getTtlRaw()."'>
                         <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
-                        <input type='button' class='editBtn' value='Edit'>
-                        <input type='button' class='resetBtn' value='Reset'>
-                        <input type='button' class='deleteBtn' value='Delete'>
+                        <button type='button' class='editBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
+                        <button type='button' class='resetBtn' title='Reset'><i class='fa fa-2x fa-refresh'></i></button>
+                        <button type='button' class='deleteBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
                     </form>
                     </td>
                 ";

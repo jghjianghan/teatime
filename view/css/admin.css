@@ -76,4 +76,20 @@ textarea{
   right: 0;
 }
 
+td.adminData form button {
+  background-color: transparent;
+  border: 0;
+  padding: 5px;
+}
 
+td.adminData form button:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+td.adminData, th.adminData {
+  padding: 3px;
+}
+
+tr.adminData:not(.first-row):hover{
+  background-color: rgba(241, 241, 241, 0.836);
+}

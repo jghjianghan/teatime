@@ -61,7 +61,7 @@ class pop{
     }
 
     showResPass(event){
-        let formElements = event.target.parentNode.elements;
+        let formElements = event.currentTarget.parentNode.elements;
         let input ={
             "idUser": formElements['idUser'].value,
             "posisi": formElements['posisi'].value,

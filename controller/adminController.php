@@ -27,7 +27,7 @@
                 "result"=>$result,
                 "title"=>"User Data",
                 "uplevel"=>1,
-                "styleSrcList"=>['admin.css'],
+                "styleSrcList"=>['admin.css', "font-awesome.css"],
                 "scriptSrcList"=> ["userManager.js"]
                 ]);
         }
