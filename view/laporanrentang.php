@@ -8,7 +8,7 @@
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
     <button type="submit">Export to PDF</button>
-</form>
+</form><br>
 
 <table id="table-laporan">
     <tr class='first-row'>
@@ -17,9 +17,14 @@
         <th>Topping</th>
     </tr>
     <?php
+    $tgl = date_create($_POST['tanggal1']);
     foreach ($result as $key => $value) {
         echo "<tr>";
-        echo "<td>" . $value->getWaktu() . "</td>";
+        if($value->getWaktu()){
+            echo "<td>" . $value->getWaktu() . "</td>";
+        }else{
+            
+        }        
         echo "<td>";
         foreach ($value->teh as $key => $value2) {
             echo $value2->getJumlahTeh();

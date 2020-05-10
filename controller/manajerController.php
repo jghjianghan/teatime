@@ -233,7 +233,7 @@ class ManajerController
                 FROM transaksi INNER JOIN kasir
                 ON transaksi.IdKasir = kasir.id               
                 WHERE transaksi.waktu >= '" . date_format($exd, 'Y-m-d') . " 00:00:00' AND transaksi.waktu <= '" . date_format($exd2, 'Y-m-d') . " 23:59:59'
-                GROUP BY kasir.nama
+                GROUP BY date(transaksi.waktu),kasir.nama
         ";
         $query_result = $this->db->executeSelectQuery($query);
 
