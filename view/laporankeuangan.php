@@ -19,5 +19,5 @@
 </table>
 
 <form method="post" action="manajer/pdfkeuangan">
-    <button type="submit" value="Export to PDF">
+    <button type="submit">Export to PDF</button>
 </form>
