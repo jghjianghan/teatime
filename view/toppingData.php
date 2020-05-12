@@ -1,7 +1,7 @@
 <div id="topping-data">
     <p>Data Topping</p>
-    <button id="addTopping" class="addBtn"><span>Add Topping</span></button>
     <input class="search" type="text" name="search" id="toppingSearch" placeholder="Search..." size=10>
+    <button id="addTopping" class="addBtn"><span>Add Topping</span></button>
     <table class="adminData" id="toppingData">
         <tr class='first-row'>
             <th class='adminData'>No</th>
