@@ -23,7 +23,7 @@ class ManajerController
     {
         $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM manager WHERE id = ".$_SESSION['id'])[0]['isFirstTime'];
         $styleList = ["style.css"];
-        $scriptList = ["tanggal.js"];
+        $scriptList = ["tanggal.js", "manajerHome.js"];
         if ($isFirstTime == 1){
             $scriptList[] = "changePassNotif.js";
             $styleList[] = "changePassNotif.css";
@@ -32,8 +32,23 @@ class ManajerController
         return View::createView('manajer.php', [
             "styleSrcList" => $styleList,
             "scriptSrcList" => $scriptList,
-            "title" => "Report"
+            "title" => "Report",
+            "selectedIdx" => $this->getSelectedIdx()
         ]);
+    }
+    private function getSelectedIdx()
+    {
+        if (isset($_COOKIE['reportIdx'])){
+            return $_COOKIE['reportIdx'];
+        } else {
+            setcookie("reportIdx", "0", time() + 3600);
+            return "0";
+        }
+    }
+    public function setSelectedIdx()
+    {
+        setcookie("reportIdx", "0", time() - 3600);
+        setcookie("reportIdx", $_POST['index-laporan'], time() + 3600);
     }
 
     public function viewHarian()
