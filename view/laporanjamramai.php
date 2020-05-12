@@ -49,7 +49,7 @@
     echo "<tr>";
     echo "<td>Rata-rata</td>";
     foreach ($result3 as $key => $value) {
-        echo "<td>$value</td>";
+        echo "<td>".round($value,3)."</td>";
     }
     echo "</tr>";
     ?>
