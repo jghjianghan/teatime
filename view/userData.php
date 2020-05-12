@@ -1,6 +1,7 @@
 <div id="user-data">
     <p>Data User</p>
     <button id="addUser" class="addBtn"><span>Add User</span></button><br><br>
+    <input type="text" name="search" id="userSearch" placeholder="Search...">
     <table class="adminData">
         <tr class="adminData first-row">
             <th class="adminData">No</th>
