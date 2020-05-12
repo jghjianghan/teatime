@@ -236,7 +236,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->deleteTopping();
-			header('Location: ../topping');
+			// header('Location: ../topping');
 			break;
 		case $baseURL . '/admin/admin':
 			header('Location: ../admin');

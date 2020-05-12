@@ -348,16 +348,20 @@
         }
         
         public function deleteTopping(){
-            if (isset($_POST['idTopping']) && $_POST['idTopping'] !==""){
-                $id = $this->db->escapeString($_POST['idTopping']);
+            $post = json_decode(file_get_contents('php://input'), true);
+            if (isset($post['idTopping']) && $post['idTopping'] !==""){
+                $id = $this->db->escapeString($post['idTopping']);
                 $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
                 $result = $this->db->executeNonSelectQuery("DELETE FROM topping WHERE id = $id");
                 if($result){
                     unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
+                    return json_encode(["status"=>'Succes', 'message'=>'Topping is deleted.']);
                 }
                 else{
-                    
+                    return json_encode(["status"=>'Fail', 'message'=>'An error occured. Topping could not be deleted.']);
                 }
+            } else {
+                return json_encode(["status"=>'Error', 'message'=>'Missing input. Not enough information to delete topping.']);
             }
         }
 

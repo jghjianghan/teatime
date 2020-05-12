@@ -30,22 +30,8 @@ class pop{
         for(let x of btns){
             x.addEventListener('click',this.showDelUser);
         }
-    }
 
-    showAddUser(){
-        document.getElementById('modal-addUser').style.display = 'block';
-    }
-
-    showDelUser(event){
-        let delModal = document.getElementById('modal-del');
-        delModal.style.display = 'block';
-        let form = delModal.querySelector('form');
-        let formElements = form.elements;
-        let sourceElements = event.currentTarget.parentNode.elements;
-        document.getElementById('namaUser-del').textContent = sourceElements['nama'].value;
-        formElements['idUser'].value = sourceElements['idUser'].value;
-        formElements['posisi'].value = sourceElements['posisi'].value;
-        form.addEventListener('submit', function(event){
+        document.querySelector("#modal-del form").addEventListener('submit', function(event){
             event.preventDefault();
             let formElements = event.currentTarget.elements;
             let input = {
@@ -68,6 +54,21 @@ class pop{
                 modal.style.display = "block";
             });
         });
+    }
+
+    showAddUser(){
+        document.getElementById('modal-addUser').style.display = 'block';
+    }
+
+    showDelUser(event){
+        let delModal = document.getElementById('modal-del');
+        delModal.style.display = 'block';
+        let form = delModal.querySelector('form');
+        let formElements = form.elements;
+        let sourceElements = event.currentTarget.parentNode.elements;
+        document.getElementById('namaUser-del').textContent = sourceElements['nama'].value;
+        formElements['idUser'].value = sourceElements['idUser'].value;
+        formElements['posisi'].value = sourceElements['posisi'].value;
     }
 
     showEditUser(event){

@@ -17,6 +17,34 @@ class pop{
         for(let x of btns){
             x.addEventListener('click',this.showDeleteTopping);
         }
+
+        btns = document.getElementsByClassName('close-ok');
+        for (let x of btns){
+            x.addEventListener('click', function(){location.reload();});
+        }
+
+        document.querySelector('#modal-delTopping form').addEventListener('submit', function(event){
+            event.preventDefault();
+            let formElements = event.currentTarget.elements;
+            let input = {
+                idTopping: formElements['idTopping'].value
+            };
+            let init = {
+                method: 'post',
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(input)
+            };
+            fetch('topping/delete', init).then(response => response.json())
+            .then(function(json){
+                console.log(json);
+                let modal = document.getElementById("response-modal");
+                modal.querySelector('h2').textContent = json.status;
+                modal.querySelector('span').textContent = json.message;
+                modal.style.display = "block";
+            });
+        });
     }
 
     showAddTopping(){

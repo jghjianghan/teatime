@@ -119,3 +119,11 @@
         </form>
     </div>
 </div>
+
+<div class="modal" id="response-modal">
+    <div>
+        <h2></h2>
+        <span></span><br>
+        <button class="close-ok">Ok</button>
+    </div>
+</div>
