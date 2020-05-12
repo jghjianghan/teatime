@@ -5,7 +5,7 @@
         <input type="text" name="search" id="userSearch" placeholder="Search..." size=10>
         <button><i class="fa fa-times"></i></button>
     </div>
-    <table class="adminData">
+    <table class="adminData" id="userData">
         <tr class="adminData first-row">
             <th class="adminData">No</th>
             <th class="adminData">Posisi</th>

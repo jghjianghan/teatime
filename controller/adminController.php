@@ -24,14 +24,13 @@
         public function viewUser(){
             $result = $this->getAllUser();
             return View::createView('userData.php',[
-                "result"=>$result,
                 "title"=>"User Data",
                 "uplevel"=>1,
                 "styleSrcList"=>['admin.css', "font-awesome.css"],
                 "scriptSrcList"=> ["userManager.js"]
                 ]);
         }
-        private function getAllUser(){
+        public function getAllUser(){
             require_once "model/user.php";
             $query="
                 SELECT email, nama, tanggalLahir, alamat, id
