@@ -132,3 +132,11 @@ main {
 #desc2 {
     margin-right: 50px;
 }
+
+.circle:hover{
+    font-size: 0;
+}
+.circle:hover:after {
+    content: attr(data-hover);
+    font-size: 16px;
+}

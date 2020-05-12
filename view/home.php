@@ -40,9 +40,9 @@
     <br><br><br>    
     <h2 align=center>Our Products</h2>
     <div class='row' id='products'>
-        <div class="circle">Variety of Tea</div>
-        <div class="circle">Assortment of Topping</div>
-        <div class="circle">Excelent Service & Experience</div>
+        <div class="circle" data-hover="We have all kinds of relaxing tea from all over the world">Variety of Tea</div>
+        <div class="circle" data-hover="Bringing new taste and sensation for you to experience">Assortment of Topping</div>
+        <div class="circle" data-hover="For your satifaction is our pleasures">Excelent Service & Experience</div>
     </div>
     <br><br><br>
     <div class="row">
