@@ -2,7 +2,7 @@
                                         $tgl = date_format($tgl, 'd-m-Y');
                                         echo $tgl;
                                         ?></h1>
-                                        
+
 <form method="post" action="manajer/pdfharian" target='_blank'>
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <button type="submit">Export to PDF</button>
@@ -66,8 +66,10 @@
     ?>
 </table>
 
-<?php
-for ($i = 0; $i/$show<$pageCount; $i+=$show){
-   echo "<a href='?start=$i'>".($i/$show+1)."</a> ";
- }
-?>
+<form method="POST" action="">
+    <?php
+    for ($i = 0; $i / $show < $pageCount; $i += $show) {
+        echo "<button onclick='location.href='?page='".($i / $show + 1)."'>" . ($i / $show + 1) . "</button> ";
+    }
+    ?>
+</form>

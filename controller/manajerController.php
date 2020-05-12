@@ -58,12 +58,12 @@ class ManajerController
         $start = 0;
         $show = 1;
         $query = "
-                SELECT COUNT(*)
+                SELECT COUNT(*) as ttl
                 FROM transaksi
                 WHERE waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
         ";
         $result = $this->db->executeSelectQuery($query);
-        $pageCount = ceil(count($result) / $show);
+        $pageCount = ceil($result[0]['ttl'] / $show);
 
         $result = $this->getLaporanHarianLimit($start, $show);
         $result2 = $this->getTotalPesananHarian();
