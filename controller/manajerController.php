@@ -21,10 +21,10 @@ class ManajerController
     }
     public function view()
     {
-        $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM manager WHERE id = ".$_SESSION['id'])[0]['isFirstTime'];
+        $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM manager WHERE id = " . $_SESSION['id'])[0]['isFirstTime'];
         $styleList = ["style.css"];
         $scriptList = ["manajerHome.js", "tanggal.js"];
-        if ($isFirstTime == 1){
+        if ($isFirstTime == 1) {
             $scriptList[] = "changePassNotif.js";
             $styleList[] = "changePassNotif.css";
         }
@@ -38,7 +38,7 @@ class ManajerController
     }
     private function getSelectedIdx()
     {
-        if (isset($_COOKIE['reportIdx'])){
+        if (isset($_COOKIE['reportIdx'])) {
             return $_COOKIE['reportIdx'];
         } else {
             setcookie("reportIdx", "0", time() + 3600);
@@ -57,13 +57,28 @@ class ManajerController
 
     public function viewHarian()
     {
-        $result = $this->getLaporanHarian();
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+        $start = 0;
+        $show = 1;
+        $query = "
+                SELECT COUNT(*)
+                FROM transaksi
+                WHERE waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
+        ";
+        $result = $this->db->executeSelectQuery($query);
+        $pageCount = ceil(count($result) / $show);
+
+        $result = $this->getLaporanHarianLimit($start, $show);
         $result2 = $this->getTotalPesananHarian();
         $result3 = $this->getTotalUangHarian();
         return View::createView('laporanharian.php', [
             "result" => $result,
             "result2" => $result2,
             "result3" => $result3,
+            "start" => $start,
+            "show" => $show,
+            "pageCount" => $pageCount,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
             "title" => "Daily Report"
@@ -90,6 +105,48 @@ class ManajerController
                 ON pesanan.fkTeh = teh.id
                 WHERE transaksi.waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
             ";
+        $query_result = $this->db->executeSelectQuery($query);
+
+        $arrTransaksi = [];
+
+        foreach ($query_result as $key => $value) {
+            if (!array_key_exists($value['kode'], $arrTransaksi)) {
+                $arrTransaksi[$value['kode']] = new Transaksi($value['kode'], $value['waktu'], $value['totalHarga'], $value['namaPemesan'], $value['namaKasir']);
+            }
+            if (!array_key_exists($value['id'], $arrTransaksi[$value['kode']]->pesanan)) {
+                $pesanan = new Pesanan($value['id'], $value['jumlah'], $value['namaTeh'], $value['ukuran'], $value['banyakEs'], $value['banyakGula']);
+                $arrTransaksi[$value['kode']]->addPesanan($pesanan);
+            }
+            $arrTransaksi[$value['kode']]->pesanan[$value['id']]->addTopping($value['namaTopping'], $value['jumlahTopping']);
+        }
+
+        return $arrTransaksi;
+    }
+
+    public function getLaporanHarianLimit($start, $show)
+    {
+        $tgl = $_POST['tanggal1'];
+        $exd = date_create($tgl);
+
+        $query = "
+        SELECT pesanan.id, pesanan.jumlah, topping.nama as namaTopping, topping_pesanan.jumlahTopping, t1.kode, t1.waktu, t1.namaPemesan, t1.totalHarga, kasir.nama as namaKasir, 
+        pesanan.banyakGula, pesanan.banyakEs, pesanan.ukuran, teh.nama as namaTeh
+        FROM (
+        SELECT *
+        FROM transaksi
+        WHERE transaksi.waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
+        LIMIT " . $start . "," . $show . "
+        ) as t1 
+        INNER JOIN pesanan ON pesanan.fkKode = t1.kode
+        LEFT OUTER JOIN topping_pesanan
+        ON topping_pesanan.fkPesanan = pesanan.id
+        LEFT OUTER JOIN topping
+        ON topping_pesanan.fkTopping = topping.id
+        INNER JOIN kasir
+        ON t1.idKasir = kasir.id
+        INNER JOIN teh
+        ON pesanan.fkTeh = teh.id
+        ";
         $query_result = $this->db->executeSelectQuery($query);
 
         $arrTransaksi = [];
@@ -158,7 +215,7 @@ class ManajerController
             "result3" => $result3,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
-            "scriptSrcList" => ['chart.js','jamChart.js'],
+            "scriptSrcList" => ['chart.js', 'jamChart.js'],
             "title" => "Popular Hours Report"
         ]);
     }
@@ -198,12 +255,12 @@ class ManajerController
     {
         $arr = $this->getLaporanJamRamai();
         $result = [];
-        for($i = 10;$i <= 20; $i++){
+        for ($i = 10; $i <= 20; $i++) {
             $result[$i] = 0;
         }
         foreach ($arr as $key => $value) {
-            for($i = 10;$i <= 20; $i++){
-                if(array_key_exists($i,$value->jam)){
+            for ($i = 10; $i <= 20; $i++) {
+                if (array_key_exists($i, $value->jam)) {
                     $result[$i] += $value->jam[$i]->getTotal();
                 }
             }
@@ -218,13 +275,13 @@ class ManajerController
         $exd = date_create($tgl);
         $tgl2 = $_POST['tanggal2'];
         $exd2 = date_create($tgl2);
-        $counter = date_diff($exd,$exd2);
+        $counter = date_diff($exd, $exd2);
         $val = $counter->format("%a") + 1;
 
         $arr = $this->getTotalJamRamai();
 
-        for($i = 10;$i <= 20; $i++){
-            $arr[$i] = $arr[$i]/$val;
+        for ($i = 10; $i <= 20; $i++) {
+            $arr[$i] = $arr[$i] / $val;
         }
         return $arr;
     }

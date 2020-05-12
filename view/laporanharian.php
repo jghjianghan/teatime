@@ -65,3 +65,9 @@
     echo "</tr>";
     ?>
 </table>
+
+<?php
+for ($i = 0; $i/$show<$pageCount; $i+=$show){
+   echo "<a href='?start=$i'>".($i/$show+1)."</a> ";
+ }
+?>
