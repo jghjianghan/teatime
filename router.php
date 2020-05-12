@@ -247,36 +247,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->addTransaction();
 			break;
 		case $baseURL . '/manajer/manajer':
+			require_once "controller/manajerController.php";
+			$usCtrl = new manajerController();
+			$usCtrl->setSelectedIdx();
 			switch ($_POST['select-laporan']) {
 				case "detail-trans-harian":
-					require_once "controller/manajerController.php";
-					$usCtrl = new manajerController();
 					echo $usCtrl->viewHarian();
 					// require_once "controller/pdfController.php";
 					// $test = new pdfController();
 					// $test->getPdfHarian();
 					break;
 				case "trans-rentang":
-					require_once "controller/manajerController.php";
-					$usCtrl = new manajerController();
 					echo $usCtrl->viewRentang();
 					break;
 				case "uang-masuk":
-					require_once "controller/manajerController.php";
-					$usCtrl = new manajerController();
 					echo $usCtrl->viewKeuangan();
 					// require_once "controller/pdfController.php";
 					// $test = new pdfController();
 					// $test->getPdfKeuangan();
 					break;
 				case "performa-kasir":
-					require_once "controller/manajerController.php";
-					$usCtrl = new manajerController();
 					echo $usCtrl->viewKasir();
 					break;
 				case "jam-ramai":
-					require_once "controller/manajerController.php";
-					$usCtrl = new manajerController();
 					echo $usCtrl->viewJamRamai();
 					break;
 				default:
