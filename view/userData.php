@@ -145,7 +145,7 @@
 <div class="modal" id="modal-res">
     <div>
         <h2><span id='response-message'></span></h2>
-        Password Baru Untuk <span id="namaUser-res"></span>: <span id="res-pass"></span><br>
+        Password baru untuk <span id="namaUser-res"></span>: <span id="res-pass" style='font-weight:bold;'></span><br>
         Berikan passwordnya pada user<br>
         <button class="close-ok">Ok</button>
     </div>
@@ -154,11 +154,19 @@
 <div class="modal" id="modal-del">
     <div>
         <span class='close'>&times;</span>
-        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser-del"></span>?<br>
+        Apakah anda yakin ingin menghapus akun dengan nama <span id="namaUser-del" style='font-weight:bold;'></span>?<br>
         <form method="post" action="user/delete">
             <input type='hidden' name='idUser' value = "">
             <input type='hidden' name='posisi' value = "">
             <input type="submit" value="Ok">
         </form>
+    </div>
+</div>
+
+<div class="modal" id="response-modal">
+    <div>
+        <h2></h2>
+        <span></span><br>
+        <button class="close-ok">Ok</button>
     </div>
 </div>

@@ -37,14 +37,37 @@ class pop{
     }
 
     showDelUser(event){
-        console.log('hello');
         let delModal = document.getElementById('modal-del');
         delModal.style.display = 'block';
-        let formElements = delModal.querySelector('form').elements;
+        let form = delModal.querySelector('form');
+        let formElements = form.elements;
         let sourceElements = event.currentTarget.parentNode.elements;
         document.getElementById('namaUser-del').textContent = sourceElements['nama'].value;
         formElements['idUser'].value = sourceElements['idUser'].value;
         formElements['posisi'].value = sourceElements['posisi'].value;
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+            let formElements = event.currentTarget.elements;
+            let input = {
+                idUser: formElements['idUser'].value,
+                posisi: formElements['posisi'].value
+            };
+            let init = {
+                method: 'post',
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(input)
+            };
+            fetch('user/delete', init).then(response => response.json())
+            .then(function(json){
+                console.log(json);
+                let modal = document.getElementById("response-modal");
+                modal.querySelector('h2').textContent = json.status;
+                modal.querySelector('span').textContent = json.message;
+                modal.style.display = "block";
+            });
+        });
     }
 
     showEditUser(event){
@@ -116,7 +139,10 @@ class pop{
             let resContainer = res.querySelector('#response-content');
             if (json.status==='success'){
                 res.querySelector('#response-message').textContent = 'Success!';
-                resContainer.textContent = "Password untuk " + json.name + ": " + json.password;
+                let bold = document.createElement('strong');
+                bold.textContent = json.password;
+                resContainer.textContent = "Password untuk " + json.name + ": ";
+                resContainer.appendChild(bold);
                 resContainer.appendChild(document.createElement('br'));
                 let text = document.createTextNode("Berikan passwordnya pada user");
                 resContainer.appendChild(text);

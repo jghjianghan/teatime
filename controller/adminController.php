@@ -169,12 +169,20 @@
         }
 
         public function deleteUser(){
+            $_POST = json_decode(file_get_contents('php://input'), true);
             if (isset($_POST['idUser']) && $_POST['idUser'] !=="" && isset($_POST['posisi']) && $_POST['posisi']!==""){
                 $id = $this->db->escapeString($_POST['idUser']);
                 $posisi = $this->db->escapeString($_POST['posisi']);
                 // $s = $id .'|'. $posisi;
                 // return $s;
-                $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
+                $success = $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
+                if ($success){
+                    return json_encode(array("status"=>"Success", "message"=>"User deleted."));
+                } else {
+                    return json_encode(array("status"=>"Fail", "message"=>"This user cannot be deleted."));
+                }
+            } else {
+                return json_encode(array("status"=>"Fail", "message"=>"Incomplete input"));
             }
         }
 
