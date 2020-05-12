@@ -54,6 +54,28 @@ class pop{
                 modal.style.display = "block";
             });
         });
+        let search = document.getElementById('userSearch');
+        search.addEventListener('keyup',this.searchfunction);
+    }
+
+    searchfunction(){
+        let input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('userSearch');
+        filter = input.value.toUpperCase();
+        table = document.getElementById('userData');
+        tr = table.getElementsByTagName('tr');
+        for(i = 0;i<tr.length;i++){
+            td = tr[i].getElementsByTagName('td')[3];
+            if(td){
+                txtValue = td.textContent||td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter)>-1){
+                    tr[i].style.display = "";
+                }
+                else{
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
     }
 
     showAddUser(){

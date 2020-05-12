@@ -24,24 +24,24 @@
         public function viewUser(){
             $result = $this->getAllUser();
             return View::createView('userData.php',[
+                "result"=>$result,
                 "title"=>"User Data",
                 "uplevel"=>1,
                 "styleSrcList"=>['admin.css', "font-awesome.css"],
                 "scriptSrcList"=> ["userManager.js"]
                 ]);
         }
-        public function getAllUser(){
-            require_once "model/user.php";
+        private function getAllUser(){
             $query="
                 SELECT email, nama, tanggalLahir, alamat, id
                 FROM Admin
             ";
             $query_result = $this->db->executeSelectQuery($query);
 
-            $userArray = [];
+            $result = [];
             
             foreach($query_result as $key => $value){
-                $userArray [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
@@ -51,7 +51,7 @@
             $query_result = $this->db->executeSelectQuery($query);
 
             foreach($query_result as $key => $value){
-                $userArray [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
@@ -61,18 +61,7 @@
             $query_result = $this->db->executeSelectQuery($query);
             
             foreach($query_result as $key => $value){
-                $userArray [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
-            }
-            $result = [];
-            foreach($userArray as $key =>$value){
-                $result[] = array(
-                    "id"=>$value->getId(),
-                    "posisi"=>$value->getPosisi(),
-                    "email"=>$value->getEmail(),
-                    "nama"=>$value->getNama(),
-                    "ttl"=>$value->getTtl(),
-                    "alamat"=>$value->getAlamat()
-                );
+                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
             return $result;
         }

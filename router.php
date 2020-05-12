@@ -63,15 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				header('Location: forbidden');
 			}
 			break;
-		case $baseURL . '/admin/user/data':
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
-				require_once "controller/adminController.php";
-				$usCtrl = new AdminController();
-				echo json_encode($usCtrl->getAllUser());
-			} else {
-				header('Location: forbidden');
-			}
-			break;
 		case $baseURL . '/admin/tea':
 			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 				require_once "controller/adminController.php";

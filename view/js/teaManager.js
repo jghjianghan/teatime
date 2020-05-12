@@ -45,6 +45,29 @@ class pop{
                 modal.style.display = "block";
             });
         });
+        let search = document.getElementById('teaSearch');
+        search.addEventListener('keyup',this.searchfunction);
+        
+    }
+
+    searchfunction(){
+        let input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('teaSearch');
+        filter = input.value.toUpperCase();
+        table = document.getElementById('teaData');
+        tr = table.getElementsByTagName('tr');
+        for(i = 0;i<tr.length;i++){
+            td = tr[i].getElementsByTagName('td')[2];
+            if(td){
+                txtValue = td.textContent||td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter)>-1){
+                    tr[i].style.display = "";
+                }
+                else{
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
     }
 
     showAddTea(){

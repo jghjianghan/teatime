@@ -105,3 +105,8 @@ tr.adminData:not(.first-row):hover{
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.search{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
