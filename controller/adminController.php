@@ -169,10 +169,10 @@
         }
 
         public function deleteUser(){
-            $_POST = json_decode(file_get_contents('php://input'), true);
-            if (isset($_POST['idUser']) && $_POST['idUser'] !=="" && isset($_POST['posisi']) && $_POST['posisi']!==""){
-                $id = $this->db->escapeString($_POST['idUser']);
-                $posisi = $this->db->escapeString($_POST['posisi']);
+            $post = json_decode(file_get_contents('php://input'), true);
+            if (isset($post['idUser']) && $post['idUser'] !=="" && isset($post['posisi']) && $post['posisi']!==""){
+                $id = $this->db->escapeString($post['idUser']);
+                $posisi = $this->db->escapeString($post['posisi']);
                 // $s = $id .'|'. $posisi;
                 // return $s;
                 $success = $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
@@ -263,16 +263,20 @@
         
 
         public function deleteTea(){
-            if (isset($_POST['idTeh']) && $_POST['idTeh'] !==""){
-                $id = $this->db->escapeString($_POST['idTeh']);
+            $post = json_decode(file_get_contents('php://input'), true);
+            if (isset($post['idTeh']) && $post['idTeh'] !==""){
+                $id = $this->db->escapeString($post['idTeh']);
                 $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
                 $result = $this->db->executeNonSelectQuery("DELETE FROM teh WHERE id = $id");
                 if($result){
                     unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
+                    return json_encode(["status"=>'Success', 'message'=>'Tea is deleted.']);
                 }
                 else{
-
+                    return json_encode(["status"=>'Fail', 'message'=>'An error occured. Tea could not be deleted.']);
                 }
+            } else {
+                return json_encode(["status"=>'Error', 'message'=>'Missing input. Not enough information to delete tea.']);
             }
         }
 

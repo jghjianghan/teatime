@@ -125,10 +125,18 @@
 <div class="modal" id="modal-delTea">
     <div>
         <span class='close'>&times;</span>
-        Apakah anda yakin ingin menghapus teh <span id="namaTeh-del"></span>?<br>
+        Apakah anda yakin ingin menghapus teh <span id="namaTeh-del" style="font-weight: bold;"></span>?<br>
         <form method="post" action="tea/delete">
             <input type="hidden" name="idTeh" value="">
             <input type="submit" value="Ok">
         </form>
+    </div>
+</div>
+
+<div class="modal" id="response-modal">
+    <div>
+        <h2></h2>
+        <span></span><br>
+        <button class="close-ok">Ok</button>
     </div>
 </div>

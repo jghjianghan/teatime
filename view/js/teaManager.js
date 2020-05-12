@@ -17,6 +17,11 @@ class pop{
         for(let x of btns){
             x.addEventListener('click',this.showDeleteTea);
         }
+
+        btns = document.getElementsByClassName('close-ok');
+        for (let x of btns){
+            x.addEventListener('click', function(){location.reload();});
+        }
     }
 
     showAddTea(){
@@ -38,10 +43,33 @@ class pop{
     showDeleteTea(event){
         let delModal = document.getElementById('modal-delTea');
         delModal.style.display = 'block';
-        let formElements = delModal.querySelector('form').elements;
+        let form = delModal.querySelector('form');
+        let formElements = form.elements;
         let sourceElements = event.currentTarget.parentNode.elements;
         document.getElementById('namaTeh-del').textContent = sourceElements['namaTeh'].value;
         formElements['idTeh'].value = sourceElements['idTeh'].value;
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+            let formElements = event.currentTarget.elements;
+            let input = {
+                idTeh: formElements['idTeh'].value
+            };
+            let init = {
+                method: 'post',
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(input)
+            };
+            fetch('tea/delete', init).then(response => response.json())
+            .then(function(json){
+                console.log(json);
+                let modal = document.getElementById("response-modal");
+                modal.querySelector('h2').textContent = json.status;
+                modal.querySelector('span').textContent = json.message;
+                modal.style.display = "block";
+            });
+        });
     }
 
     closeModal(event){
