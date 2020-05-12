@@ -1,6 +1,7 @@
 <div id="tea-data">
     <p>Data Tea</p>
     <input class="search" type="text" name="search" id="teaSearch" placeholder="Search..." size=10>
+    <button class="clear-btn" id="clear-teaSearch"><i class="fa fa-times"></i></button>
     <button id="addTea" class="addBtn"><span>Add Tea</span></button>
     <table class="adminData" id="teaData">
         <tr class='first-row'>

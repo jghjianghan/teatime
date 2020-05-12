@@ -1,6 +1,7 @@
 <div id="topping-data">
     <p>Data Topping</p>
     <input class="search" type="text" name="search" id="toppingSearch" placeholder="Search..." size=10>
+    <button class="clear-btn" id="clear-toppingSearch"><i class="fa fa-times"></i></button>
     <button id="addTopping" class="addBtn"><span>Add Topping</span></button>
     <table class="adminData" id="toppingData">
         <tr class='first-row'>

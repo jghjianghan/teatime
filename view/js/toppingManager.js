@@ -47,7 +47,20 @@ class pop{
         });
         let search = document.getElementById('toppingSearch');
         search.addEventListener('keyup',this.searchfunction);
-        
+        let clear = document.getElementById('clear-toppingSearch');
+        clear.addEventListener('click',this.clearfunction);
+    }
+
+    clearfunction(){
+        let input, table, tr, td, i;
+        input = document.getElementById('toppingSearch').value="";
+        table = document.getElementById('toppingData');
+        tr = table.getElementsByTagName('tr');
+        for(i = 0;i<tr.length;i++){
+            if(tr[i].getElementsByTagName('td')){
+                tr[i].style.display = "";
+            }
+        }
     }
 
     searchfunction(){

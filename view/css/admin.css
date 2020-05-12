@@ -110,3 +110,8 @@ tr.adminData:not(.first-row):hover{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.clear-btn{
+  background-color: transparent;
+  border: none;
+}
