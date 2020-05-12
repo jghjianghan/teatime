@@ -1,7 +1,10 @@
 <div id="user-data">
     <p>Data User</p>
     <button id="addUser" class="addBtn"><span>Add User</span></button><br><br>
-    <input type="text" name="search" id="userSearch" placeholder="Search...">
+    <div class="search" id="user-form">
+        <input type="text" name="search" id="userSearch" placeholder="Search..." size=10>
+        <button><i class="fa fa-times"></i></button>
+    </div>
     <table class="adminData">
         <tr class="adminData first-row">
             <th class="adminData">No</th>

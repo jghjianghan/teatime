@@ -32,16 +32,17 @@
                 ]);
         }
         private function getAllUser(){
+            require_once "model/user.php";
             $query="
                 SELECT email, nama, tanggalLahir, alamat, id
                 FROM Admin
             ";
             $query_result = $this->db->executeSelectQuery($query);
 
-            $result = [];
+            $userArray = [];
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+                $userArray [] = new User('Admin',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
@@ -51,7 +52,7 @@
             $query_result = $this->db->executeSelectQuery($query);
 
             foreach($query_result as $key => $value){
-                $result [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+                $userArray [] = new User('Manager',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
             }
 
             $query="
@@ -61,7 +62,18 @@
             $query_result = $this->db->executeSelectQuery($query);
             
             foreach($query_result as $key => $value){
-                $result [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+                $userArray [] = new User('Kasir',$value['email'],$value['nama'],$value['tanggalLahir'],$value['alamat'],$value['id']);
+            }
+            $result = [];
+            foreach($userArray as $key =>$value){
+                $result[] = array(
+                    "id"=>$value->getId(),
+                    "posisi"=>$value->getPosisi(),
+                    "email"=>$value->getEmail(),
+                    "nama"=>$value->getNama(),
+                    "ttl"=>$value->getTtl(),
+                    "alamat"=>$value->getAlamat()
+                );
             }
             return $result;
         }
