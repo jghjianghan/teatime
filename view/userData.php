@@ -16,31 +16,31 @@
             <th class="adminData">Aksi</th>
         </tr>
         <?php
-            $no=1;
-            foreach($result as $key => $value){
-                echo "<tr class='adminData'>";
-                echo "<td class='adminData'>".$no++."</td>";
-                echo "<td class='adminData'>".$value->getPosisi()."</td>";
-                echo "<td class='adminData'>".$value->getEmail()."</td>";
-                echo "<td class='adminData'>".$value->getNama()."</td>";
-                echo "<td class='adminData'>".$value->getTtl()."</td>";
-                echo "<td class='adminData'>".$value->getAlamat()."</td>";
-                echo "<td class='adminData'>
-                    <form method='POST' action=''>
-                        <input type='hidden' name='idUser' value = ".$value->getId().">
-                        <input type='hidden' name='posisi' value = ".$value->getPosisi().">
-                        <input type='hidden' name='email' value = ".$value->getemail().">
-                        <input type='hidden' name='nama' value = '".$value->getNama()."'>
-                        <input type='hidden' name='ttl' value = '".$value->getTtlRaw()."'>
-                        <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
-                        <button type='button' class='editBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
-                        <button type='button' class='resetBtn' title='Reset'><i class='fa fa-2x fa-refresh'></i></button>
-                        <button type='button' class='deleteBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
-                    </form>
-                    </td>
-                ";
-                echo "</tr>";
-            }
+            // $no=1;
+            // foreach($result as $key => $value){
+            //     echo "<tr class='adminData'>";
+            //     echo "<td class='adminData'>".$no++."</td>";
+            //     echo "<td class='adminData'>".$value->getPosisi()."</td>";
+            //     echo "<td class='adminData'>".$value->getEmail()."</td>";
+            //     echo "<td class='adminData'>".$value->getNama()."</td>";
+            //     echo "<td class='adminData'>".$value->getTtl()."</td>";
+            //     echo "<td class='adminData'>".$value->getAlamat()."</td>";
+            //     echo "<td class='adminData'>
+            //         <form method='POST' action=''>
+            //             <input type='hidden' name='idUser' value = ".$value->getId().">
+            //             <input type='hidden' name='posisi' value = ".$value->getPosisi().">
+            //             <input type='hidden' name='email' value = ".$value->getemail().">
+            //             <input type='hidden' name='nama' value = '".$value->getNama()."'>
+            //             <input type='hidden' name='ttl' value = '".$value->getTtlRaw()."'>
+            //             <input type='hidden' name='alamat' value = '".$value->getAlamat()."'>
+            //             <button type='button' class='editBtn' title='Edit'><i class='fa fa-2x fa-pencil'></i></button>
+            //             <button type='button' class='resetBtn' title='Reset'><i class='fa fa-2x fa-refresh'></i></button>
+            //             <button type='button' class='deleteBtn' title='Delete'><i class='fa fa-2x fa-trash'></i></button>
+            //         </form>
+            //         </td>
+            //     ";
+            //     echo "</tr>";
+            // }
 
         ?>
     </table>
