@@ -47,8 +47,12 @@ class ManajerController
     }
     public function setSelectedIdx()
     {
-        setcookie("reportIdx", "0", time() - 3600);
-        setcookie("reportIdx", $_POST['index-laporan'], time() + 3600);
+        setcookie("reportIdx", null, time() - 3600);
+        if (isset($_POST['index-laporan'])){
+            setcookie("reportIdx", $_POST['index-laporan'], time() + 3600);
+        } else {
+            setcookie("reportIdx", "0", time() + 3600);
+        }
     }
 
     public function viewHarian()
