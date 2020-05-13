@@ -19,6 +19,8 @@ class ManajerController
     {
         $this->db = new MySQLDB("localhost", "root", "", "teatime");
     }
+
+    //main-menu manajer
     public function view()
     {
         $isFirstTime = $this->db->executeSelectQuery("SELECT isFirstTime FROM manager WHERE id = " . $_SESSION['id'])[0]['isFirstTime'];
@@ -55,6 +57,7 @@ class ManajerController
         }
     }
 
+    //laporan harian
     public function viewHarian()
     {
         $tgl = $_POST['tanggal1'];
@@ -208,6 +211,7 @@ class ManajerController
         return $query_result[0]['total'];
     }
 
+    //laporan jam ramai
     public function viewJamRamai()
     {
         $result = $this->getLaporanJamRamai();
@@ -290,6 +294,7 @@ class ManajerController
         return $arr;
     }
 
+    //laporan kasir populer
     public function viewKasir()
     {
         $result = $this->getLaporanKasir();
@@ -326,6 +331,7 @@ class ManajerController
         return $result;
     }
 
+    //Laporan keuangan
     public function viewKeuangan()
     {
         $result = $this->getLaporanKeuangan();
@@ -381,6 +387,7 @@ class ManajerController
         return $query_result[0]['total'];
     }
 
+    //Laporan hari berentang
     public function viewRentang()
     {
         $result = $this->getLaporanRentang();

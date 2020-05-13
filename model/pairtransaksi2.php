@@ -1,5 +1,5 @@
 <?php
-    class PairTransaksi2{
+    class PairTransaksi2{ //Untuk pair dari teh dan jumlahnya
         protected $namaTeh;
         protected $jumlahTeh;
 

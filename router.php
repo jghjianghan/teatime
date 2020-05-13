@@ -2,7 +2,7 @@
 date_default_timezone_set("Asia/Bangkok");
 $url = $_SERVER['REDIRECT_URL'];
 $baseURL = '/teatime';
-// echo $_SERVER['REQUEST_URI'];
+
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	switch ($url) {
@@ -194,13 +194,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->deleteUser();
-			// header('Location: ../user');
 			break;
 		case $baseURL . '/admin/user/reset':
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			print_r($usCtrl->resetPass());
-			// header('Location: ../user');
 			break;
 		case $baseURL . '/admin/tea/add':
 			require_once "controller/adminController.php";
@@ -218,7 +216,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/adminController.php";
 			$usCtrl = new AdminController();
 			echo $usCtrl->deleteTea();
-			// header('Location: ../tea');
 			break;
 		case $baseURL . '/admin/topping/add':
 			require_once "controller/adminController.php";
@@ -253,18 +250,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			switch ($_POST['select-laporan']) {
 				case "detail-trans-harian":
 					echo $usCtrl->viewHarian();
-					// require_once "controller/pdfController.php";
-					// $test = new pdfController();
-					// $test->getPdfHarian();
 					break;
 				case "trans-rentang":
 					echo $usCtrl->viewRentang();
 					break;
 				case "uang-masuk":
 					echo $usCtrl->viewKeuangan();
-					// require_once "controller/pdfController.php";
-					// $test = new pdfController();
-					// $test->getPdfKeuangan();
 					break;
 				case "performa-kasir":
 					echo $usCtrl->viewKasir();
