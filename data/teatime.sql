@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2020 at 11:47 AM
+-- Generation Time: May 13, 2020 at 08:04 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`email`, `password`, `nama`, `tanggalLahir`, `alamat`, `id`) VALUES
-('admingadung@teatime.com', 'g5m6xdsi', 'Admin Gadung', '1990-04-19', 'Jl.Ciumbuleuit No.19', 1),
+('admingadung@teatime.com', 'admingadung', 'Admin', '1990-04-19', 'Jl.Ciumbuleuit No.19', 1),
 ('adminbeneran@teatime.com', '4oep2y1k', 'Admin Beneran', '1995-07-07', 'Jl. Boongan No.1', 2);
 
 -- --------------------------------------------------------
@@ -66,7 +66,9 @@ CREATE TABLE `kasir` (
 --
 
 INSERT INTO `kasir` (`email`, `password`, `nama`, `tanggalLahir`, `alamat`, `isFirstTime`, `id`) VALUES
-('tidakSemudahItu@teatime.com', 'efp3bo7z', 'Ferguso', '2000-05-15', 'Jl. Gurame No.3', 1, 1);
+('tidakSemudahItu@teatime.com', 'iniferguso', 'Ferguso', '2000-05-15', 'Jl. Gurame No.3', 0, 1),
+('squidward@teatime.com', 'kiaqeus5', 'Squidward Tentacles', '1977-10-09', 'Jl. Bikini Bottom No. 3', 1, 2),
+('caveira@teatime.com', '9k8nqbfa', 'Taina Pereira', '1989-10-15', 'Jl. Dago No.21', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -84,6 +86,13 @@ CREATE TABLE `manager` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`email`, `password`, `nama`, `tanggalLahir`, `alamat`, `isFirstTime`, `id`) VALUES
+('managerbodong@teatime.com', 'managerbodong', 'Manager Bodong', '1993-08-17', 'Jl. Kenangan No. 1', 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -100,13 +109,6 @@ CREATE TABLE `pesanan` (
   `fkTeh` int(11) NOT NULL,
   `fkKode` char(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pesanan`
---
-
-INSERT INTO `pesanan` (`id`, `banyakGula`, `banyakEs`, `ukuran`, `jumlah`, `harga`, `fkTeh`, `fkKode`) VALUES
-(1, 'Less', 'Less', 'Regular', 1, '20000.00', 1, '202005060001');
 
 -- --------------------------------------------------------
 
@@ -150,7 +152,9 @@ CREATE TABLE `topping` (
 
 INSERT INTO `topping` (`id`, `nama`, `harga`, `gambar`) VALUES
 (1, 'Pearl', '3000.00', 'pearl.png'),
-(5, 'Jelly', '3000.00', 'jelly.jpg');
+(5, 'Jelly', '3000.00', 'jelly.jpg'),
+(14, 'Pudding', '3500.00', '1589392376.jpg'),
+(15, 'Grass Jelly', '3500.00', '1589392505.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,13 +167,6 @@ CREATE TABLE `topping_pesanan` (
   `fkPesanan` int(11) NOT NULL,
   `jumlahTopping` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `topping_pesanan`
---
-
-INSERT INTO `topping_pesanan` (`fkTopping`, `fkPesanan`, `jumlahTopping`) VALUES
-(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -184,13 +181,6 @@ CREATE TABLE `transaksi` (
   `namaPemesan` varchar(50) NOT NULL,
   `IdKasir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`kode`, `waktu`, `totalHarga`, `namaPemesan`, `IdKasir`) VALUES
-('202005060001', '2020-05-06 22:38:10', '20000.00', 'Bambang', 1);
 
 --
 -- Indexes for dumped tables
@@ -265,19 +255,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `teh`
@@ -289,7 +279,7 @@ ALTER TABLE `teh`
 -- AUTO_INCREMENT for table `topping`
 --
 ALTER TABLE `topping`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
