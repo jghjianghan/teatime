@@ -11,6 +11,9 @@ class showChooser {
                 opt.selected = true;
             }
         }
+        let noPage = this.form.page.value;
+        let pageButton = document.querySelectorAll('#pagination input[type="submit"]');
+        pageButton[parseInt(noPage)-1].classList.add('active');
     }
 
     submitForm() {

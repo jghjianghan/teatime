@@ -34,3 +34,27 @@ table, td, th {
     border: 0.5px solid #a7a7a7;
     border-collapse: collapse;
 }
+
+#pagination {
+    padding: 10px 0;
+}
+#pagination input[type='submit']{
+    background-color: white;
+    border: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 16px;
+    transition: background-color .3s;
+}
+
+#pagination input[type='submit'].active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#pagination input[type='submit']:hover:not(.active) {
+    background-color: #ddd;
+}
