@@ -9,7 +9,8 @@ table th {
     text-transform: uppercase;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
 }
 
@@ -21,16 +22,18 @@ canvas {
     margin: 0 50px;
 }
 
-tr:not(.first-row):hover{
+tr:not(.first-row):hover {
     background-color: rgb(243, 243, 243);
 }
-  
+
 .first-row {
     background-color: rgb(4, 64, 133);
     color: white;
 }
 
-table, td, th {
+table,
+td,
+th {
     border: 0.5px solid #a7a7a7;
     border-collapse: collapse;
 }
@@ -38,7 +41,8 @@ table, td, th {
 #pagination {
     padding: 10px 0;
 }
-#pagination input[type='submit']{
+
+#pagination input[type='submit'] {
     background-color: white;
     border: none;
     color: black;
@@ -57,4 +61,47 @@ table, td, th {
 
 #pagination input[type='submit']:hover:not(.active) {
     background-color: #ddd;
+}
+
+.addBtn {
+    border-radius: 4px;
+    background-color: #FFE4C4;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    /* font-size: 10px; */
+    /* padding: 20px; */
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.addBtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.addBtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.addBtn:hover {
+    background-color: #D2B48C;
+}
+
+.addBtn:hover span {
+    padding-right: 25px;
+}
+
+.addBtn:hover span:after {
+    opacity: 1;
+    right: 0;
 }

@@ -46,7 +46,7 @@
 			<?php
 			if (isset($_SESSION['role'])) {
 				echo "<span data-id='" . $_SESSION['id'] . "' data-role='" . $_SESSION['role'] . "'>" . $_SESSION['name'] . "</span>";
-				echo "<span><a href='" . $upPrefix . "changePassword'><button>Change<br>Password</button></a></span>";
+				echo "<span><a href='" . $upPrefix . "changePassword'><button class='addBtn'><span>Change<br>Password</span></button></a></span>";
 				echo "<span><a href='" . $upPrefix . "logout'>Logout</a></span>";
 			} else {
 				echo "<span><a href='" . $upPrefix . "login'>Login</a></span>";

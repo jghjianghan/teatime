@@ -18,7 +18,7 @@
                 <input type="date" name="tanggal1" required> <span class="hide" id='tanggalKedua'>- <input type="date" name="tanggal2"></span>
             </li><br>
             <li>
-                <input type="submit" value="Lihat Laporan">
+                <button type="submit" class="addBtn"><span>Lihat Laporan</span></button>
             </li><br>
         </ul>
     </fieldset>

@@ -5,7 +5,7 @@
 
 <form method="post" action="manajer/pdfharian" target='_blank'>
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
-    <button type="submit">Export to PDF</button>
+    <button type="submit" class="addBtn"><span>Export to PDF</span></button>
 </form><br>
 
 <form id="form" method="post" style="padding: 10px 0;">

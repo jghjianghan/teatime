@@ -1,125 +1,185 @@
-@font-face{
-  font-family: teatimeFont;
-  src: url("../../asset/font/annifont.ttf");
-}
 @font-face {
-  font-family: muli;
-  src: url("../../asset/font/muli/muli.ttf");
+    font-family: teatimeFont;
+    src: url("../../asset/font/annifont.ttf");
 }
+
 @font-face {
-  font-family: muli;
-  src: url("../../asset/font/muli/muli-bold.ttf");
-  font-weight: bold;
+    font-family: muli;
+    src: url("../../asset/font/muli/muli.ttf");
 }
+
 @font-face {
-  font-family: muli;
-  src: url("../../asset/font/muli/muli-bolditalic.ttf");
-  font-weight: bold;
-  font-style: italic;
+    font-family: muli;
+    src: url("../../asset/font/muli/muli-bold.ttf");
+    font-weight: bold;
 }
+
 @font-face {
-  font-family: muli;
-  src: url("../../asset/font/muli/muli-italic.ttf");
-  font-style: italic;
+    font-family: muli;
+    src: url("../../asset/font/muli/muli-bolditalic.ttf");
+    font-weight: bold;
+    font-style: italic;
 }
+
+@font-face {
+    font-family: muli;
+    src: url("../../asset/font/muli/muli-italic.ttf");
+    font-style: italic;
+}
+
 html {
-  font-family: muli;
+    font-family: muli;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
-body{
-  display: flex;
-  flex-direction: column;
+body {
+    display: flex;
+    flex-direction: column;
 }
+
 #wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 #header-bar {
-  display: flex;
-  background-color: #FFE4C4;
-  /* color: white; */
-  height: 45px;
-  padding: 5px 10px;
-  align-items: center;
+    display: flex;
+    background-color: #FFE4C4;
+    /* color: white; */
+    height: 45px;
+    padding: 5px 10px;
+    align-items: center;
 }
+
 #header-bar h2 {
-  margin: 0;
+    margin: 0;
 }
-#header-bar>div:first-child, #header-bar>div:last-child{
-  flex: 1;
+
+#header-bar>div:first-child,
+#header-bar>div:last-child {
+    flex: 1;
 }
 
 #full-logo a {
-  text-decoration: none;
-  display: flex;
-  color: black;
+    text-decoration: none;
+    display: flex;
+    color: black;
 }
 
-
-#page-title{
-  text-align: center;
+#page-title {
+    text-align: center;
 }
+
 #account-info {
-  text-align: right;
+    text-align: right;
 }
 
-#account-info span{
-  vertical-align: middle;
-  padding-right: 20px;
+#account-info span {
+    vertical-align: middle;
+    padding-right: 20px;
 }
 
 #companyName {
-  font-family: teatimeFont;
-  font-size: 2em;
-  margin: 0;
+    font-family: teatimeFont;
+    font-size: 2em;
+    margin: 0;
 }
+
 body {
-  margin: 0;
+    margin: 0;
 }
 
 footer {
-  text-align: center;
-  color: rgb(133, 133, 133);
-  font-size: 0.8em;
-  margin: 10px;
+    text-align: center;
+    color: rgb(133, 133, 133);
+    font-size: 0.8em;
+    margin: 10px;
 }
 
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0, 0.4);
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
-.modal>div{ /*modal content*/
-  background-color: #fefefe;
-  margin: auto;
-  padding: 10px 20px 20px;
-  border:1px solid #888;
-  width: 400px;
-  border-radius: 15px;
+
+.modal>div {
+    /*modal content*/
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px 20px 20px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 15px;
 }
-.modal h2{
-  margin-top: 0;
+
+.modal h2 {
+    margin-top: 0;
 }
+
 .close {
-  float: right;
-  color: #aaaaaa;
-  font-size: 28px;
-  font-weight: bold;
+    float: right;
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
 }
-.close:hover, .close:focus {
-  color: #000;
-  cursor: pointer;
+
+.close:hover,
+.close:focus {
+    color: #000;
+    cursor: pointer;
+}
+
+.addBtn {
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    /* font-size: 10px; */
+    /* padding: 20px; */
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.addBtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.addBtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.addBtn:hover {
+    background-color: #D2B48C;
+}
+
+.addBtn:hover span {
+    padding-right: 25px;
+}
+
+.addBtn:hover span:after {
+    opacity: 1;
+    right: 0;
 }

@@ -7,7 +7,7 @@
 <form method="post" action="manajer/pdfrentang" target='_blank'>
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <input type="hidden" name="tanggal2" value='<?php echo $_POST['tanggal2']; ?>'>
-    <button type="submit">Export to PDF</button>
+    <button type="submit" class="addBtn"><span>Export to PDF</span></button>
 </form><br>
 
 <table id="table-laporan">
