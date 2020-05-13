@@ -8,6 +8,17 @@
     <button type="submit">Export to PDF</button>
 </form><br>
 
+<form id="form" method="post" action="">
+    <input type="hidden" name="select-laporan" value="detail-trans-harian">
+    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
+    <input type="hidden" name="page" value='<?php echo $_POST['page']; ?>'>
+    <select name="select-show">
+        <option value="10">10</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+    </select>
+</form>
+
 <table id="table-laporan">
     <tr class='first-row'>
         <th>Kode</th>
@@ -67,9 +78,11 @@
 </table>
 
 <form method="POST" action="">
+    <input type="hidden" name="select-laporan" value="detail-trans-harian">
+    <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <?php
     for ($i = 0; $i / $show < $pageCount; $i += $show) {
-        echo "<button onclick='location.href='?page='".($i / $show + 1)."'>" . ($i / $show + 1) . "</button> ";
+        echo "<input type='submit' name='page' value='" . ($i / $show + 1) . "'>";
     }
     ?>
 </form>
