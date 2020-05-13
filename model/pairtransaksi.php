@@ -1,5 +1,5 @@
 <?php
-    class PairTransaksi{
+    class PairTransaksi{ //Untuk pair dari topping dengan jumlahnya
         protected $namaTopping;
         protected $jumlahTopping;
 
@@ -15,4 +15,3 @@
             return $this->jumlahTopping;
         }
     }
-?>
