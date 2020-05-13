@@ -160,7 +160,11 @@
                 $nama = $this->db->escapeString($post['nama']);
                 $premitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
                 $rnd_pass = substr(str_shuffle($premitted_chars),0,8);
-                $this->db->executeNonSelectQuery("UPDATE $posisi SET password = '$rnd_pass' WHERE id = $id");
+                if ($posisi == "admin"){
+                    $this->db->executeNonSelectQuery("UPDATE admin SET password = '$rnd_pass' WHERE id = $id");
+                } else {
+                    $this->db->executeNonSelectQuery("UPDATE $posisi SET password = '$rnd_pass', isFirstTime = 1 WHERE id = $id");
+                }
                 $response = array("status"=>"success", "name"=>$nama, "password"=>$rnd_pass);
                 return json_encode($response);
             }else{
