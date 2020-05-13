@@ -59,14 +59,8 @@ class ManajerController
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
-        $nilai = $_POST['select-show'];
-        if($nilai == 'sepuluh'){
-            $show = 10;
-        }else if($nilai == 'tigapuluh'){
-            $show = 30;
-        }else{
-            $show = 50;
-        }
+        $show = intval($_POST['select-show']);
+        
         $start = ($_POST['page'] - 1)*$show;  
         $query = "
                 SELECT COUNT(*) as ttl

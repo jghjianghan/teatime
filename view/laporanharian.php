@@ -12,10 +12,13 @@
     <input type="hidden" name="select-laporan" value="detail-trans-harian">
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <input type="hidden" name="page" value='<?php echo $_POST['page']; ?>'>
-    <select name="select-show">
+    Show: <select name="select-show" data-show='<?php echo $show; ?>'>
+        <option value="2">2</option>
+        <option value="5">5</option>
         <option value="10">10</option>
         <option value="30">30</option>
         <option value="50">50</option>
+        <option value="<?php echo $show * $pageCount;?>">All</option>
     </select>
 </form>
 
@@ -79,7 +82,7 @@
 
 <form method="POST" action="">
     <input type="hidden" name="select-laporan" value="detail-trans-harian">
-    <input type="hidden" name="select-show" value="10">
+    <input type="hidden" name="select-show" value="<?php echo $show;?>">
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <?php
     for ($i = 0; $i / $show < $pageCount; $i += $show) {
