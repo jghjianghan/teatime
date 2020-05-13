@@ -66,14 +66,6 @@
             return $result;
         }
 
-        // public function viewAddUser(){
-        //     return View::createView('addUser.php',[
-        //         "uplevel"=>1,
-        //         "title"=>"Add User",
-        //         "styleSrcList"=>['mainStyle.css']
-        //     ]);
-        // }
-
         public function addUser(){
             $post = json_decode(file_get_contents('php://input'), true);
             if(isset($post['posisi']) 
@@ -137,7 +129,6 @@
                     $nama = $this->db->escapeString($_POST['edit-nama']);
                     $ttl = $this->db->escapeString($_POST['edit-ttl']);
                     $alamat = $this->db->escapeString($_POST['edit-alamat']);
-                    // echo $id.'|'.$posisi.'|'.$email.'|'.$nama.'|'.$ttl.'|'.$alamat;
                     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
                     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
                         $this->db->executeNonSelectQuery("UPDATE $posisi SET email = '".$email."', nama = '".$nama."', tanggalLahir = '".$ttl."', alamat = '".$alamat."' WHERE id = $id");
@@ -147,7 +138,6 @@
 
         public function resetPass(){
             $post = json_decode(file_get_contents('php://input'), true);
-            // return $post;
             if (isset($post['idUser']) 
                 && isset($post['posisi'])
                 &&isset($post['nama'])
@@ -177,8 +167,6 @@
             if (isset($post['idUser']) && $post['idUser'] !=="" && isset($post['posisi']) && $post['posisi']!==""){
                 $id = $this->db->escapeString($post['idUser']);
                 $posisi = $this->db->escapeString($post['posisi']);
-                // $s = $id .'|'. $posisi;
-                // return $s;
                 $success = $this->db->executeNonSelectQuery("DELETE FROM $posisi WHERE id = $id");
                 if ($success){
                     return json_encode(array("status"=>"Success", "message"=>"User deleted."));
@@ -248,8 +236,6 @@
                             $slc = $this->db->executeSelectQuery("SELECT gambar FROM teh WHERE id = $id");
                             unlink(dirname(__DIR__)."\\asset\\img\\tea\\".$slc[0]['gambar']);
                             $this->db->executeSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."', gambar = '".$foto."' WHERE id = $id");
-                            // echo 'f '.$id.'|'.$nama.'|'.$reg.'|'.$large.'|'.$foto;
-                            
                         }
                     }
                     else{
@@ -258,8 +244,6 @@
                         $reg = $this->db->escapeString($_POST['update-reg']);
                         $large = $this->db->escapeString($_POST['update-large']);
                         $this->db->executeNonSelectQuery("UPDATE teh SET nama = '".$nama."', hargaRegular = '".$reg."', hargaLarge = '".$large."' WHERE id = $id");
-                        // echo 'nf '.$id.'|'.$nama.'|'.$reg.'|'.$large;
-                
                     }
             }
             
@@ -338,7 +322,6 @@
                             $slc = $this->db->executeSelectQuery("SELECT gambar FROM topping WHERE id = $id");
                             unlink(dirname(__DIR__)."\\asset\\img\\topping\\".$slc[0]['gambar']);
                             $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."', gambar = '".$foto."' WHERE id = $id");
-                            // echo 'f'.$id.'|'.$nama.'|'.$harga.'|'.$foto;
                         }  
                     }
                     else{
@@ -346,7 +329,6 @@
                         $nama = $this->db->escapeString($_POST['update-nama']);
                         $harga = $this->db->escapeString($_POST['update-harga']);
                         $this->db->executeNonSelectQuery("UPDATE topping SET nama = '".$nama."',harga = '".$harga."' WHERE id = $id");
-                        // echo 'nf'.$id.'|'.$nama.'|'.$harga;
                     }
             }
         }

@@ -136,8 +136,6 @@ class pop{
             },
             body: JSON.stringify(input)
         };
-        // let resetModal = document.getElementById('modal-res');
-        // resetModal.style.display = 'block';
         fetch('user/reset',init).then(response => response.json()).then(function(json){
             let res = document.getElementById("modal-res");
             if (json.status==='success'){
