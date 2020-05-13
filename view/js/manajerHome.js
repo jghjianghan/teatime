@@ -4,9 +4,8 @@ class ManajerHome {
         this.formHandle = this.formHandle.bind(this);
         this.form.addEventListener('submit', this.formHandle);
 
-        this.select = this.form.elements['select-laporan'];
-        console.log(this.select);
-        this.select.selectedIndex = this.select.dataset.selected;
+        let select = this.form.elements['select-laporan'];
+        select.selectedIndex = select.dataset.selected;
     }
     formHandle(event){
         event.preventDefault();
