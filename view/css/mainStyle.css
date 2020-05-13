@@ -143,18 +143,18 @@ footer {
 
 .chgBtn {
     border-radius: 4px;
-    background-color: #D2B48C;
+    background-color: #008CBA;
     border: none;
-    color: rgb(0, 0, 0);
+    color: white;
     text-align: center;
-    width: 130px;
+    width: 120px;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 5px;
-    padding: 13px 32px;
+    margin: 5px 3px;
+    padding: 6px 2px;
+    border: 0;
 }
 
 .chgBtn:hover {
-    background-color: yellow;
-    color: white;
+    background-color: rgb(0, 129, 172);;
 }
