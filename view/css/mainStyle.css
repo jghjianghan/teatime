@@ -141,45 +141,20 @@ footer {
     cursor: pointer;
 }
 
-.addBtn {
+.chgBtn {
     border-radius: 4px;
-    background-color: transparent;
+    background-color: #D2B48C;
     border: none;
     color: rgb(0, 0, 0);
     text-align: center;
-    /* font-size: 10px; */
-    /* padding: 20px; */
     width: 130px;
-    transition: all 0.5s;
+    transition-duration: 0.4s;
     cursor: pointer;
     margin: 5px;
+    padding: 13px 32px;
 }
 
-.addBtn span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.addBtn span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.addBtn:hover {
-    background-color: #D2B48C;
-}
-
-.addBtn:hover span {
-    padding-right: 25px;
-}
-
-.addBtn:hover span:after {
-    opacity: 1;
-    right: 0;
+.chgBtn:hover {
+    background-color: yellow;
+    color: white;
 }
