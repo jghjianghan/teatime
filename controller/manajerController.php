@@ -59,8 +59,15 @@ class ManajerController
     {
         $tgl = $_POST['tanggal1'];
         $exd = date_create($tgl);
-        $start = 0;
-        $show = 1;
+        $nilai = $_POST['select-show'];
+        if($nilai == 'sepuluh'){
+            $show = 10;
+        }else if($nilai == 'tigapuluh'){
+            $show = 30;
+        }else{
+            $show = 50;
+        }
+        $start = ($_POST['page'] - 1)*$show;  
         $query = "
                 SELECT COUNT(*) as ttl
                 FROM transaksi
@@ -81,6 +88,7 @@ class ManajerController
             "pageCount" => $pageCount,
             "uplevel" => 1,
             "styleSrcList" => ['style2.css'],
+            "scriptSrcList" => ['showChooser.js'],
             "title" => "Daily Report"
         ]);
     }

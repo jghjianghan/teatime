@@ -22,4 +22,7 @@
             </li><br>
         </ul>
     </fieldset>
+
+    <input type="hidden" name="page" value="1">
+    <input type="hidden" name="select-show" value="sepuluh">
 </form>
