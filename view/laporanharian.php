@@ -79,6 +79,7 @@
 
 <form method="POST" action="">
     <input type="hidden" name="select-laporan" value="detail-trans-harian">
+    <input type="hidden" name="select-show" value="10">
     <input type="hidden" name="tanggal1" value='<?php echo $_POST['tanggal1']; ?>'>
     <?php
     for ($i = 0; $i / $show < $pageCount; $i += $show) {

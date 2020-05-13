@@ -112,6 +112,7 @@ class ManajerController
                 INNER JOIN teh
                 ON pesanan.fkTeh = teh.id
                 WHERE transaksi.waktu LIKE '" . date_format($exd, 'Y-m-d') . " %'
+                GROUP BY transaksi.waktu, transaksi.kode
             ";
         $query_result = $this->db->executeSelectQuery($query);
 
@@ -154,6 +155,7 @@ class ManajerController
         ON t1.idKasir = kasir.id
         INNER JOIN teh
         ON pesanan.fkTeh = teh.id
+        GROUP BY t1.waktu, t1.kode
         ";
         $query_result = $this->db->executeSelectQuery($query);
 
