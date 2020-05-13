@@ -364,13 +364,5 @@
                 return json_encode(["status"=>'Error', 'message'=>'Missing input. Not enough information to delete topping.']);
             }
         }
-
-        public function getTeaById($id){
-            $id = $this->db->escapeString($id);
-
-            return $this->db->executeSelectQuery("SELECT * FROM Tea WHERE id = $id")[0];
-        }
-
-        
     }
 ?>

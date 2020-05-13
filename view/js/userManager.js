@@ -73,16 +73,18 @@ class pop{
     }
 
     searchfunction(){
-        let input, filter, table, tr, td, i, txtValue;
+        let input, filter, table, tr, td, td2, i, txtValue, txtValue2;
         input = document.getElementById('userSearch');
         filter = input.value.toUpperCase();
         table = document.getElementById('userData');
         tr = table.getElementsByTagName('tr');
         for(i = 0;i<tr.length;i++){
             td = tr[i].getElementsByTagName('td')[3];
+            td2 = tr[i].getElementsByTagName('td')[1];
             if(td){
                 txtValue = td.textContent||td.innerText;
-                if(txtValue.toUpperCase().indexOf(filter)>-1){
+                txtValue2 = td2.textContent||td2.innerText;
+                if(txtValue.toUpperCase().indexOf(filter)>-1||txtValue2.toUpperCase().indexOf(filter)>-1){
                     tr[i].style.display = "";
                 }
                 else{
