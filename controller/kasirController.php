@@ -65,7 +65,6 @@ class KasirController
 
     public function getConfig($filename)
     {
-        // return "config/$filename.json";
         return file_get_contents("config/$filename.json");
     }
 
@@ -84,6 +83,7 @@ class KasirController
             
             $kode = date("Ymd").$this->getOrderNumber();
             
+            //insert transaksi
             $query = "
                 INSERT INTO transaksi (kode, waktu, totalHarga, namaPemesan, idKasir)
                 VALUES ('$kode', '".date("YmdHis")."', $totalHarga, '$namaPemesan', $idKasir)

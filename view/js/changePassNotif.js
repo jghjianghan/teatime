@@ -1,6 +1,5 @@
 class ChangePassNotif{
     constructor(){
-        console.log('hello');
         this.modal = document.createElement('div');
         this.modal.className = 'modal';
         let container = document.createElement('div');

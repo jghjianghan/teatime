@@ -62,7 +62,6 @@ class ChangePasswordForm {
     }
 
     refresh(){
-        console.log('refresh');
         if (this.success){
             window.location.href = 'login';
         } else {

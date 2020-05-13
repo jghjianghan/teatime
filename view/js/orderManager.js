@@ -115,7 +115,6 @@ class OrderManager{
             },
             body: JSON.stringify(info)
         };
-        console.log(info);
         fetch('kasir/checkout', init).then(response => response.json())
         .then(this.postCheckoutReset);
 

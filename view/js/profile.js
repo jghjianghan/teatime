@@ -17,7 +17,7 @@ function showSlides(){
     for (i = 0; i < dots.length; i++) {
         dots[i].classList.remove("active");
     }
-    // return;
+    
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].classList.add("active");
 

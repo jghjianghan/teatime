@@ -15,11 +15,6 @@ class OrderList{
     }
     deleteOrder (event){
         delete this.orderList[event.detail];
-        
-        console.log(this.orderList);
-        for (let x of this.orderList){
-            console.log(typeof x === "undefined");
-        }
     }
     getTotalHarga(){
         let total = 0;
@@ -42,7 +37,6 @@ class OrderList{
     }
 
     clear(){
-        console.log(this.bill);
         for (let x of this.orderList){
             if(x != null){
                 this.bill.firstElementChild.remove();
@@ -50,6 +44,5 @@ class OrderList{
         }
         this.counter = 0;
         this.orderList = [];
-        console.log('cleared');
     }
 }
